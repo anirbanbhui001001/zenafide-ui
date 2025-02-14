@@ -1,12 +1,17 @@
-import { Route, Routes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import LoginPage from "@/pages/auth/login";
+import routes from "./routes/route-config";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-    </Routes>
-  );
+  const content = useRoutes([
+    {
+      path: "/",
+      element: <LoginPage />,
+    },
+    ...routes,
+  ]);
+
+  return content;
 }
 
 export default App;
