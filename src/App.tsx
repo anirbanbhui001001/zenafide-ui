@@ -1,9 +1,7 @@
-import './App.css'
+import { Route, Routes } from "react-router-dom";
 
-export default function App() {
-  return (
-    <main>
-      React ⚛️ + Vite ⚡ + Replit 🌀
-    </main>
-  )
+function App() {
+  return <Routes></Routes>;
 }
+
+export default App;
