@@ -7,6 +7,6 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
     host: '0.0.0.0',
+    allowedHosts: ['4fe53546-a082-4ef6-8a19-8adea7b70cdd-00-1xrn33jl0anby.sisko.replit.dev']
   }
 })
-
