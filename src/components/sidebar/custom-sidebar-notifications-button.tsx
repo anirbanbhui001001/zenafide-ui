@@ -4,7 +4,7 @@
 import React from "react";
 import {Button, Badge, Popover, PopoverTrigger, PopoverContent} from "@heroui/react";
 import {Icon} from "@iconify/react";
-import NotificationsCard from "./notifications-card";
+import NotificationsCard from "./custom-sidebar-notifications-button";
 
 export default function NotificationsButton() {
   return (

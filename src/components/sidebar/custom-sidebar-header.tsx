@@ -2,7 +2,6 @@
 "use client";
 
 import React from "react";
-import {AcmeIcon} from "./acme";
 import UserDropdown from "./custom-sidebar-user-dropdown";
 import NotificationsButton from "./custom-sidebar-notifications-button";
 
@@ -11,7 +10,7 @@ export default function SidebarHeader() {
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2 px-2">
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground">
-          <AcmeIcon className="text-background" />
+          <div className="text-background"></div> {/* Removed AcmeIcon */}
         </div>
         <span className="text-small font-bold uppercase">Acme</span>
       </div>
