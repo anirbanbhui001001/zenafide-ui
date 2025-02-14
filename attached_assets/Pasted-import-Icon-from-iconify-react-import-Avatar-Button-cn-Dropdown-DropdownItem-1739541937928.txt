@@ -1,0 +1,284 @@
+import { Icon } from '@iconify/react';
+import {
+  Avatar,
+  Button,
+  cn,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  ScrollShadow,
+  Spacer,
+  Tooltip,
+  useDisclosure,
+} from '@nextui-org/react';
+import React, { useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useMediaQuery } from 'usehooks-ts';
+
+import { sectionItemsWithTeams } from 'Components/sidebar/sidebar-items';
+
+import Sidebar from 'Components/sidebar/sidebar';
+import SidebarDrawer from 'Components/sidebar/sidebar-drawer';
+import { Outlet } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import zenafideIcon from '../../assets/zenafide-icon.svg';
+import zenafideLogo from '../../assets/zenafide-logo.png';
+import ThemeSwitcher from '../../components/theme-switcher';
+import { useAuthQuery } from '../../hooks/useAuthQuery';
+import { useUserStore } from '../../store/use-user-store';
+
+const tenantLogo = window.location.hostname.includes('legal')
+  ? zenafideIcon
+  : logo;
+
+const Logo = () => {
+  if (window.location.hostname.includes('legal')) {
+    return (
+      <div className="flex items-center justify-center ">
+        <img src={zenafideLogo} alt="LiFT Logo" />
+      </div>
+    );
+  }
+  return (
+    <div className="flex h-8 w-8 items-center justify-center mb-1">
+      <img src={tenantLogo} alt="LiFT Logo" />
+    </div>
+  );
+};
+
+const TenantName = ({ isCollapsed }) => {
+  if (window.location.hostname.includes('legal')) {
+    return null;
+  }
+  return (
+    <span
+      className={cn('w-full text-small font-bold opacity-100', {
+        'w-0 opacity-0': isCollapsed,
+      })}
+    >
+      <span className="text-[20px]">Mentora LiFT</span>
+    </span>
+  );
+};
+
+export default function Component() {
+  const location = useLocation();
+  const { logout } = useAuthQuery();
+  const user = useUserStore((state) => state.user);
+  const navigate = useNavigate();
+  const shouldShowSidebar = !location.pathname.includes('analyse');
+
+  const selectedKeys = useMemo(() => {
+    const currentPath = location.pathname.split('/')?.[1] || '';
+    return [currentPath];
+  }, [location.pathname]);
+
+  const handleLogout = async () => {
+    await logout.mutateAsync();
+    navigate('/login');
+  };
+
+  const [isCollapsed, setIsCollapsed] = React.useState(true);
+
+  const onToggle = React.useCallback(() => {
+    setIsCollapsed((prev) => !prev);
+  }, []);
+
+  const { isOpen, onOpenChange } = useDisclosure();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  return (
+    <div className="flex h-dvh w-full gap-x-3 p-2">
+      {shouldShowSidebar && (
+        <SidebarDrawer
+          className={cn('min-w-[288px] rounded-lg', {
+            'min-w-[76px]': isCollapsed,
+          })}
+          hideCloseButton={true}
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+        >
+          <div
+            className={cn(
+              'will-change relative flex h-full w-72 flex-col bg-default-100 p-6 transition-width',
+              {
+                'w-[83px] items-center px-[6px] py-6': isCollapsed,
+              }
+            )}
+          >
+            <div
+              className={cn('flex items-center gap-3 pl-2', {
+                'justify-center gap-0 pl-0': isCollapsed,
+              })}
+            >
+              <Logo />
+              <TenantName isCollapsed={isCollapsed} />
+              <div className={cn('flex-end flex', { hidden: isCollapsed })}>
+                <Icon
+                  className="cursor-pointer dark:text-primary-foreground/60 [&>g]:stroke-[1px]"
+                  icon="solar:round-alt-arrow-left-line-duotone"
+                  width={24}
+                  onClick={isMobile ? onOpenChange : onToggle}
+                />
+              </div>
+            </div>
+
+            <ScrollShadow className="-mr-6 h-full max-h-full py-6 pr-6">
+              <Sidebar
+                defaultSelectedKey="home"
+                isCompact={isCollapsed}
+                items={sectionItemsWithTeams}
+                selectedKeys={selectedKeys}
+              />
+            </ScrollShadow>
+            <Spacer y={8} />
+
+            <div
+              className={cn('mt-auto flex flex-col', {
+                'items-center': isCollapsed,
+              })}
+            >
+              {isCollapsed && (
+                <Tooltip content="Logout">
+                  <Button
+                    isIconOnly
+                    className="flex h-10 w-10 text-default-600"
+                    size="sm"
+                    variant="light"
+                  >
+                    <Icon
+                      className="cursor-pointer dark:text-primary-foreground/60 [&>g]:stroke-[1px]"
+                      height={24}
+                      icon="solar:round-alt-arrow-right-line-duotone"
+                      width={24}
+                      onClick={onToggle}
+                    />
+                  </Button>
+                </Tooltip>
+              )}
+              <div className="flex items-center gap-2">
+                <Dropdown>
+                  <DropdownTrigger>
+                    <Button
+                      className={cn(
+                        'justify-start text-default-500 data-[hover=true]:text-foreground ',
+                        {
+                          'justify-center': isCollapsed,
+                        }
+                      )}
+                      isIconOnly={isCollapsed}
+                      endContent={
+                        isCollapsed ? null : (
+                          <Icon
+                            className="flex-none  text-default-500"
+                            icon="gg:select"
+                            width={24}
+                          />
+                        )
+                      }
+                      variant="light"
+                    >
+                      {' '}
+                      {isCollapsed ? (
+                        <Icon
+                          className="rotate-180 text-default-500"
+                          icon="solar:minus-circle-line-duotone"
+                          width={24}
+                        />
+                      ) : (
+                        <React.Fragment>
+                          {/* <Icon icon="mdi:user-outline" width={20} /> */}
+                          <div className="flex items-center gap-3 px-3 ">
+                            <Avatar isBordered size="sm" />
+                            <div
+                              className={cn('flex max-w-full flex-col', {
+                                hidden: isCollapsed,
+                              })}
+                            >
+                              <p className="text-small font-medium text-foreground text-start">
+                                {`${user.first_name} ${user.last_name}`}
+                              </p>
+                              <p className="text-tiny font-medium text-default-400">
+                                {user.email}
+                              </p>
+                            </div>
+                          </div>
+                        </React.Fragment>
+                      )}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu aria-label="User actions">
+                    <DropdownItem key="user-info" className="py-2" isReadOnly>
+                      <div className="flex flex-col items-start">
+                        <span className="text-small font-medium truncate max-w-[150px]">
+                          {user
+                            ? `${user.first_name} ${user.last_name}`
+                            : 'Guest User'}
+                        </span>
+                        <span className="text-xs text-default-500 truncate max-w-[150px]">
+                          {user?.email}
+                        </span>
+                      </div>
+                    </DropdownItem>
+
+                    <DropdownItem key="theme" className="py-2">
+                      <div className="flex items-center gap-2">
+                        <ThemeSwitcher />
+                      </div>
+                    </DropdownItem>
+                    <DropdownItem
+                      key="logout"
+                      className="text-danger"
+                      onClick={handleLogout}
+                      startContent={
+                        <Icon icon="ic:baseline-logout" width={20} />
+                      }
+                    >
+                      Log Out
+                    </DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+              </div>
+            </div>
+          </div>
+        </SidebarDrawer>
+      )}
+
+      <ScrollShadow className="w-full ">
+        <main className="h-full w-full">
+          <div className="grid h-full w-full  gap-0 overflow-y-auto p-0 sm:rounded-large sm:border-small sm:border-default-200">
+            <div className="flex h-full w-full flex-col gap-1 rounded-medium border-divider">
+              {isMobile && (
+                <header className="sticky top-0 z-50 flex w-full items-center justify-between px-3 pt-3 bg-background sm:px-6 -mb-4">
+                  <Button
+                    isIconOnly
+                    className="flex text-default-500 sm:hidden"
+                    size="sm"
+                    variant="light"
+                    onPress={onOpenChange}
+                  >
+                    <Icon
+                      height={24}
+                      icon="solar:hamburger-menu-outline"
+                      width={24}
+                    />
+                  </Button>
+
+                  {/* <div className="flex w-full items-center justify-center text-large font-bold text-foreground sm:justify-start">
+                    <h2 className="text-large font-bold text-foreground">
+                      {currentPageTitle}
+                    </h2>
+                  </div> */}
+
+                  {/* You can add additional buttons here if needed */}
+                </header>
+              )}
+              <Outlet />
+            </div>
+          </div>
+        </main>
+      </ScrollShadow>
+    </div>
+  );
+}
