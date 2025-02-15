@@ -72,7 +72,7 @@ const sidebarItems: SidebarItem[] = [
 export default function CustomSidebar() {
   return (
     <div className="h-full min-h-[48rem]">
-      <div className="relative flex h-full w-72 flex-1 flex-col border-r-small border-divider p-6">
+      <div className="relative flex h-full w-72 flex-1 flex-col p-6">
         <SidebarHeader />
         <Spacer y={8} />
         <div className="flex flex-col gap-y-2">
