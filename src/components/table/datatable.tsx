@@ -20,6 +20,7 @@ export interface DataTableProps<T> {
   }[];
   title?: string;
   actions?: React.ReactNode;
+  onRowClick?: (row: T) => void;
 }
 
 export default function DataTable<T extends { id: string }>({
@@ -27,6 +28,7 @@ export default function DataTable<T extends { id: string }>({
   columns,
   title,
   actions,
+  onRowClick,
 }: DataTableProps<T>) {
   const classNames = React.useMemo(
     () => ({
@@ -73,7 +75,7 @@ export default function DataTable<T extends { id: string }>({
             </TableHeader>
             <TableBody>
               {data.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={item.id} onClick={() => onRowClick && onRowClick(item)}>
                   {columns.map((column) => (
                     <TableCell key={`${item.id}-${column.key}`}>
                       {column.render

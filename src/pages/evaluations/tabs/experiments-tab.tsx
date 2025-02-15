@@ -1,14 +1,16 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import DataTable from "@/components/table/datatable";
+import ExperimentDetails from "@/components/experiments/experiment-details";
 import { experiments } from "@/data/experiments";
 import { Experiment } from "@/types/experiment";
 
 export default function ExperimentsTab() {
   const navigate = useNavigate();
+  const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
 
   const columns = [
     { key: "name", label: "Name" },
@@ -49,11 +51,21 @@ export default function ExperimentsTab() {
     </div>
   );
 
+  if (selectedExperiment) {
+    return (
+      <ExperimentDetails
+        id={selectedExperiment}
+        onBack={() => setSelectedExperiment(null)}
+      />
+    );
+  }
+
   return (
     <DataTable<Experiment>
       data={experiments}
       columns={columns}
       actions={actions}
+      onRowClick={(experiment) => setSelectedExperiment(experiment.id)}
     />
   );
 }
