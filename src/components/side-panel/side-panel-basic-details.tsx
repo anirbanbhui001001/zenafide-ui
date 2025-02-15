@@ -25,7 +25,7 @@ export default function SidePanelBasicDetails({ user, onSave, onCancel }: SidePa
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-6 py-4">
       <Input
         label="First Name"
         value={formData.firstName}
