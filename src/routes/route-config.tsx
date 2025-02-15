@@ -2,7 +2,7 @@
 import React from "react";
 import { RouteObject } from "react-router-dom";
 import ApplicationLayout from "@/layouts/application-layout";
-import AIProviders from "@/pages/ai-providers";
+import AIProviders from "@/pages/ai-providers/ai-providers";
 
 const routes: RouteObject[] = [
   {

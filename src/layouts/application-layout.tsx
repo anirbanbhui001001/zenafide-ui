@@ -15,7 +15,7 @@ export default function ApplicationLayout({
   onOpenChange,
 }: ApplicationLayoutProps) {
   return (
-    <div className="flex h-full w-full gap-0">
+    <div className="flex h-dvh w-full gap-x-3 p-2">
       {!isMobile && <CustomSidebar />}
       <MainArea isMobile={isMobile} onOpenChange={onOpenChange} />
     </div>
