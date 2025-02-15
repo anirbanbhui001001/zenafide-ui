@@ -5,6 +5,7 @@ import ApplicationLayout from "@/layouts/application-layout";
 import AIProviders from "@/pages/ai-providers/ai-providers";
 import Home from "@/pages/home/home";
 import EvaluationsPage from "@/pages/evaluations/evaluations-page";
+import Users from "@/pages/users/users";
 
 const routes: RouteObject[] = [
   {
@@ -22,6 +23,10 @@ const routes: RouteObject[] = [
       {
         path: "evaluations",
         element: <EvaluationsPage />
+      },
+      {
+        path: "users",
+        element: <Users />
       }
     ]
   }
