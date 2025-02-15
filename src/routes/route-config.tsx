@@ -5,6 +5,7 @@ import AIProviders from "@/pages/ai-providers/ai-providers";
 import Home from "@/pages/home/home";
 import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 import Users from "@/pages/users/users";
+import Agents from "@/pages/agents/agents";
 import ExperimentDetails from "@/components/experiments/experiment-details";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -28,6 +29,10 @@ const routes: RouteObject[] = [
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "agents",
+        element: <Agents />,
       },
     ],
   },
