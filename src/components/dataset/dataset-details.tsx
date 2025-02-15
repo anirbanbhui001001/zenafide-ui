@@ -56,21 +56,23 @@ export default function DatasetDetails({ dataset, onBack }: DatasetDetailsProps)
   );
 
   return (
-    <div className="flex h-full">
-      <div className="flex-1 pr-4">
+    <div className="flex h-dvh">
+      <div className="flex-1 pr-4 flex flex-col">
         <div className="flex items-center gap-4 mb-6">
           <Button size="sm" variant="light" startContent={<Icon icon="mdi:arrow-left" />} onPress={onBack}>
             Back to Datasets
           </Button>
         </div>
-        <DataTable<TestCaseType>
-          data={testCases}
-          columns={columns}
-          actions={actions}
-          onRowClick={setSelectedTestCase}
-        />
+        <div className="flex-1 min-h-0">
+          <DataTable<TestCaseType>
+            data={testCases}
+            columns={columns}
+            actions={actions}
+            onRowClick={setSelectedTestCase}
+          />
+        </div>
       </div>
-      <div className="w-[400px] border-l pl-4">
+      <div className="w-[400px] border-l pl-4 h-full">
         {isCreating ? (
           <TestCase onClose={() => setIsCreating(false)} />
         ) : selectedTestCase ? (
