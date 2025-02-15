@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Accordion, AccordionItem, Checkbox, Button } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
@@ -9,7 +8,11 @@ interface SidePanelPermissionsProps {
   onCancel: () => void;
 }
 
-export default function SidePanelPermissions({ user, onSave, onCancel }: SidePanelPermissionsProps) {
+export default function SidePanelPermissions({
+  user,
+  onSave,
+  onCancel,
+}: SidePanelPermissionsProps) {
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
 
   const sections = [
@@ -19,21 +22,26 @@ export default function SidePanelPermissions({ user, onSave, onCancel }: SidePan
         "Can add log entry",
         "Can change log entry",
         "Can delete log entry",
-        "Can view log entry"
-      ]
+        "Can view log entry",
+      ],
     },
     { title: "Auditlog", permissions: [] },
     { title: "Auth", permissions: [] },
     { title: "Comparisons", permissions: [] },
     { title: "Contenttypes", permissions: [] },
     { title: "Discussions", permissions: [] },
-    { title: "Documents", permissions: [] }
+    { title: "Documents", permissions: [] },
   ];
 
   const handleSave = () => {
     onSave({
-      ...(user || { id: String(Date.now()), firstName: "", lastName: "", email: "" }),
-      permissions: selectedPermissions
+      ...(user || {
+        id: String(Date.now()),
+        firstName: "",
+        lastName: "",
+        email: "",
+      }),
+      permissions: selectedPermissions,
     });
   };
 
@@ -49,10 +57,10 @@ export default function SidePanelPermissions({ user, onSave, onCancel }: SidePan
                     key={permission}
                     isSelected={selectedPermissions.includes(permission)}
                     onValueChange={(isSelected) => {
-                      setSelectedPermissions(prev => 
-                        isSelected 
+                      setSelectedPermissions((prev) =>
+                        isSelected
                           ? [...prev, permission]
-                          : prev.filter(p => p !== permission)
+                          : prev.filter((p) => p !== permission),
                       );
                     }}
                   >
@@ -63,10 +71,6 @@ export default function SidePanelPermissions({ user, onSave, onCancel }: SidePan
             </AccordionItem>
           ))}
         </Accordion>
-      </div>
-      <div className="flex justify-end gap-2 p-4 border-t">
-        <Button color="default" onPress={onCancel}>Cancel</Button>
-        <Button color="primary" onPress={handleSave}>Save</Button>
       </div>
     </div>
   );

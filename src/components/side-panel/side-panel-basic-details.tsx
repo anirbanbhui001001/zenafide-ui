@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Input, Button } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
@@ -9,18 +8,22 @@ interface SidePanelBasicDetailsProps {
   onCancel: () => void;
 }
 
-export default function SidePanelBasicDetails({ user, onSave, onCancel }: SidePanelBasicDetailsProps) {
+export default function SidePanelBasicDetails({
+  user,
+  onSave,
+  onCancel,
+}: SidePanelBasicDetailsProps) {
   const [formData, setFormData] = useState({
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
-    email: user?.email || ""
+    email: user?.email || "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSave({
       id: user?.id || String(Date.now()),
-      ...formData
+      ...formData,
     });
   };
 
@@ -29,26 +32,28 @@ export default function SidePanelBasicDetails({ user, onSave, onCancel }: SidePa
       <Input
         label="First Name"
         value={formData.firstName}
-        onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, firstName: e.target.value }))
+        }
         required
       />
       <Input
         label="Last Name"
         value={formData.lastName}
-        onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, lastName: e.target.value }))
+        }
         required
       />
       <Input
         label="Email"
         type="email"
         value={formData.email}
-        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+        onChange={(e) =>
+          setFormData((prev) => ({ ...prev, email: e.target.value }))
+        }
         required
       />
-      <div className="flex justify-end gap-2 mt-4">
-        <Button color="default" onPress={onCancel}>Cancel</Button>
-        <Button color="primary" type="submit">Save</Button>
-      </div>
     </form>
   );
 }
