@@ -3,19 +3,7 @@
 import React from "react";
 import { Select, SelectSection, SelectItem, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-
-const workspaces = [
-  {
-    value: "0",
-    label: "EVS",
-    items: [
-      { value: "1", label: "Core workspace" },
-      { value: "2", label: "Design workspace" },
-      { value: "3", label: "Dev. workspace" },
-      { value: "4", label: "Marketing workspace" },
-    ],
-  },
-];
+import { workspaces } from "@/data/workspaces";
 
 export default function WorkspaceSelect() {
   return (
