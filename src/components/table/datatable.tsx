@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -23,27 +22,30 @@ export interface DataTableProps<T> {
   actions?: React.ReactNode;
 }
 
-export default function DataTable<T extends { id: string }>({ 
+export default function DataTable<T extends { id: string }>({
   data,
   columns,
   title,
-  actions
+  actions,
 }: DataTableProps<T>) {
   const classNames = React.useMemo(
     () => ({
-      wrapper: ['max-h-[382px]', 'max-w-3xl'],
-      th: ['bg-transparent', 'text-default-500', 'border-b', 'border-divider'],
-      td: ['pb-2'],
-      tr: ['border-b', 'border-divider', 'data-[last=true]:border-b-0'],
+      wrapper: ["max-h-[382px]", "max-w-3xl"],
+      th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
+      td: ["pb-2"],
+      tr: ["border-b", "border-divider", "data-[last=true]:border-b-0"],
     }),
-    []
+    [],
   );
 
-  const tableProps = React.useMemo(() => ({
-    layout: 'fixed',
-    removeWrapper: true,
-    classNames,
-  }), [classNames]);
+  const tableProps = React.useMemo(
+    () => ({
+      layout: "fixed",
+      removeWrapper: true,
+      classNames,
+    }),
+    [classNames],
+  );
 
   return (
     <div className="p-8">
@@ -74,7 +76,9 @@ export default function DataTable<T extends { id: string }>({
                 <TableRow key={item.id}>
                   {columns.map((column) => (
                     <TableCell key={`${item.id}-${column.key}`}>
-                      {column.render ? column.render(item) : (item as any)[column.key]}
+                      {column.render
+                        ? column.render(item)
+                        : (item as any)[column.key]}
                     </TableCell>
                   ))}
                 </TableRow>
