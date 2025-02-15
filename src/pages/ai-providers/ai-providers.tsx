@@ -87,19 +87,21 @@ export default function AIProviders() {
   );
 
   return (
-    <DataTable
-      data={providers}
-      columns={columns}
-      title="AI Providers"
-      actions={addKeyButton}
-    />
-    <APIKeyModal 
-      isOpen={isModalOpen}
-      onClose={() => {
-        setIsModalOpen(false);
-        setSelectedProvider(undefined);
-      }}
-      provider={selectedProvider}
-    />
+    <>
+      <DataTable
+        data={providers}
+        columns={columns}
+        title="AI Providers"
+        actions={addKeyButton}
+      />
+      <APIKeyModal 
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          setSelectedProvider(undefined);
+        }}
+        provider={selectedProvider}
+      />
+    </>
   );
 }
