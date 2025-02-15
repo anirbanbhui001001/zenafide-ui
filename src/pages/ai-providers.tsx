@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -41,6 +42,22 @@ const providers: Provider[] = [
 ];
 
 export default function AIProviders() {
+  const classNames = React.useMemo(
+    () => ({
+      wrapper: ['max-h-[382px]', 'max-w-3xl'],
+      th: ['bg-transparent', 'text-default-500', 'border-b', 'border-divider'],
+      td: ['pb-2'],
+      tr: ['border-b', 'border-divider', 'data-[last=true]:border-b-0'],
+    }),
+    []
+  );
+
+  const tableProps = React.useMemo(() => ({
+    layout: 'fixed',
+    removeWrapper: true,
+    classNames,
+  }), [classNames]);
+
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
@@ -61,28 +78,25 @@ export default function AIProviders() {
             </div>
             <div className="flex justify-between items-center"></div>
           </div>
-          <Table aria-label="AI Providers" hideHeader={false} removeWrapper>
-            <TableHeader className="border-b border-divider">
-              <TableColumn className="text-default-500 bg-transparent">Name</TableColumn>
-              <TableColumn className="text-default-500 bg-transparent">Status</TableColumn>
-              <TableColumn className="text-default-500 bg-transparent">Created</TableColumn>
-              <TableColumn className="text-default-500 bg-transparent" align="end">Actions</TableColumn>
+          <Table aria-label="AI Providers" hideHeader={false} {...tableProps}>
+            <TableHeader>
+              <TableColumn>Name</TableColumn>
+              <TableColumn>Status</TableColumn>
+              <TableColumn>Created</TableColumn>
+              <TableColumn align="end">Actions</TableColumn>
             </TableHeader>
             <TableBody>
               {providers.map((provider) => (
-                <TableRow 
-                  key={provider.id} 
-                  className="border-b border-divider last:border-b-0"
-                >
-                  <TableCell className="pb-2">{provider.name}</TableCell>
-                  <TableCell className="pb-2">
+                <TableRow key={provider.id}>
+                  <TableCell>{provider.name}</TableCell>
+                  <TableCell>
                     <div className="flex items-center">
                       <span className="text-success mr-2">●</span>
                       {provider.status}
                     </div>
                   </TableCell>
-                  <TableCell className="pb-2">{provider.created}</TableCell>
-                  <TableCell className="pb-2">
+                  <TableCell>{provider.created}</TableCell>
+                  <TableCell>
                     <div className="flex justify-end mr-2 cursor-pointer">
                       <Icon icon="akar-icons:edit" width={20} />
                       <Icon
