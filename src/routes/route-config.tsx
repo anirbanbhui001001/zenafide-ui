@@ -6,6 +6,7 @@ import AIProviders from "@/pages/ai-providers/ai-providers";
 import Home from "@/pages/home/home";
 import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 import Users from "@/pages/users/users";
+import ExperimentDetails from "@/components/experiments/experiment-details";
 
 const routes: RouteObject[] = [
   {
