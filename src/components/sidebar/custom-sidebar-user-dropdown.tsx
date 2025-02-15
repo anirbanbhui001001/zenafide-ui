@@ -37,6 +37,7 @@ const users: User[] = [
     email: "jane.doe@example.com",
   },
 ];
+
 import {
   Dropdown,
   DropdownTrigger,
@@ -90,35 +91,6 @@ export default function UserDropdown() {
               />
             </DropdownItem>
           ))}
-        </DropdownSection>
-
-        <DropdownSection showDivider aria-label="Preferences">
-          <DropdownItem key="quick_search" shortcut="⌘K">
-            Quick search
-          </DropdownItem>
-          <DropdownItem
-            key="theme"
-            isReadOnly
-            className="cursor-default"
-            endContent={
-              <select
-                className="z-10 w-16 rounded-md border-small border-default-300 bg-transparent py-0.5 text-tiny text-default-500 outline-none group-data-[hover=true]:border-default-500 dark:border-default-200"
-                id="theme"
-                name="theme"
-              >
-                <option>System</option>
-                <option>Dark</option>
-                <option>Light</option>
-              </select>
-            }
-          >
-            Theme
-          </DropdownItem>
-        </DropdownSection>
-
-        <DropdownSection aria-label="Help & Feedback">
-          <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-          <DropdownItem key="logout">Log Out</DropdownItem>
         </DropdownSection>
       </DropdownMenu>
     </Dropdown>
