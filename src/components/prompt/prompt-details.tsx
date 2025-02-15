@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { ResizableBox } from "react-resizable";
+import "react-resizable/css/styles.css";
 import PromptHeader from "./prompt-header";
 import PromptEditorPanel from "./prompt-editor-panel";
 import PromptResponsePanel from "./prompt-response-panel";
