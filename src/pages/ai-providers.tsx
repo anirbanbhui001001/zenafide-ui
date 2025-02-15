@@ -10,7 +10,6 @@ import {
   TableRow,
   TableCell,
   Button,
-  Chip,
 } from "@heroui/react";
 import { Icon } from "@iconify/react";
 
@@ -44,61 +43,59 @@ const providers: Provider[] = [
 
 export default function AIProviders() {
   return (
-    <div className="flex h-full w-full flex-col gap-4 p-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold">AI Providers</h1>
-        <Button color="primary" startContent={<Icon icon="solar:add-circle-bold" />}>
+    <div className="p-8">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">AI Providers</h1>
+        <Button 
+          color="primary" 
+          size="sm"
+          startContent={<Icon icon="mdi:plus" />}
+        >
           Add Key
         </Button>
       </div>
-
-      <Table aria-label="AI Providers table">
-        <TableHeader>
-          <TableColumn>Name</TableColumn>
-          <TableColumn>Status</TableColumn>
-          <TableColumn>Created</TableColumn>
-          <TableColumn align="end">Actions</TableColumn>
-        </TableHeader>
-        <TableBody>
-          {providers.map((provider) => (
-            <TableRow key={provider.id}>
-              <TableCell>{provider.name}</TableCell>
-              <TableCell>
-                <Chip
-                  color="success"
-                  startContent={
-                    <div className="h-2 w-2 rounded-full bg-success-500" />
-                  }
-                >
-                  {provider.status}
-                </Chip>
-              </TableCell>
-              <TableCell>{provider.created}</TableCell>
-              <TableCell>
-                <div className="flex justify-end gap-2">
-                  <Button
-                    isIconOnly
-                    size="sm"
-                    variant="light"
-                    aria-label="Edit provider"
-                  >
-                    <Icon icon="solar:pen-2-linear" width={16} />
-                  </Button>
-                  <Button
-                    isIconOnly
-                    size="sm"
-                    variant="light"
-                    color="danger"
-                    aria-label="Delete provider"
-                  >
-                    <Icon icon="solar:trash-bin-trash-linear" width={16} />
-                  </Button>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div>
+        <div className="flex flex-col relative gap-4 w-full">
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-between gap-3 items-end">
+              <div className="flex gap-3"></div>
+            </div>
+            <div className="flex justify-between items-center"></div>
+          </div>
+          <Table aria-label="AI Providers">
+            <TableHeader>
+              <TableColumn>Name</TableColumn>
+              <TableColumn>Status</TableColumn>
+              <TableColumn>Created</TableColumn>
+              <TableColumn align="end">Actions</TableColumn>
+            </TableHeader>
+            <TableBody>
+              {providers.map((provider) => (
+                <TableRow key={provider.id}>
+                  <TableCell className="pb-2">{provider.name}</TableCell>
+                  <TableCell className="pb-2">
+                    <div className="flex items-center">
+                      <span className="text-success mr-2">●</span>
+                      {provider.status}
+                    </div>
+                  </TableCell>
+                  <TableCell className="pb-2">{provider.created}</TableCell>
+                  <TableCell className="pb-2">
+                    <div className="flex justify-end mr-2 cursor-pointer">
+                      <Icon icon="akar-icons:edit" width={20} />
+                      <Icon 
+                        icon="proicons:trash" 
+                        width={20} 
+                        className="ml-2 text-light"
+                      />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </div>
   );
 }
