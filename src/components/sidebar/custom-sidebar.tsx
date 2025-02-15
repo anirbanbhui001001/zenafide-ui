@@ -18,19 +18,19 @@ const sidebarItems: SidebarItem[] = [
     items: [
       {
         key: "home",
-        href: "#",
+        href: "/home",
         icon: "solar:home-2-linear",
         title: "Home",
       },
       {
         key: "projects",
-        href: "#",
+        href: "/home",
         icon: "solar:widget-2-outline",
         title: "Projects",
       },
       {
         key: "documents",
-        href: "#",
+        href: "/home",
         icon: "solar:file-text-outline",
         title: "Documents",
       },
@@ -42,17 +42,17 @@ const sidebarItems: SidebarItem[] = [
     items: [
       {
         key: "agents",
-        href: "#",
+        href: "/home",
         title: "Agents",
       },
       {
         key: "conversation-history",
-        href: "#",
+        href: "/home",
         title: "Conversation History",
       },
       {
         key: "users",
-        href: "#",
+        href: "/home",
         title: "Users",
       },
       {
@@ -62,7 +62,7 @@ const sidebarItems: SidebarItem[] = [
       },
       {
         key: "evaluations",
-        href: "#",
+        href: "/home",
         title: "Evaluations",
       },
     ],
