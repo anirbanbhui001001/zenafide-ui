@@ -17,21 +17,7 @@ import {
 import {Icon} from "@iconify/react";
 import NotificationItem from "./notification-item";
 
-type Notification = {
-  id: string;
-  isRead?: boolean;
-  avatar: string;
-  description: string;
-  name: string;
-  time: string;
-  type?: "default" | "request" | "file";
-};
-
-enum NotificationTabs {
-  All = "all",
-  Unread = "unread",
-  Archive = "archive",
-}
+import { Notification, NotificationTabs } from "@/types/notification";
 
 const notifications: Record<NotificationTabs, Notification[]> = {
   all: [
