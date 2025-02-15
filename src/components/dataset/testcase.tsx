@@ -68,14 +68,20 @@ export default function TestCase({ testCase, onClose }: TestCaseProps) {
           />
         </form>
       </CardBody>
-      <CardFooter className="flex justify-end gap-2 shrink-0">
-        <Button color="danger" variant="light" onPress={onClose} size="sm">
-          Cancel
-        </Button>
-        <Button color="primary" type="submit" size="sm" onPress={handleSave}>
+      <div className="flex gap-2 p-4">
+        <Button
+          color="primary"
+          fullWidth
+          onClick={handleSubmit(onSubmit)}
+          isLoading={isLoading}
+          size="sm"
+        >
           Save
         </Button>
-      </CardFooter>
+        <Button variant="light" onPress={onClose} size="sm">
+          Cancel
+        </Button>
+      </div>
     </Card>
   );
 }
