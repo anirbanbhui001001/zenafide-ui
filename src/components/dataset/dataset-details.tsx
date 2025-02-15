@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -24,24 +23,30 @@ const testCases: TestCaseType[] = [
     id: "1",
     label: "Basic Greeting",
     chatHistory: "User: Hello Assistant: Hi, how can I help you today?",
-    target: "Friendly and professional greeting"
+    target: "Friendly and professional greeting",
   },
   {
     id: "2",
     label: "Product Inquiry",
-    chatHistory: "User: What's the price of your basic plan? Assistant: Our basic plan starts at $9.99 per month and includes all essential features.",
-    target: "Accurate pricing information"
-  }
+    chatHistory:
+      "User: What's the price of your basic plan? Assistant: Our basic plan starts at $9.99 per month and includes all essential features.",
+    target: "Accurate pricing information",
+  },
 ];
 
-export default function DatasetDetails({ dataset, onBack }: DatasetDetailsProps) {
-  const [selectedTestCase, setSelectedTestCase] = useState<TestCaseType | null>(null);
+export default function DatasetDetails({
+  dataset,
+  onBack,
+}: DatasetDetailsProps) {
+  const [selectedTestCase, setSelectedTestCase] = useState<TestCaseType | null>(
+    null,
+  );
   const [isCreating, setIsCreating] = useState(false);
 
   const columns = [
     { key: "label", label: "Label" },
     { key: "chatHistory", label: "Chat History" },
-    { key: "target", label: "Target" }
+    { key: "target", label: "Target" },
   ];
 
   const actions = (
@@ -58,8 +63,13 @@ export default function DatasetDetails({ dataset, onBack }: DatasetDetailsProps)
   return (
     <div className="flex h-dvh">
       <div className="flex-1 pr-4 flex flex-col">
-        <div className="flex items-center gap-4 mb-6">
-          <Button size="sm" variant="light" startContent={<Icon icon="mdi:arrow-left" />} onPress={onBack}>
+        <div className="flex items-center">
+          <Button
+            size="sm"
+            variant="light"
+            startContent={<Icon icon="mdi:arrow-left" />}
+            onPress={onBack}
+          >
             Back to Datasets
           </Button>
         </div>
@@ -76,7 +86,10 @@ export default function DatasetDetails({ dataset, onBack }: DatasetDetailsProps)
         {isCreating ? (
           <TestCase onClose={() => setIsCreating(false)} />
         ) : selectedTestCase ? (
-          <TestCase testCase={selectedTestCase} onClose={() => setSelectedTestCase(null)} />
+          <TestCase
+            testCase={selectedTestCase}
+            onClose={() => setSelectedTestCase(null)}
+          />
         ) : (
           <DatasetInformation dataset={dataset} />
         )}
