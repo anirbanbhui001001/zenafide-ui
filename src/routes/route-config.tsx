@@ -41,7 +41,13 @@ const routes: RouteObject[] = [
       },
       {
         path: "/agents/:id/prompt",
-        element: <PromptDetails />,
+        element: (
+          <PromptDetails
+            name={agents.find(a => a.id === useParams().id)?.name || ""}
+            initialSystemPrompt={agents.find(a => a.id === useParams().id)?.systemPrompt || ""}
+            initialUserMessage=""
+          />
+        ),
       },
     ],
   },
