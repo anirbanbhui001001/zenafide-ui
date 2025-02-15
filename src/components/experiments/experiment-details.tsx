@@ -78,7 +78,7 @@ export default function ExperimentDetails({
             size="sm"
             variant="light"
             className="w-40"
-            defaultSelectedKeys={['avg_relevance']}
+            defaultSelectedKeys={['avgRelevance']}
             items={scoreMetrics}
           >
             {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
