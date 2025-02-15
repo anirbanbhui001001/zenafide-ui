@@ -48,23 +48,23 @@ export default function ExperimentDetails({
         </div>
         
         <div className="flex gap-2 mb-4">
-          <Button size="sm" variant="light" className="gap-1">
+          <Button size="sm" variant="bordered" className="border-1">
             All rows
             <Icon icon="material-symbols:expand-more" />
           </Button>
-          <Button size="sm" variant="light" className="gap-1">
+          <Button size="sm" variant="bordered" className="border-1">
             <Icon icon="material-symbols:view-column" />
             Columns
           </Button>
-          <Button size="sm" variant="light" className="gap-1">
+          <Button size="sm" variant="bordered" className="border-1">
             <Icon icon="material-symbols:filter-alt" />
             Filter
           </Button>
-          <Button size="sm" variant="light" className="gap-1">
+          <Button size="sm" variant="bordered" className="border-1">
             <Icon icon="material-symbols:group-work" />
             Group
           </Button>
-          <Button size="sm" variant="light" className="gap-1">
+          <Button size="sm" variant="bordered" className="border-1">
             <Icon icon="material-symbols:height" />
             Row height
           </Button>
