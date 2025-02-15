@@ -1,7 +1,7 @@
 import { Tab, Tabs } from "@heroui/react";
 // import DataSetsTab from './tabs/data-sets-tab';
 import MetricsTab from "./tabs/metrics-tab";
-// import PlaygroundTab from './tabs/playground-tab';
+import ExperimentsTab from './tabs/experiments-tab';
 
 export default function EvaluationsPage() {
   return (
@@ -14,9 +14,9 @@ export default function EvaluationsPage() {
         <Tab key="metrics" title="Scorers">
           <MetricsTab />
         </Tab>
-        {/* <Tab key="playground" title="Experiments">
-          <PlaygroundTab />
-        </Tab> */}
+        <Tab key="experiments" title="Experiments">
+          <ExperimentsTab />
+        </Tab>
       </Tabs>
     </div>
   );
