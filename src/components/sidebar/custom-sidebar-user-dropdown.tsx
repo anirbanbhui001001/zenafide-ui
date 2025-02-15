@@ -23,8 +23,8 @@ export default function UserDropdown() {
         <Button disableRipple isIconOnly className="-mr-1" radius="full" variant="light">
           <Avatar
             className="h-6 w-6 cursor-pointer"
-            name="Kate Moore"
-            src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg"
+            name={users[0].name}
+            src={users[0].avatar}
           />
         </Button>
       </DropdownTrigger>
@@ -35,14 +35,14 @@ export default function UserDropdown() {
               avatarProps={{
                 size: "sm",
                 imgProps: {className: "transition-none"},
-                src: "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg",
+                src: users[0].avatar,
               }}
               classNames={{
                 name: "text-default-600",
                 description: "text-default-500",
               }}
-              description="Customer Support"
-              name="Kate Moore"
+              description={users[0].role}
+              name={users[0].name}
             />
           </DropdownItem>
           <DropdownItem key="dashboard">Dashboard</DropdownItem>
