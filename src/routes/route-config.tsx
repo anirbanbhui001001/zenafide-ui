@@ -4,6 +4,7 @@ import { RouteObject } from "react-router-dom";
 import ApplicationLayout from "@/layouts/application-layout";
 import AIProviders from "@/pages/ai-providers/ai-providers";
 import Home from "@/pages/home/home";
+import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 
 const routes: RouteObject[] = [
   {
@@ -17,6 +18,10 @@ const routes: RouteObject[] = [
       {
         path: "ai-providers",
         element: <AIProviders />
+      },
+      {
+        path: "evaluations",
+        element: <EvaluationsPage />
       }
     ]
   }

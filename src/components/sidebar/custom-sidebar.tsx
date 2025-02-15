@@ -66,7 +66,7 @@ const sidebarItems: SidebarItem[] = [
       },
       {
         key: "evaluations",
-        href: "/home",
+        href: "/evaluations",
         icon: "material-symbols:balance",
         title: "Evaluations",
       },
