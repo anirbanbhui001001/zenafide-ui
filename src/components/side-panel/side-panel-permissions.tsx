@@ -15,23 +15,7 @@ export default function SidePanelPermissions({
 }: SidePanelPermissionsProps) {
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
 
-  const sections = [
-    {
-      title: "Admin",
-      permissions: [
-        "Can add log entry",
-        "Can change log entry",
-        "Can delete log entry",
-        "Can view log entry",
-      ],
-    },
-    { title: "Auditlog", permissions: [] },
-    { title: "Auth", permissions: [] },
-    { title: "Comparisons", permissions: [] },
-    { title: "Contenttypes", permissions: [] },
-    { title: "Discussions", permissions: [] },
-    { title: "Documents", permissions: [] },
-  ];
+  import { permissionSections } from "@/data/permissions/sections";
 
   const handleSave = () => {
     onSave({
