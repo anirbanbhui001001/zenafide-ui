@@ -1,12 +1,15 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
+import DatasetDetails from "@/components/dataset/dataset-details";
 import { datasets } from "@/data/datasets";
 import { Dataset } from "@/types/dataset";
 
 export default function DataSetsTab() {
+  const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
+
   const columns = [
     { key: "name", label: "Name" },
     { key: "description", label: "Description" },
@@ -26,11 +29,21 @@ export default function DataSetsTab() {
     </Button>
   );
 
+  if (selectedDataset) {
+    return (
+      <DatasetDetails
+        dataset={selectedDataset}
+        onBack={() => setSelectedDataset(null)}
+      />
+    );
+  }
+
   return (
     <DataTable<Dataset>
       data={datasets}
       columns={columns}
       actions={actions}
+      onRowClick={setSelectedDataset}
       title="Datasets"
     />
   );
