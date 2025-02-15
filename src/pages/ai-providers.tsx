@@ -62,11 +62,11 @@ export default function AIProviders() {
             <div className="flex justify-between items-center"></div>
           </div>
           <Table aria-label="AI Providers" hideHeader={false} removeWrapper>
-            <TableHeader>
-              <TableColumn>Name</TableColumn>
-              <TableColumn>Status</TableColumn>
-              <TableColumn>Created</TableColumn>
-              <TableColumn align="end">Actions</TableColumn>
+            <TableHeader className="bg-transparent">
+              <TableColumn className="text-default-500">Name</TableColumn>
+              <TableColumn className="text-default-500">Status</TableColumn>
+              <TableColumn className="text-default-500">Created</TableColumn>
+              <TableColumn className="text-default-500" align="end">Actions</TableColumn>
             </TableHeader>
             <TableBody>
               {providers.map((provider) => (
