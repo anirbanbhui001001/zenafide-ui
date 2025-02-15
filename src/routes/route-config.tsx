@@ -1,3 +1,20 @@
+
+import PromptDetails from "@/components/prompt/prompt-details";
+
+// Add this to your routes array
+{
+  path: "/agents/:id/prompt",
+  element: (
+    <ApplicationLayout>
+      <PromptDetails
+        name={agents.find(a => a.id === useParams().id)?.name || ""}
+        initialSystemPrompt={agents.find(a => a.id === useParams().id)?.systemPrompt || ""}
+        initialUserMessage=""
+      />
+    </ApplicationLayout>
+  )
+}
+
 import React from "react";
 import { RouteObject } from "react-router-dom";
 import ApplicationLayout from "@/layouts/application-layout";

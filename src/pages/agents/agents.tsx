@@ -8,8 +8,11 @@ import DataTable from "@/components/table/datatable";
 import { agents } from "@/data/agents";
 import { Agent } from "@/types/agent";
 
+import { useNavigate } from "react-router-dom";
+
 export default function Agents() {
   const [data, setData] = useState<Agent[]>(agents);
+  const navigate = useNavigate();
 
   const handleToggleStatus = (agent: Agent) => {
     setData(prev => 
@@ -76,6 +79,7 @@ export default function Agents() {
       columns={columns}
       title="Agents"
       actions={addAgentButton}
+      onRowClick={(agent: Agent) => navigate(`/agents/${agent.id}/prompt`)}
     />
   );
 }
