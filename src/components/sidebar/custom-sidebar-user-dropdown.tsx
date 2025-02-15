@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -53,39 +52,44 @@ import {Icon} from "@iconify/react";
 
 
 export default function UserDropdown() {
+  const [currentUser, setCurrentUser] = React.useState(users[0]);
+
   return (
     <Dropdown showArrow placement="bottom-start">
       <DropdownTrigger>
         <Button disableRipple isIconOnly className="-mr-1" radius="full" variant="light">
           <Avatar
             className="h-6 w-6 cursor-pointer"
-            name="Kate Moore"
-            src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg"
+            name={currentUser.name}
+            src={currentUser.avatar}
           />
         </Button>
       </DropdownTrigger>
-      <DropdownMenu aria-label="Custom item styles" disabledKeys={["profile"]}>
-        <DropdownSection showDivider aria-label="Profile & Actions">
-          <DropdownItem key="profile" isReadOnly className="h-14 gap-2 opacity-100" textValue="Signed in as">
-            <User
-              avatarProps={{
-                size: "sm",
-                imgProps: {className: "transition-none"},
-                src: "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg",
-              }}
-              classNames={{
-                name: "text-default-600",
-                description: "text-default-500",
-              }}
-              description="Customer Support"
-              name="Kate Moore"
-            />
-          </DropdownItem>
-          <DropdownItem key="dashboard">Dashboard</DropdownItem>
-          <DropdownItem key="settings">Settings</DropdownItem>
-          <DropdownItem key="new_project" endContent={<Icon className="text-large" icon="lucide:plus" />}>
-            New Project
-          </DropdownItem>
+      <DropdownMenu 
+        aria-label="User menu" 
+        onAction={(key) => {
+          const user = users.find(u => u.id === Number(key));
+          if (user) setCurrentUser(user);
+        }}
+      >
+        <DropdownSection showDivider aria-label="Users">
+          {users.map((user) => (
+            <DropdownItem key={user.id} textValue={user.name}>
+              <User
+                avatarProps={{
+                  size: "sm",
+                  src: user.avatar,
+                  imgProps: {className: "transition-none"},
+                }}
+                classNames={{
+                  name: "text-default-600",
+                  description: "text-default-500",
+                }}
+                description={user.role}
+                name={user.name}
+              />
+            </DropdownItem>
+          ))}
         </DropdownSection>
 
         <DropdownSection showDivider aria-label="Preferences">
