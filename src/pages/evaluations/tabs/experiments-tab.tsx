@@ -10,9 +10,6 @@ import { Experiment } from "@/types/experiment";
 export default function ExperimentsTab() {
   const navigate = useNavigate();
 
-  const handleRowClick = (experiment: Experiment) => {
-    navigate(`/evaluations/experiment/${experiment.id}`);
-  };
   const columns = [
     { key: "name", label: "Name" },
     { key: "errors", label: "Errors" },
@@ -57,7 +54,6 @@ export default function ExperimentsTab() {
       data={experiments}
       columns={columns}
       actions={actions}
-      onRowClick={handleRowClick}
     />
   );
 }
