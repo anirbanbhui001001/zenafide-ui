@@ -31,7 +31,7 @@ export const sidebarItems: SidebarItem[] = [
     items: [
       {
         key: "agents",
-        href: "/home",
+        href: "/agents",
         icon: "la:robot",
         title: "Agents",
       },

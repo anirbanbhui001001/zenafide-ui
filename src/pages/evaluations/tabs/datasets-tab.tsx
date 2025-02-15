@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -20,11 +19,7 @@ export default function DataSetsTab() {
   ];
 
   const actions = (
-    <Button
-      size="sm"
-      color="primary"
-      startContent={<Icon icon="mdi:plus" />}
-    >
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:plus" />}>
       Add Dataset
     </Button>
   );
@@ -44,7 +39,6 @@ export default function DataSetsTab() {
       columns={columns}
       actions={actions}
       onRowClick={setSelectedDataset}
-      title="Datasets"
     />
   );
 }
