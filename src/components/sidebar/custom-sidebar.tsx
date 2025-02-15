@@ -57,7 +57,7 @@ const sidebarItems: SidebarItem[] = [
       },
       {
         key: "ai-providers",
-        href: "#",
+        href: "/ai-providers",
         title: "AI Providers",
       },
       {

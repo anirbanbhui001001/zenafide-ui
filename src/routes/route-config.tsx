@@ -6,13 +6,15 @@ import AIProviders from "@/pages/ai-providers";
 
 const routes: RouteObject[] = [
   {
-    path: "/home",
+    path: "/",
     element: <ApplicationLayout />,
-  },
-  {
-    path: "/ai-providers",
-    element: <AIProviders />,
-  },
+    children: [
+      {
+        path: "ai-providers",
+        element: <AIProviders />
+      }
+    ]
+  }
 ];
 
 export default routes;
