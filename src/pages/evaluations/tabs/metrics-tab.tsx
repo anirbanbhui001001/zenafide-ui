@@ -1,10 +1,6 @@
 import { Card, CardBody, CardHeader, ScrollShadow } from "@heroui/react";
 
-interface Metric {
-  title: string;
-  description: string;
-  name: string;
-}
+import { Metric } from "@/types/metric";
 
 const metrics: Metric[] = [
   {
