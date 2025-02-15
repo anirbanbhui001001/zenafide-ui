@@ -62,7 +62,7 @@ export default function AIProviders() {
             <div className="flex justify-between items-center"></div>
           </div>
           <Table aria-label="AI Providers" hideHeader={false} removeWrapper>
-            <TableHeader>
+            <TableHeader className="border-b border-divider">
               <TableColumn className="text-default-500 bg-transparent">Name</TableColumn>
               <TableColumn className="text-default-500 bg-transparent">Status</TableColumn>
               <TableColumn className="text-default-500 bg-transparent">Created</TableColumn>
