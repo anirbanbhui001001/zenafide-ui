@@ -1,14 +1,31 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { zenUsers } from "@/data/zen_users";
 import { ZenUser } from "@/types/zen_user";
+import SidePanel from "@/components/side-panel/side-panel";
 
 export default function Users() {
+  const [users, setUsers] = useState<ZenUser[]>(zenUsers);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<ZenUser | undefined>();
+
+  const handleSave = (updatedUser: ZenUser) => {
+    setUsers(prev => {
+      const index = prev.findIndex(u => u.id === updatedUser.id);
+      if (index >= 0) {
+        return prev.map(u => u.id === updatedUser.id ? updatedUser : u);
+      }
+      return [...prev, updatedUser];
+    });
+    setIsOpen(false);
+    setSelectedUser(undefined);
+  };
+
   const columns = [
     { key: "id", label: "User Id" },
     { key: "firstName", label: "First name" },
@@ -24,6 +41,10 @@ export default function Users() {
             icon="akar-icons:edit"
             width={20}
             className="cursor-pointer"
+            onClick={() => {
+              setSelectedUser(user);
+              setIsOpen(true);
+            }}
           />
           <Icon
             icon="proicons:trash"
@@ -36,17 +57,36 @@ export default function Users() {
   ];
 
   const addUserButton = (
-    <Button color="primary" size="sm" startContent={<Icon icon="mdi:plus" />}>
+    <Button 
+      color="primary" 
+      size="sm" 
+      startContent={<Icon icon="mdi:plus" />}
+      onPress={() => {
+        setSelectedUser(undefined);
+        setIsOpen(true);
+      }}
+    >
       Add User
     </Button>
   );
 
   return (
-    <DataTable
-      data={zenUsers}
-      columns={columns}
-      title="User Management"
-      actions={addUserButton}
-    />
+    <>
+      <DataTable
+        data={users}
+        columns={columns}
+        title="User Management"
+        actions={addUserButton}
+      />
+      <SidePanel
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          setSelectedUser(undefined);
+        }}
+        user={selectedUser}
+        onSave={handleSave}
+      />
+    </>
   );
 }
