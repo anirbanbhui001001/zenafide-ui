@@ -1,5 +1,5 @@
 
-export interface User {
+export interface DropdownUser {
   id: number;
   name: string;
   role: string;

@@ -1,7 +1,7 @@
 
-import { User } from "@/types/user-dropdown";
+import { DropdownUser } from "@/types/user-dropdown";
 
-export const users: User[] = [
+export const users: DropdownUser[] = [
   {
     id: 1,
     name: "Kate Moore",
