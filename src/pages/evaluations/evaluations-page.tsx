@@ -1,6 +1,6 @@
-import { Tab, Tabs } from '@heroui/react';
+import { Tab, Tabs } from "@heroui/react";
 // import DataSetsTab from './tabs/data-sets-tab';
-import MetricsTab from './tabs/metrics-tab';
+import MetricsTab from "./tabs/metrics-tab";
 // import PlaygroundTab from './tabs/playground-tab';
 
 export default function EvaluationsPage() {
