@@ -1,17 +1,9 @@
-
 "use client";
 
 import React from "react";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Button,
-} from "@heroui/react";
+import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
+import DataTable from "@/components/table/datatable";
 
 type Provider = {
   id: string;
@@ -42,76 +34,52 @@ const providers: Provider[] = [
 ];
 
 export default function AIProviders() {
-  const classNames = React.useMemo(
-    () => ({
-      wrapper: ['max-h-[382px]', 'max-w-3xl'],
-      th: ['bg-transparent', 'text-default-500', 'border-b', 'border-divider'],
-      td: ['pb-2'],
-      tr: ['border-b', 'border-divider', 'data-[last=true]:border-b-0'],
-    }),
-    []
+  const columns = [
+    { key: "name", label: "Name" },
+    { 
+      key: "status", 
+      label: "Status",
+      render: (provider: Provider) => (
+        <div className="flex items-center">
+          <span className="text-success mr-2">●</span>
+          {provider.status}
+        </div>
+      )
+    },
+    { key: "created", label: "Created" },
+    {
+      key: "actions",
+      label: "Actions",
+      align: "end" as const,
+      render: () => (
+        <div className="flex justify-end mr-2 cursor-pointer">
+          <Icon icon="akar-icons:edit" width={20} />
+          <Icon
+            icon="proicons:trash"
+            width={20}
+            className="ml-2 text-light"
+          />
+        </div>
+      )
+    }
+  ];
+
+  const addKeyButton = (
+    <Button
+      color="primary"
+      size="sm"
+      startContent={<Icon icon="mdi:plus" />}
+    >
+      Add Key
+    </Button>
   );
 
-  const tableProps = React.useMemo(() => ({
-    layout: 'fixed',
-    removeWrapper: true,
-    classNames,
-  }), [classNames]);
-
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">AI Providers</h1>
-        <Button
-          color="primary"
-          size="sm"
-          startContent={<Icon icon="mdi:plus" />}
-        >
-          Add Key
-        </Button>
-      </div>
-      <div>
-        <div className="flex flex-col relative gap-4 w-full">
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-between gap-3 items-end">
-              <div className="flex gap-3"></div>
-            </div>
-            <div className="flex justify-between items-center"></div>
-          </div>
-          <Table aria-label="AI Providers" hideHeader={false} {...tableProps}>
-            <TableHeader>
-              <TableColumn>Name</TableColumn>
-              <TableColumn>Status</TableColumn>
-              <TableColumn>Created</TableColumn>
-              <TableColumn align="end">Actions</TableColumn>
-            </TableHeader>
-            <TableBody>
-              {providers.map((provider) => (
-                <TableRow key={provider.id}>
-                  <TableCell>{provider.name}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <span className="text-success mr-2">●</span>
-                      {provider.status}
-                    </div>
-                  </TableCell>
-                  <TableCell>{provider.created}</TableCell>
-                  <TableCell>
-                    <div className="flex justify-end mr-2 cursor-pointer">
-                      <Icon icon="akar-icons:edit" width={20} />
-                      <Icon
-                        icon="proicons:trash"
-                        width={20}
-                        className="ml-2 text-light"
-                      />
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-    </div>
+    <DataTable
+      data={providers}
+      columns={columns}
+      title="AI Providers"
+      actions={addKeyButton}
+    />
   );
 }
