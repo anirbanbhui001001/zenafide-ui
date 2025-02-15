@@ -43,26 +43,31 @@ const sidebarItems: SidebarItem[] = [
       {
         key: "agents",
         href: "/home",
+        icon: "la:robot",
         title: "Agents",
       },
       {
         key: "conversation-history",
         href: "/home",
+        icon: "material-symbols:work-history-outline",
         title: "Conversation History",
       },
       {
         key: "users",
         href: "/home",
+        icon: "ci:users-group",
         title: "Users",
       },
       {
         key: "ai-providers",
         href: "/ai-providers",
+        icon: "material-symbols:api",
         title: "AI Providers",
       },
       {
         key: "evaluations",
         href: "/home",
+        icon: "material-symbols:balance",
         title: "Evaluations",
       },
     ],
@@ -101,7 +106,8 @@ export default function CustomSidebar() {
             iconClassName="group-data-[selected=true]:text-primary-foreground"
             itemClasses={{
               base: "data-[selected=true]:bg-primary-400 dark:data-[selected=true]:bg-primary-300 data-[hover=true]:bg-default-300/20 dark:data-[hover=true]:bg-default-200/40",
-              title: "text-black dark:text-white group-data-[selected=true]:text-primary-foreground",
+              title:
+                "text-black dark:text-white group-data-[selected=true]:text-primary-foreground",
             }}
             items={sidebarItems}
           />
