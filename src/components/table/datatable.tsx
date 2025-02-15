@@ -50,8 +50,8 @@ export default function DataTable<T extends { id: string }>({
   return (
     <div className="p-8">
       {(title || actions) && (
-        <div className="flex justify-between items-center mb-6">
-          {title && <h1 className="text-2xl font-bold">{title}</h1>}
+        <div className="flex justify-end items-center mb-6">
+          {title && <h1 className="text-2xl font-bold mr-auto">{title}</h1>}
           {actions}
         </div>
       )}
