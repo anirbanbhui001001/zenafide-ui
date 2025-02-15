@@ -1,19 +1,18 @@
-
 "use client";
 
 import React from "react";
-import {Select, SelectSection, SelectItem, Button} from "@heroui/react";
-import {Icon} from "@iconify/react";
+import { Select, SelectSection, SelectItem, Button } from "@heroui/react";
+import { Icon } from "@iconify/react";
 
 const workspaces = [
   {
     value: "0",
-    label: "Acme Inc.",
+    label: "EVS",
     items: [
-      {value: "1", label: "Core workspace"},
-      {value: "2", label: "Design workspace"},
-      {value: "3", label: "Dev. workspace"},
-      {value: "4", label: "Marketing workspace"},
+      { value: "1", label: "Core workspace" },
+      { value: "2", label: "Design workspace" },
+      { value: "3", label: "Dev. workspace" },
+      { value: "4", label: "Marketing workspace" },
     ],
   },
 ];
@@ -25,7 +24,8 @@ export default function WorkspaceSelect() {
       aria-label="Select workspace"
       className="px-1"
       classNames={{
-        trigger: "min-h-14 bg-transparent border-small border-default-200 dark:border-default-100 data-[hover=true]:border-default-500 dark:data-[hover=true]:border-default-200 data-[hover=true]:bg-transparent",
+        trigger:
+          "min-h-14 bg-transparent border-small border-default-200 dark:border-default-100 data-[hover=true]:border-default-500 dark:data-[hover=true]:border-default-200 data-[hover=true]:bg-transparent",
       }}
       defaultSelectedKeys={["1"]}
       items={workspaces}
@@ -44,15 +44,26 @@ export default function WorkspaceSelect() {
       renderValue={(items) => {
         return items.map((item) => (
           <div key={item.key} className="ml-1 flex flex-col gap-y-0.5">
-            <span className="text-tiny leading-4">Acme Inc.</span>
-            <span className="text-tiny text-default-400">{item.data?.label}</span>
+            <span className="text-tiny leading-4">EVS</span>
+            <span className="text-tiny text-default-400">
+              {item.data?.label}
+            </span>
           </div>
         ));
       }}
-      selectorIcon={<Icon color="hsl(var(--heroui-default-500))" icon="lucide:chevrons-up-down" />}
+      selectorIcon={
+        <Icon
+          color="hsl(var(--heroui-default-500))"
+          icon="lucide:chevrons-up-down"
+        />
+      }
       startContent={
         <div className="relative h-10 w-10 flex-none rounded-full border-small border-default-300">
-          <Icon className="ml-2 mt-2 text-default-500" icon="solar:users-group-rounded-linear" width={24} />
+          <Icon
+            className="ml-2 mt-2 text-default-500"
+            icon="solar:users-group-rounded-linear"
+            width={24}
+          />
         </div>
       }
     >
@@ -66,11 +77,19 @@ export default function WorkspaceSelect() {
           title={section.label}
         >
           {(item) => (
-            <SelectItem key={item.value} aria-label={item.label} textValue={item.label}>
+            <SelectItem
+              key={item.value}
+              aria-label={item.label}
+              textValue={item.label}
+            >
               <div className="flex flex-row items-center justify-between gap-1">
                 <span>{item.label}</span>
                 <div className="flex h-6 w-6 items-center justify-center rounded-full border-small border-default-300">
-                  <Icon className="text-default-500" icon="solar:users-group-rounded-linear" width={16} />
+                  <Icon
+                    className="text-default-500"
+                    icon="solar:users-group-rounded-linear"
+                    width={16}
+                  />
                 </div>
               </div>
             </SelectItem>

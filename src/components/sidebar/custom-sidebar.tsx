@@ -1,87 +1,71 @@
 "use client";
 
-import type {SidebarItem} from "./sidebar";
+import type { SidebarItem } from "./sidebar";
 import React from "react";
-import {Input, ScrollShadow, Spacer} from "@heroui/react";
-import {Icon} from "@iconify/react";
+import { Input, ScrollShadow, Spacer } from "@heroui/react";
+import { Icon } from "@iconify/react";
 import Sidebar from "./sidebar";
 import SidebarHeader from "./custom-sidebar-header";
 import WorkspaceSelect from "./custom-sidebar-workspace-select";
 import UpgradeCard from "./custom-sidebar-upgrade-card";
 import AccountSwitcher from "./custom-sidebar-account-switcher";
-import {Chip} from "@heroui/react";
-
+import { Chip } from "@heroui/react";
 
 const sidebarItems: SidebarItem[] = [
   {
-    key: "home",
-    href: "#",
-    icon: "solar:home-2-linear",
-    title: "Home",
+    key: "menu",
+    title: "Menu",
+    items: [
+      {
+        key: "home",
+        href: "#",
+        icon: "solar:home-2-linear",
+        title: "Home",
+      },
+      {
+        key: "projects",
+        href: "#",
+        icon: "solar:widget-2-outline",
+        title: "Projects",
+      },
+      {
+        key: "documents",
+        href: "#",
+        icon: "solar:file-text-outline",
+        title: "Documents",
+      },
+    ],
   },
   {
-    key: "projects",
-    href: "#",
-    icon: "solar:widget-2-outline",
-    title: "Projects",
-    endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
-    ),
-  },
-  {
-    key: "tasks",
-    href: "#",
-    icon: "solar:checklist-minimalistic-outline",
-    title: "Tasks",
-    endContent: (
-      <Icon className="text-default-400" icon="solar:add-circle-line-duotone" width={24} />
-    ),
-  },
-  {
-    key: "team",
-    href: "#",
-    icon: "solar:users-group-two-rounded-outline",
-    title: "Team",
-  },
-  {
-    key: "tracker",
-    href: "#",
-    icon: "solar:sort-by-time-linear",
-    title: "Tracker",
-    endContent: (
-      <Chip size="sm" variant="flat">
-        New
-      </Chip>
-    ),
-  },
-  {
-    key: "analytics",
-    href: "#",
-    icon: "solar:chart-outline",
-    title: "Analytics",
-  },
-  {
-    key: "perks",
-    href: "#",
-    icon: "solar:gift-linear",
-    title: "Perks",
-    endContent: (
-      <Chip size="sm" variant="flat">
-        3
-      </Chip>
-    ),
-  },
-  {
-    key: "expenses",
-    href: "#",
-    icon: "solar:bill-list-outline",
-    title: "Expenses",
-  },
-  {
-    key: "settings",
-    href: "#",
-    icon: "solar:settings-outline",
-    title: "Settings",
+    key: "admin",
+    title: "Admin",
+    items: [
+      {
+        key: "agents",
+        href: "#",
+        title: "Agents",
+      },
+      {
+        key: "conversation-history",
+        href: "#",
+        title: "Conversation History",
+      },
+      {
+        key: "users",
+        href: "#",
+        title: "Users",
+      },
+      {
+        key: "ai-providers",
+        href: "#",
+        title: "AI Providers",
+      },
+      {
+        key: "evaluations",
+        href: "#",
+        title: "Evaluations",
+      },
+    ],
   },
 ];
 
@@ -122,7 +106,6 @@ export default function CustomSidebar() {
             items={sidebarItems}
           />
           <Spacer y={8} />
-          <UpgradeCard />
         </ScrollShadow>
         <AccountSwitcher />
       </div>
