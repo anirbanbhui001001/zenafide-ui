@@ -23,9 +23,8 @@ export default function SidePanel({
       onClose={onClose}
       placement="right"
       classNames={{
-        wrapper: '!items-start !justify-end',
-        base: '!m-0 rounded-medium h-[calc(100vh-64px)] w-full sm:w-[600px]',
-        backdrop: 'hidden',
+        base: "w-[400px] h-full m-0",
+        wrapper: "justify-end",
       }}
     >
       <ModalContent>
