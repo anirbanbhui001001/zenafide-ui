@@ -1,5 +1,5 @@
 import { Card, CardBody, CardHeader, ScrollShadow } from "@heroui/react";
-import { metrics } from "@/data/dummy";
+import { metrics } from "@/data/metrics";
 
 export default function MetricsTab() {
   return (

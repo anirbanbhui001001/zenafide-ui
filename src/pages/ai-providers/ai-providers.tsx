@@ -7,23 +7,25 @@ import DataTable from "@/components/table/datatable";
 import APIKeyModal from "./api-key-modal";
 
 import { Provider } from "@/types/provider";
-import { providers } from "@/data/provider";
+import { providers } from "@/data/providers";
 
 export default function AIProviders() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState<Provider | undefined>();
+  const [selectedProvider, setSelectedProvider] = useState<
+    Provider | undefined
+  >();
 
   const columns = [
     { key: "name", label: "Name" },
-    { 
-      key: "status", 
+    {
+      key: "status",
       label: "Status",
       render: (provider: Provider) => (
         <div className="flex items-center">
           <span className="text-success mr-2">●</span>
           {provider.status}
         </div>
-      )
+      ),
     },
     { key: "created", label: "Created" },
     {
@@ -32,9 +34,9 @@ export default function AIProviders() {
       align: "end" as const,
       render: (provider: Provider) => (
         <div className="flex justify-end mr-2">
-          <Icon 
-            icon="akar-icons:edit" 
-            width={20} 
+          <Icon
+            icon="akar-icons:edit"
+            width={20}
             className="cursor-pointer"
             onClick={() => {
               setSelectedProvider(provider);
@@ -47,16 +49,12 @@ export default function AIProviders() {
             className="ml-2 text-light cursor-pointer"
           />
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   const addKeyButton = (
-    <Button
-      color="primary"
-      size="sm"
-      startContent={<Icon icon="mdi:plus" />}
-    >
+    <Button color="primary" size="sm" startContent={<Icon icon="mdi:plus" />}>
       Add Key
     </Button>
   );
@@ -69,7 +67,7 @@ export default function AIProviders() {
         title="AI Providers"
         actions={addKeyButton}
       />
-      <APIKeyModal 
+      <APIKeyModal
         isOpen={isModalOpen}
         onClose={() => {
           setIsModalOpen(false);
