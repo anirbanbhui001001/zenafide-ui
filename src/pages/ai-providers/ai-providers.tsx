@@ -6,12 +6,7 @@ import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import APIKeyModal from "./api-key-modal";
 
-type Provider = {
-  id: string;
-  name: string;
-  status: "Configured" | "Not Configured";
-  created: string;
-};
+import { Provider } from "@/types/provider";
 
 const providers: Provider[] = [
   {
