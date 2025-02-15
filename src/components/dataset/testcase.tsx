@@ -72,8 +72,7 @@ export default function TestCase({ testCase, onClose }: TestCaseProps) {
         <Button
           color="primary"
           fullWidth
-          onClick={handleSubmit(onSubmit)}
-          isLoading={isLoading}
+          onClick={handleSave}
           size="sm"
         >
           Save

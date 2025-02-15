@@ -61,7 +61,7 @@ export default function DatasetDetails({
   );
 
   return (
-    <div className="flex h-dvh">
+    <div className="flex">
       <div className="flex-1 pr-4 flex flex-col">
         <div className="flex items-center">
           <Button
