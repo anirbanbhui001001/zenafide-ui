@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -46,8 +45,8 @@ export default function AIProviders() {
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">AI Providers</h1>
-        <Button 
-          color="primary" 
+        <Button
+          color="primary"
           size="sm"
           startContent={<Icon icon="mdi:plus" />}
         >
@@ -62,7 +61,7 @@ export default function AIProviders() {
             </div>
             <div className="flex justify-between items-center"></div>
           </div>
-          <Table aria-label="AI Providers">
+          <Table aria-label="AI Providers" hideHeader={false} removeWrapper>
             <TableHeader>
               <TableColumn>Name</TableColumn>
               <TableColumn>Status</TableColumn>
@@ -83,9 +82,9 @@ export default function AIProviders() {
                   <TableCell className="pb-2">
                     <div className="flex justify-end mr-2 cursor-pointer">
                       <Icon icon="akar-icons:edit" width={20} />
-                      <Icon 
-                        icon="proicons:trash" 
-                        width={20} 
+                      <Icon
+                        icon="proicons:trash"
+                        width={20}
                         className="ml-2 text-light"
                       />
                     </div>
