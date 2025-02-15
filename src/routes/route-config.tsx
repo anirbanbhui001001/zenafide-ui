@@ -8,11 +8,22 @@ import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 import Users from "@/pages/users/users";
 import Agents from "@/pages/agents/agents";
 import ExperimentDetails from "@/components/experiments/experiment-details";
-import { useParams, useNavigate } from "react-router-dom";
-
 import PromptDetails from "@/components/prompt/prompt-details";
 import { agents } from "@/data/agents";
 
+// Create a wrapper component for PromptDetails
+function PromptDetailsWrapper() {
+  const id = window.location.pathname.split('/')[2];
+  const agent = agents.find(a => a.id === id);
+  
+  return (
+    <PromptDetails
+      name={agent?.name || ""}
+      initialSystemPrompt={agent?.systemPrompt || ""}
+      initialUserMessage=""
+    />
+  );
+}
 
 const routes: RouteObject[] = [
   {
@@ -41,13 +52,7 @@ const routes: RouteObject[] = [
       },
       {
         path: "/agents/:id/prompt",
-        element: (
-          <PromptDetails
-            name={agents.find(a => a.id === useParams().id)?.name || ""}
-            initialSystemPrompt={agents.find(a => a.id === useParams().id)?.systemPrompt || ""}
-            initialUserMessage=""
-          />
-        ),
+        element: <PromptDetailsWrapper />
       },
     ],
   },
