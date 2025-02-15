@@ -1,4 +1,3 @@
-
 import { SidebarItem } from "@/components/sidebar/sidebar";
 
 export const sidebarItems: SidebarItem[] = [
@@ -44,7 +43,7 @@ export const sidebarItems: SidebarItem[] = [
       },
       {
         key: "users",
-        href: "/home",
+        href: "/users",
         icon: "ci:users-group",
         title: "Users",
       },
