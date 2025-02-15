@@ -22,7 +22,13 @@ const routes: RouteObject[] = [
       },
       {
         path: "evaluations",
-        element: <EvaluationsPage />
+        element: <EvaluationsPage />,
+        children: [
+          {
+            path: "experiment/:id",
+            element: <ExperimentDetails />
+          }
+        ]
       },
       {
         path: "users",
