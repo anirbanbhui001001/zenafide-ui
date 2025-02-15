@@ -34,7 +34,7 @@ export default function TestCase({ testCase, onClose }: TestCaseProps) {
   };
 
   return (
-    <Card className="h-[90%] rounded-none flex flex-col" shadow="none">
+    <Card className="h-full rounded-none flex flex-col" shadow="none">
       <CardHeader className="flex justify-between items-center px-4 py-2 border-b shrink-0">
         <span className="text-large">
           {testCase ? "Edit Test Case" : "Create Test Case"}
@@ -68,7 +68,7 @@ export default function TestCase({ testCase, onClose }: TestCaseProps) {
           />
         </form>
       </CardBody>
-      <CardFooter className="flex justify-end gap-2 mt-6">
+      <CardFooter className="flex justify-end gap-2 shrink-0">
         <Button color="danger" variant="light" onPress={onClose} size="sm">
           Cancel
         </Button>
