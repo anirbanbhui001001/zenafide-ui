@@ -70,7 +70,10 @@ export default function AIProviders() {
             </TableHeader>
             <TableBody>
               {providers.map((provider) => (
-                <TableRow key={provider.id}>
+                <TableRow 
+                  key={provider.id} 
+                  className="border-b border-divider last:border-b-0"
+                >
                   <TableCell className="pb-2">{provider.name}</TableCell>
                   <TableCell className="pb-2">
                     <div className="flex items-center">
