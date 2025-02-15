@@ -74,15 +74,14 @@ export default function ExperimentDetails({
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-sm">Score distribution for</span>
-          <Select 
-            defaultValue="avg_relevance"
+          <Select
+            size="sm"
+            variant="light"
             className="w-40"
+            defaultSelectedKeys={['avg_relevance']}
+            items={scoreMetrics}
           >
-            {scoreMetrics.map((metric) => (
-              <SelectItem key={metric.key} value={metric.key}>
-                {metric.label}
-              </SelectItem>
-            ))}
+            {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
           </Select>
         </div>
         <div className="h-8 bg-gray-100 rounded-full relative">
