@@ -15,7 +15,7 @@ import {
   SelectItem,
 } from "@heroui/react";
 
-interface ConfigureApiKeyModalProps {
+interface APIKeyModalProps {
   isOpen: boolean;
   onClose: () => void;
   provider?: {
@@ -25,11 +25,11 @@ interface ConfigureApiKeyModalProps {
   };
 }
 
-export default function ConfigureApiKeyModal({
+export default function APIKeyModal({
   isOpen,
   onClose,
   provider,
-}: ConfigureApiKeyModalProps) {
+}: APIKeyModalProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [accessKey, setAccessKey] = useState(provider?.plain_key || "");
   const [providerName, setProviderName] = useState(provider?.name || "");
