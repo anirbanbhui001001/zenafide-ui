@@ -1,7 +1,7 @@
 
 import { PermissionSection } from "@/types/permissions";
 
-export const permissionSections: PermissionSection[] = [
+export const sections: PermissionSection[] = [
   {
     title: "Admin",
     permissions: [

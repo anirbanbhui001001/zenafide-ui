@@ -1,0 +1,139 @@
+import { Icon } from '@iconify/react';
+import {
+  BreadcrumbItem,
+  Breadcrumbs,
+  Button,
+  Select,
+  SelectItem,
+} from '@nextui-org/react';
+import DataTable from '../../../components/table/data-table';
+import { TableConfig } from '../../../components/table/types';
+
+interface ExperimentDetailsProps {
+  id: string;
+  onBack: () => void;
+}
+
+export default function ExperimentDetails({
+  id,
+  onBack,
+}: ExperimentDetailsProps) {
+  const tableConfig: TableConfig = {
+    columns: [
+      { uid: 'input', name: 'Input' },
+      { uid: 'output', name: 'Output' },
+      { uid: 'expected', name: 'Expected' },
+      { uid: 'tags', name: 'Tags' },
+      { uid: 'factuality', name: 'Factuality' },
+      { uid: 'factualityParsed', name: 'Factuality parsed' },
+      { uid: 'avgRelevance', name: 'avg_relevance' },
+      { uid: 'maxRelevance', name: 'max_relevance' },
+    ],
+    withoutBorder: true,
+  };
+
+  const tableData = [
+    {
+      id: 1,
+      input: 'What happens...',
+      output: 'When you star...',
+      expected: 'Starred docs ...',
+      tags: '-',
+      factuality: '0.00%',
+      factualityParsed: '100.00%',
+      avgRelevance: '80.00%',
+      maxRelevance: '80.00%',
+    },
+    // Add more sample data as needed
+  ];
+
+  return (
+    <div className="h-full">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-4">
+          <Breadcrumbs size="sm">
+            <BreadcrumbItem onClick={onBack} className="cursor-pointer">
+              Experiments
+            </BreadcrumbItem>
+            <BreadcrumbItem>Experiment {id}</BreadcrumbItem>
+          </Breadcrumbs>
+        </div>
+        
+        <div className="flex gap-2 mb-4">
+          <Button size="sm" variant="bordered" className="border-1">
+            All rows
+            <Icon icon="material-symbols:expand-more" />
+          </Button>
+          <Button size="sm" variant="bordered" className="border-1">
+            <Icon icon="material-symbols:view-column" />
+            Columns
+          </Button>
+          <Button size="sm" variant="bordered" className="border-1">
+            <Icon icon="material-symbols:filter-alt" />
+            Filter
+          </Button>
+          <Button size="sm" variant="bordered" className="border-1">
+            <Icon icon="material-symbols:group-work" />
+            Group
+          </Button>
+          <Button size="sm" variant="bordered" className="border-1">
+            <Icon icon="material-symbols:height" />
+            Row height
+          </Button>
+        </div>
+      </div>
+
+      {/* Score distribution */}
+      <div className="mb-6">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-sm">Score distribution for</span>
+          <Select
+            size="sm"
+            variant="light"
+            className="w-40"
+            defaultSelectedKeys={['avg_relevance']}
+            items={[
+              { key: 'factuality', label: 'Factuality' },
+              { key: 'factualityParsed', label: 'Factuality parsed' },
+              { key: 'avg_relevance', label: 'avg_relevance' },
+              { key: 'max_relevance', label: 'max_relevance' },
+            ]}
+          >
+            {(item) => <SelectItem key={item.key}>{item.label}</SelectItem>}
+          </Select>
+        </div>
+        <div className="h-8 bg-gray-100 rounded-full relative">
+          <div
+            className="absolute right-0 h-full w-[20%] bg-gray-400 rounded-r-full"
+            style={{ right: '10%' }}
+          />
+        </div>
+        <div className="flex justify-between text-xs text-gray-500 mt-1">
+          <span>0%</span>
+          <span>50%</span>
+          <span>100%</span>
+        </div>
+      </div>
+
+      {/* Metrics */}
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        {[
+          { label: 'Factuality', value: '38.33%', subtext: 'AVG' },
+          { label: 'Factuality parsed', value: '100.00%', subtext: 'AVG' },
+          { label: 'avg_relevance', value: '79.17%', subtext: 'AVG' },
+          { label: 'max_relevance', value: '80.00%', subtext: 'AVG' },
+        ].map((metric) => (
+          <div key={metric.label} className="p-4 border rounded-lg">
+            <div className="text-sm text-gray-600">{metric.label}</div>
+            <div className="text-2xl font-semibold">{metric.value}</div>
+            <div className="text-xs text-gray-500">{metric.subtext}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Data table */}
+      <DataTable config={tableConfig} data={tableData} />
+    </div>
+  );
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Accordion, AccordionItem, Checkbox, Button } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
+import { sections } from "@/data/permissions/sections";
 
 interface SidePanelPermissionsProps {
   user?: ZenUser;
@@ -14,8 +15,6 @@ export default function SidePanelPermissions({
   onCancel,
 }: SidePanelPermissionsProps) {
   const [selectedPermissions, setSelectedPermissions] = useState<string[]>([]);
-
-  import { permissionSections } from "@/data/permissions/sections";
 
   const handleSave = () => {
     onSave({
