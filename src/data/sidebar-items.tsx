@@ -18,7 +18,7 @@ export const sidebarItems: SidebarItem[] = [
         title: "Projects",
       },
       {
-        key: "documents",
+        key: "regulations",
         href: "/regulations",
         icon: "solar:file-text-outline",
         title: "Regulations",
