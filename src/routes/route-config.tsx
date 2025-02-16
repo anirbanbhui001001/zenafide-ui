@@ -36,6 +36,10 @@ const routes: RouteObject[] = [
       {
         path: "agents",
         element: <Agents />,
+      },
+      {
+        path: "agents/:agentId/prompt",
+        element: <PromptDetails />,
       }
     ],
   },
