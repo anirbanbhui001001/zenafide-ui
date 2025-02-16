@@ -17,8 +17,9 @@ export function Provider({ children }: { children: React.ReactNode }) {
       navigate={navigate} 
       useHref={useHref}
       theme={{
-        value: "modern",
-        defaultTheme: "modern"
+        extend: "modern",
+        className: "modern",
+        type: "light"
       }}
     >
       {children}
