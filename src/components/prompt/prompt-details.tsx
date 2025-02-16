@@ -13,22 +13,26 @@ export default function PromptDetails() {
   };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col max-w-full">
       <PromptHeader />
       <div className="flex-1 flex overflow-hidden">
         <Resizable
           width={width}
           height={0}
           onResize={handleResize}
+          minConstraints={[300, 0]}
+          maxConstraints={[window.innerWidth - 300, 0]}
           draggableOpts={{ enableUserSelectHack: false }}
           handle={<div className="w-1 h-full cursor-col-resize bg-default-200 hover:bg-primary" />}
           axis="x"
         >
-          <div style={{ width }}>
+          <div style={{ width }} className="min-w-[300px]">
             <PromptEditorPanel />
           </div>
         </Resizable>
-        <PromptResponsePanel width={window.innerWidth - width - 1} />
+        <div className="flex-1 min-w-[300px]">
+          <PromptResponsePanel width="100%" />
+        </div>
       </div>
     </div>
   );
