@@ -4,6 +4,10 @@
 /* TipTap Editor Styles */
 /* Basic editor styles */
 .tiptap {
+  &:focus {
+    outline: none;
+  }
+  
   :first-child {
     margin-top: 0;
   }
