@@ -5,6 +5,7 @@ import StarterKit from "@tiptap/starter-kit";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import ListItem from "@tiptap/extension-list-item";
+import { Icon } from "@iconify/react";
 import { FileChange } from "@/types/assistant";
 
 interface AssistantRightPanelProps {
