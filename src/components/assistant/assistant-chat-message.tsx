@@ -13,7 +13,7 @@ const getTimeAgo = (timestamp: string) => {
   return `${minutes} minutes ago`;
 };
 
-export default function AssistantChatMessage({ message }: AssistantChatMessageProps) {
+export default function AssistantChatMessage({ message, onFileSelect }: AssistantChatMessageProps) {
   return (
     <div className={`flex flex-col gap-4 ${message.isUser ? 'items-end' : ''}`}>
       <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
