@@ -11,11 +11,15 @@ interface AssistantDetailsProps {
 }
 
 export default function AssistantDetails({ chats }: AssistantDetailsProps) {
+  const [isChatHistoryVisible, setIsChatHistoryVisible] = React.useState(true);
+
   return (
     <div className="flex flex-col h-[calc(100vh-200px)]">
-      <AssistantHeader />
+      <AssistantHeader onMenuClick={() => setIsChatHistoryVisible(!isChatHistoryVisible)} />
       <div className="flex flex-1">
-        <AssistantChatHistory chats={chats} />
+        <div className={`transition-all duration-300 ${isChatHistoryVisible ? 'w-64' : 'w-0 overflow-hidden'}`}>
+          <AssistantChatHistory chats={chats} />
+        </div>
         <AssistantMainArea />
       </div>
     </div>
