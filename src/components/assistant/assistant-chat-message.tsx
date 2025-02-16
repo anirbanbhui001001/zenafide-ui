@@ -8,14 +8,28 @@ interface AssistantChatMessageProps {
   message: AssistantMessage;
 }
 
+const getTimeAgo = (timestamp: string) => {
+  const minutes = Math.floor((Date.now() - new Date(timestamp).getTime()) / 60000);
+  return `${minutes} minutes ago`;
+};
+
 export default function AssistantChatMessage({ message }: AssistantChatMessageProps) {
   return (
     <div className={`flex flex-col gap-2 ${message.isUser ? 'items-end' : ''}`}>
       <div className={`flex flex-col gap-2 p-3 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
-        <div className="flex items-center gap-2 text-sm text-default-500">
-          <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
-          {message.files && (
-            <span>Read {message.files.length} files</span>
+        <div className="flex flex-col gap-1">
+          {!message.isUser && (
+            <div className="flex items-center gap-2 text-sm text-default-500">
+              <Icon icon="mdi:robot" className="text-lg"/>
+              <span>Assistant</span>
+              <span>{getTimeAgo(message.timestamp)}</span>
+            </div>
+          )}
+          {message.files && !message.isUser && (
+            <div className="flex items-center gap-2 text-sm text-default-500">
+              <Icon icon="mdi:file-document-multiple" className="text-lg"/>
+              <span>Read {message.files.length} files</span>
+            </div>
           )}
         </div>
         <div className="prose dark:prose-invert max-w-none">
