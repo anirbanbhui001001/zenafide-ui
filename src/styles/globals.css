@@ -4,6 +4,7 @@
 /* TipTap Editor Styles */
 /* Basic editor styles */
 .tiptap {
+  padding: 1.5rem;
   &:focus {
     outline: none;
   }
