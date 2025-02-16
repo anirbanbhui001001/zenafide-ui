@@ -7,16 +7,14 @@ import { Chat } from "@/types/assistant";
 
 interface AssistantChatHistoryProps {
   chats: Chat[];
-  onMenuToggle: () => void;
-  isMenuOpen: boolean;
 }
 
-export default function AssistantChatHistory({ chats, onMenuToggle, isMenuOpen }: AssistantChatHistoryProps) {
+export default function AssistantChatHistory({ chats }: AssistantChatHistoryProps) {
   return (
-    <div className="h-full border-r border-divider bg-content1">
+    <div className="w-64 border-r border-divider bg-content1">
       <div className="flex items-center justify-between p-4 border-b border-divider">
-        <Button isIconOnly variant="light" size="sm" onPress={onMenuToggle}>
-          <Icon icon={isMenuOpen ? "mdi:close" : "mdi:menu"} className="text-xl" />
+        <Button isIconOnly variant="light" size="sm">
+          <Icon icon="mdi:menu" className="text-xl" />
         </Button>
         <Button 
           color="primary" 
