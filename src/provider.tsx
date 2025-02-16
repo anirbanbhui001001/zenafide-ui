@@ -13,16 +13,10 @@ export function Provider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
   return (
-    <HeroUIProvider 
-      navigate={navigate} 
-      useHref={useHref}
-      theme={{
-        extend: "modern",
-        className: "modern",
-        type: "light"
-      }}
-    >
-      {children}
+    <HeroUIProvider navigate={navigate} useHref={useHref}>
+      <main className="modern text-foreground bg-background">
+        {children}
+      </main>
     </HeroUIProvider>
   );
 }
