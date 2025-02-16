@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button, Card } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -15,21 +14,15 @@ const getTimeAgo = (timestamp: string) => {
 
 export default function AssistantChatMessage({ message }: AssistantChatMessageProps) {
   return (
-    <div className={`flex flex-col gap-2 ${message.isUser ? 'items-end' : ''}`}>
-      <div className={`flex flex-col gap-2 p-3 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
-        <div className="flex flex-col gap-1">
-          {!message.isUser && (
-            <div className="flex items-center gap-2 text-sm text-default-500">
-              <Icon icon="mdi:robot" className="text-lg"/>
-              <span>Assistant</span>
-              <span>{getTimeAgo(message.timestamp)}</span>
-            </div>
-          )}
-          {message.files && !message.isUser && (
-            <div className="flex items-center gap-2 text-sm text-default-500">
-              <Icon icon="mdi:file-document-multiple" className="text-lg"/>
-              <span>Read {message.files.length} files</span>
-            </div>
+    <div className={`flex flex-col gap-4 ${message.isUser ? 'items-end' : ''}`}>
+      <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
+        <div className="flex items-center gap-2 text-sm text-default-500">
+          {message.isUser && <Icon icon="mdi:account" className="text-lg order-last" />}
+          {!message.isUser && <Icon icon="mdi:robot" className="text-lg" />}
+          <span>{message.isUser ? 'You' : 'Assistant'}</span>
+          <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
+          {message.files && (
+            <span>Read {message.files.length} files</span>
           )}
         </div>
         <div className="prose dark:prose-invert max-w-none">
