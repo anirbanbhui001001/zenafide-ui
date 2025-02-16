@@ -10,7 +10,7 @@ interface AssistantChatMessageProps {
 
 export default function AssistantChatMessage({ message }: AssistantChatMessageProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className={`flex flex-col gap-2 ${message.isUser ? 'items-end' : ''}`}>
       <div className="flex items-center gap-2 text-sm text-default-500">
         <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
         {message.files && (
