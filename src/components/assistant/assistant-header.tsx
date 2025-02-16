@@ -9,7 +9,7 @@ interface AssistantHeaderProps {
 
 export default function AssistantHeader({ onMenuClick }: AssistantHeaderProps) {
   return (
-    <div className="flex items-center gap-2 p-4 border-b border-divider">
+    <div className="flex items-center gap-2 p-4">
       <Button isIconOnly variant="light" size="sm" onPress={onMenuClick}>
         <Icon icon="mdi:menu" className="text-xl" />
       </Button>
