@@ -2,6 +2,7 @@
 import React from "react";
 import { regulations, regulationAgents } from "@/data/regulations";
 import { Regulation } from "@/types/regulation";
+import { Icon } from '@iconify/react';
 
 interface AnalysisLeftPanelProps {
   selectedRegulation: Regulation | null;
