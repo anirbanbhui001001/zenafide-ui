@@ -61,9 +61,14 @@ export default function AssistantChatMessage({
               </div>
             </Card>
           ))}
-          <Button color="primary" size="sm">
-            Apply Changes
-          </Button>
+          <div className="flex gap-2">
+            <Button color="secondary" size="sm">
+              Review Changes
+            </Button>
+            <Button color="primary" size="sm">
+              Apply Changes
+            </Button>
+          </div>
         </div>
       )}
     </div>
