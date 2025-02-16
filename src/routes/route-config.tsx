@@ -11,19 +11,6 @@ import ExperimentDetails from "@/components/experiments/experiment-details";
 import PromptDetails from "@/components/prompt/prompt-details";
 import { agents } from "@/data/agents";
 
-// Create a wrapper component for PromptDetails
-function PromptDetailsWrapper() {
-  const id = window.location.pathname.split('/')[2];
-  const agent = agents.find(a => a.id === id);
-  
-  return (
-    <PromptDetails
-      name={agent?.name || ""}
-      initialSystemPrompt={agent?.systemPrompt || ""}
-      initialUserMessage=""
-    />
-  );
-}
 
 const routes: RouteObject[] = [
   {
@@ -49,11 +36,7 @@ const routes: RouteObject[] = [
       {
         path: "agents",
         element: <Agents />,
-      },
-      {
-        path: "/agents/:id/prompt",
-        element: <PromptDetailsWrapper />
-      },
+      }
     ],
   },
 ];
