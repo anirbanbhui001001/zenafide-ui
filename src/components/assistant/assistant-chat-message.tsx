@@ -43,7 +43,7 @@ export default function AssistantChatMessage({ message }: AssistantChatMessagePr
             <Card 
               key={change.filePath} 
               className="p-2 bg-default-100 cursor-pointer hover:bg-default-200" 
-              onClick={() => onFileSelect(change)}
+              onClick={() => onFileSelect?.(change)}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
