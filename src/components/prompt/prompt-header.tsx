@@ -1,24 +1,29 @@
-
 import React from "react";
-import { Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/react";
+import {
+  Button,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@heroui/react";
 import { Icon } from "@iconify/react";
 
 export default function PromptHeader() {
   return (
-    <div className="flex items-center justify-between px-4 py-2 border-b">
+    <div className="flex items-center justify-between px-4 py-4 border-b">
       <div className="flex items-center gap-4">
         <h1 className="text-xl font-semibold">Summarization v1</h1>
       </div>
-      
+
       <div className="flex items-center gap-2">
-        <Button 
+        <Button
           variant="bordered"
           startContent={<Icon icon="mdi:tune" />}
           size="sm"
         >
           Model Settings
         </Button>
-        
+
         <Button
           variant="bordered"
           startContent={<Icon icon="mdi:content-save" />}
