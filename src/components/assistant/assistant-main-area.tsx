@@ -25,14 +25,32 @@ export default function AssistantMainArea() {
         </div>
         <AssistantInput />
       </div>
-      {selectedFile && (
-        <div className="w-1/2 border-l">
-          <AssistantRightPanel
-            selectedFile={selectedFile}
-            onClose={() => setSelectedFile(null)}
-          />
-        </div>
-      )}
+      <Modal 
+        isOpen={!!selectedFile}
+        onOpenChange={(open) => !open && setSelectedFile(null)}
+        size="2xl"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex items-center justify-between">
+                <span>{selectedFile?.filePath}</span>
+                <Button isIconOnly variant="light" onPress={onClose}>
+                  <Icon icon="mdi:close" />
+                </Button>
+              </ModalHeader>
+              <ModalBody>
+                {selectedFile && (
+                  <AssistantRightPanel
+                    selectedFile={selectedFile}
+                    onClose={onClose}
+                  />
+                )}
+              </ModalBody>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </div>
   );
 }
