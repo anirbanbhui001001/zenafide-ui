@@ -11,7 +11,7 @@ interface AssistantDetailsProps {
 
 export default function AssistantDetails({ chats }: AssistantDetailsProps) {
   return (
-    <div className="flex h-[calc(100vh-100px)]">
+    <div className="flex h-[calc(100vh-200px)]">
       <AssistantChatHistory chats={chats} />
       <AssistantMainArea />
     </div>
