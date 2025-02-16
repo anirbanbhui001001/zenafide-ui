@@ -5,6 +5,7 @@ import { AssistantMessage, FileChange } from "@/types/assistant";
 
 interface AssistantChatMessageProps {
   message: AssistantMessage;
+  onFileSelect?: (file: FileChange) => void;
 }
 
 const getTimeAgo = (timestamp: string) => {
@@ -39,7 +40,11 @@ export default function AssistantChatMessage({ message }: AssistantChatMessagePr
       {message.proposedChanges && (
         <div className="space-y-2 mt-2">
           {message.proposedChanges.map((change: FileChange) => (
-            <Card key={change.filePath} className="p-2 bg-default-100">
+            <Card 
+              key={change.filePath} 
+              className="p-2 bg-default-100 cursor-pointer hover:bg-default-200" 
+              onClick={() => onFileSelect(change)}
+            >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Icon icon="mdi:file-code" />
