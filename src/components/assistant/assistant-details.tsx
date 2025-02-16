@@ -1,3 +1,4 @@
+
 import React from "react";
 import AssistantChatHistory from "./assistant-chat-history";
 import AssistantMainArea from "./assistant-main-area";
@@ -11,12 +12,14 @@ interface AssistantDetailsProps {
 
 export default function AssistantDetails({ chats }: AssistantDetailsProps) {
   const [isChatHistoryVisible, setIsChatHistoryVisible] = React.useState(true);
+  const [isReviewPanelVisible, setIsReviewPanelVisible] = React.useState(false);
   const [selectedFile, setSelectedFile] = React.useState(null);
 
   return (
     <div className="flex flex-col h-[calc(100vh-200px)]">
       <AssistantHeader
         onMenuClick={() => setIsChatHistoryVisible(!isChatHistoryVisible)}
+        onReviewChangesClick={() => setIsReviewPanelVisible(!isReviewPanelVisible)}
       />
       <div className="flex flex-1">
         <div
@@ -27,10 +30,17 @@ export default function AssistantDetails({ chats }: AssistantDetailsProps) {
         <div className="flex-1">
           <AssistantMainArea />
         </div>
-        <div className="w-64 border-l border-divider">
+        <div
+          className={`transition-all duration-300 border-l border-divider ${
+            isReviewPanelVisible ? "w-64" : "w-0 overflow-hidden"
+          }`}
+        >
           <AssistantRightPanel
             selectedFile={selectedFile}
-            onClose={() => setSelectedFile(null)}
+            onClose={() => {
+              setSelectedFile(null);
+              setIsReviewPanelVisible(false);
+            }}
           />
         </div>
       </div>
