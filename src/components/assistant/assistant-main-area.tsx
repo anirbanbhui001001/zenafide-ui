@@ -14,7 +14,7 @@ import {
   Tabs,
   Button,
   ScrollShadow,
-} from "@nextui-pro/react";
+} from "@heroui/react";
 
 export default function AssistantMainArea() {
   const defaultChat = chats.find((chat) => chat.id === "2");
@@ -36,32 +36,6 @@ export default function AssistantMainArea() {
         </div>
         <AssistantInput />
       </div>
-      <Modal 
-        isOpen={!!selectedFile}
-        onOpenChange={(open) => !open && setSelectedFile(null)}
-        size="2xl"
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex items-center justify-between">
-                <span>{selectedFile?.filePath}</span>
-                <Button isIconOnly variant="light" onPress={onClose}>
-                  <Icon icon="mdi:close" />
-                </Button>
-              </ModalHeader>
-              <ModalBody>
-                {selectedFile && (
-                  <AssistantRightPanel
-                    selectedFile={selectedFile}
-                    onClose={onClose}
-                  />
-                )}
-              </ModalBody>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
     </div>
   );
 }
