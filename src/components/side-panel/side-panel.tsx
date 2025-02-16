@@ -1,6 +1,15 @@
-
 import React from "react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Tab, Tabs, Button, ScrollShadow } from "@heroui/react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Tab,
+  Tabs,
+  Button,
+  ScrollShadow,
+} from "@heroui/react";
 import { Icon } from "@iconify/react";
 import SidePanelBasicDetails from "./side-panel-basic-details";
 import SidePanelPermissions from "./side-panel-permissions";
@@ -28,7 +37,7 @@ export default function SidePanel({
       hideCloseButton
       classNames={{
         wrapper: "!items-start !justify-end",
-        base: "!m-0 rounded-medium h-[calc(100vh-64px)] w-full sm:w-[400px]",
+        base: "!m-0 rounded-medium h-[calc(100vh-64px)] w-full sm:w-[400px] modern",
         backdrop: "hidden",
       }}
       motionProps={{
@@ -58,25 +67,37 @@ export default function SidePanel({
               </Button>
             </ModalHeader>
             <ModalBody className="overflow-hidden mt-2">
-              <Tabs 
-                aria-label="User Details" 
-                fullWidth 
+              <Tabs
+                aria-label="User Details"
+                fullWidth
                 onSelectionChange={(key) => setActiveTab(key.toString())}
               >
                 <Tab key="basic-details" title="Basic Details">
                   <ScrollShadow className="h-[calc(100vh-250px)]">
-                    <SidePanelBasicDetails user={user} onSave={onSave} onCancel={onClose} />
+                    <SidePanelBasicDetails
+                      user={user}
+                      onSave={onSave}
+                      onCancel={onClose}
+                    />
                   </ScrollShadow>
                 </Tab>
                 <Tab key="permissions" title="Permissions">
                   <ScrollShadow className="h-[calc(100vh-250px)]">
-                    <SidePanelPermissions user={user} onSave={onSave} onCancel={onClose} />
+                    <SidePanelPermissions
+                      user={user}
+                      onSave={onSave}
+                      onCancel={onClose}
+                    />
                   </ScrollShadow>
                 </Tab>
               </Tabs>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" className="w-[80%]" onClick={() => document.forms[0].requestSubmit()}>
+              <Button
+                color="primary"
+                className="w-[80%]"
+                onClick={() => document.forms[0].requestSubmit()}
+              >
                 Save
               </Button>
               <Button variant="light" onPress={onClose}>
