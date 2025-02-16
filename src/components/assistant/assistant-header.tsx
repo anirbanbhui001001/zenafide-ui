@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 
 export default function AssistantHeader() {
   return (
-    <div className="flex items-center justify-between p-4 border-b border-divider">
+    <div className="flex items-center gap-2 p-4 border-b border-divider">
       <Button isIconOnly variant="light" size="sm">
         <Icon icon="mdi:menu" className="text-xl" />
       </Button>
