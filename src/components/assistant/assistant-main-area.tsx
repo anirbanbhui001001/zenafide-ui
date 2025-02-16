@@ -4,6 +4,17 @@ import AssistantChatMessage from "./assistant-chat-message";
 import AssistantRightPanel from "./assistant-right-panel";
 import { chats } from "@/data/chats";
 import { FileChange } from "@/types/assistant";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Tab,
+  Tabs,
+  Button,
+  ScrollShadow,
+} from "@nextui-pro/react";
 
 export default function AssistantMainArea() {
   const defaultChat = chats.find((chat) => chat.id === "2");
