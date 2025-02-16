@@ -42,8 +42,7 @@ export default function AssistantChatMessage({ message, onFileSelect }: Assistan
           {message.proposedChanges.map((change: FileChange) => (
             <Card 
               key={change.filePath} 
-              className="p-2 bg-default-100 cursor-pointer hover:bg-default-200" 
-              onClick={() => onFileSelect?.(change)}
+              className="p-2 bg-default-100"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
