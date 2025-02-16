@@ -31,7 +31,7 @@ export default function DocumentsPage() {
           <DocumentViewerTab document={selectedDocument} />
         </Tab>
         <Tab key="parsed" title="Parsed Snapshots">
-          <ParsedSnapshotsTab />
+          <ParsedSnapshotsTab onDocumentSelect={handleDocumentSelect} />
         </Tab>
         <Tab key="indexed" title="Indexed Snapshots">
           <IndexedSnapshotsTab />

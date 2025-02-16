@@ -1,9 +1,15 @@
 
 import React from "react";
+import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { parsedSnapshots } from "@/data/documents";
+import { Document, ParsedSnapshot } from "@/types/document";
 
-export default function ParsedSnapshotsTab() {
+interface ParsedSnapshotsTabProps {
+  onDocumentSelect?: (document: Document) => void;
+}
+
+export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshotsTabProps) {
   const columns = [
     { key: "filename", label: "Filename" },
     { key: "docSnapshotId", label: "Doc Snapshot ID" },
@@ -11,6 +17,27 @@ export default function ParsedSnapshotsTab() {
     { key: "status", label: "Status" },
     { key: "updatedAt", label: "Updated At" },
     { key: "updatedBy", label: "Updated By" },
+    {
+      key: "actions",
+      label: "Actions",
+      align: "end" as const,
+      render: (snapshot: ParsedSnapshot) => (
+        <div className="flex justify-end gap-2">
+          <Icon
+            icon="mdi:file-eye"
+            width={20}
+            className="cursor-pointer"
+            onClick={() => onDocumentSelect?.({
+              id: snapshot.documentId,
+              filename: snapshot.filename,
+              uploadedDate: snapshot.updatedAt,
+              uploadedBy: snapshot.updatedBy,
+              status: 'active'
+            })}
+          />
+        </div>
+      ),
+    },
   ];
 
   return (
