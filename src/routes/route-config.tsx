@@ -4,6 +4,7 @@ import { RouteObject } from "react-router-dom";
 import ApplicationLayout from "@/layouts/application-layout";
 import AIProviders from "@/pages/ai-providers/ai-providers";
 import Home from "@/pages/home/home";
+import DocumentsPage from "@/pages/documents/documents-page";
 import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 import Users from "@/pages/users/users";
 import Agents from "@/pages/agents/agents";
@@ -28,6 +29,10 @@ const routes: RouteObject[] = [
       {
         path: "evaluations",
         element: <EvaluationsPage />,
+      },
+      {
+        path: "documents",
+        element: <DocumentsPage />,
       },
       {
         path: "users",
