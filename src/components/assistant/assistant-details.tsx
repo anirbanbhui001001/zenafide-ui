@@ -1,4 +1,3 @@
-
 import React from "react";
 import AssistantChatHistory from "./assistant-chat-history";
 import AssistantMainArea from "./assistant-main-area";
@@ -16,16 +15,23 @@ export default function AssistantDetails({ chats }: AssistantDetailsProps) {
 
   return (
     <div className="flex flex-col h-[calc(100vh-200px)]">
-      <AssistantHeader onMenuClick={() => setIsChatHistoryVisible(!isChatHistoryVisible)} />
+      <AssistantHeader
+        onMenuClick={() => setIsChatHistoryVisible(!isChatHistoryVisible)}
+      />
       <div className="flex flex-1">
-        <div className={`transition-all duration-300 ${isChatHistoryVisible ? 'w-64' : 'w-0 overflow-hidden'}`}>
+        <div
+          className={`transition-all duration-300 ${isChatHistoryVisible ? "w-64" : "w-0 overflow-hidden"}`}
+        >
           <AssistantChatHistory chats={chats} />
         </div>
         <div className="flex-1">
-          <AssistantMainArea onFileSelect={setSelectedFile} />
+          <AssistantMainArea />
         </div>
         <div className="w-64 border-l border-divider">
-          <AssistantRightPanel selectedFile={selectedFile} onClose={() => setSelectedFile(null)} />
+          <AssistantRightPanel
+            selectedFile={selectedFile}
+            onClose={() => setSelectedFile(null)}
+          />
         </div>
       </div>
     </div>

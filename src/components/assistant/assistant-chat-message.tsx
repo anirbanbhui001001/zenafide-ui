@@ -9,15 +9,23 @@ interface AssistantChatMessageProps {
 }
 
 const getTimeAgo = (timestamp: string) => {
-  const minutes = Math.floor((Date.now() - new Date(timestamp).getTime()) / 60000);
+  const minutes = Math.floor(
+    (Date.now() - new Date(timestamp).getTime()) / 60000,
+  );
   return `${minutes} minutes ago`;
 };
 
-export default function AssistantChatMessage({ message, onFileSelect }: AssistantChatMessageProps) {
+export default function AssistantChatMessage({
+  message,
+}: AssistantChatMessageProps) {
   return (
-    <div className={`flex flex-col gap-4 ${message.isUser ? 'items-end' : ''}`}>
-      <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
-        <div className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+    <div className={`flex flex-col gap-4 ${message.isUser ? "items-end" : ""}`}>
+      <div
+        className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? "bg-default-100" : ""}`}
+      >
+        <div
+          className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? "justify-end" : "justify-start"}`}
+        >
           {!message.isUser && (
             <>
               <Icon icon="mdi:robot" className="text-lg" />
@@ -40,10 +48,7 @@ export default function AssistantChatMessage({ message, onFileSelect }: Assistan
       {message.proposedChanges && (
         <div className="space-y-2 mt-2">
           {message.proposedChanges.map((change: FileChange) => (
-            <Card 
-              key={change.filePath} 
-              className="p-2 bg-default-100"
-            >
+            <Card key={change.filePath} className="p-2 bg-default-100">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Icon icon="mdi:file-code" />

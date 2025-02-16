@@ -1,26 +1,10 @@
 import React from "react";
 import AssistantInput from "./assistant-input";
 import AssistantChatMessage from "./assistant-chat-message";
-import AssistantRightPanel from "./assistant-right-panel";
 import { chats } from "@/data/chats";
-import { FileChange } from "@/types/assistant";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Tab,
-  Tabs,
-  Button,
-  ScrollShadow,
-} from "@heroui/react";
 
 export default function AssistantMainArea() {
   const defaultChat = chats.find((chat) => chat.id === "2");
-  const [selectedFile, setSelectedFile] = React.useState<FileChange | null>(
-    null,
-  );
 
   return (
     <div className="flex flex-1 h-full">
@@ -30,7 +14,6 @@ export default function AssistantMainArea() {
             <AssistantChatMessage
               key={message.id}
               message={message}
-              onFileSelect={setSelectedFile}
             />
           ))}
         </div>
