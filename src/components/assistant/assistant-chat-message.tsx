@@ -6,6 +6,7 @@ import { AssistantMessage, FileChange } from "@/types/assistant";
 interface AssistantChatMessageProps {
   message: AssistantMessage;
   onFileSelect?: (file: FileChange) => void;
+  onReviewChangesClick?: () => void;
 }
 
 const getTimeAgo = (timestamp: string) => {
@@ -62,7 +63,11 @@ export default function AssistantChatMessage({
             </Card>
           ))}
           <div className="flex gap-2">
-            <Button color="secondary" size="sm">
+            <Button 
+              color="secondary" 
+              size="sm" 
+              onPress={onReviewChangesClick}
+            >
               Review Changes
             </Button>
             <Button color="primary" size="sm">

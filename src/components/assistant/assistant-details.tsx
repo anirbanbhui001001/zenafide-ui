@@ -28,7 +28,9 @@ export default function AssistantDetails({ chats }: AssistantDetailsProps) {
           <AssistantChatHistory chats={chats} />
         </div>
         <div className="flex-1">
-          <AssistantMainArea />
+          <AssistantMainArea 
+            onReviewChangesClick={() => setIsReviewPanelVisible(true)}
+          />
         </div>
         <div
           className={`transition-all duration-300 border-l border-divider ${

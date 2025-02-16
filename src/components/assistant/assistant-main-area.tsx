@@ -3,7 +3,11 @@ import AssistantInput from "./assistant-input";
 import AssistantChatMessage from "./assistant-chat-message";
 import { chats } from "@/data/chats";
 
-export default function AssistantMainArea() {
+interface AssistantMainAreaProps {
+  onReviewChangesClick: () => void;
+}
+
+export default function AssistantMainArea({ onReviewChangesClick }: AssistantMainAreaProps) {
   const defaultChat = chats.find((chat) => chat.id === "2");
 
   return (
@@ -14,6 +18,7 @@ export default function AssistantMainArea() {
             <AssistantChatMessage
               key={message.id}
               message={message}
+              onReviewChangesClick={onReviewChangesClick}
             />
           ))}
         </div>
