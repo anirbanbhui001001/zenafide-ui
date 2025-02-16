@@ -11,7 +11,6 @@ interface AssistantChatHistoryProps {
 export default function AssistantChatHistory({ chats }: AssistantChatHistoryProps) {
   return (
     <div className="w-64 border-r border-divider bg-content1">
-      <AssistantHeader />
       <div className="flex flex-col gap-1 p-2">
         {chats.map((chat) => (
           <Button 
