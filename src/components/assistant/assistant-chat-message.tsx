@@ -16,14 +16,9 @@ export default function AssistantChatMessage({ message }: AssistantChatMessagePr
   return (
     <div className={`flex flex-col gap-4 ${message.isUser ? 'items-end' : ''}`}>
       <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
-        <div className="flex items-center gap-2 text-sm text-default-500">
-          {message.isUser && <Icon icon="mdi:account" className="text-lg order-last" />}
+        <div className="flex items-center justify-end text-sm text-default-500">
+          {message.isUser && <Icon icon="mdi:account" className="text-lg" />}
           {!message.isUser && <Icon icon="mdi:robot" className="text-lg" />}
-          <span>{message.isUser ? 'You' : 'Assistant'}</span>
-          <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
-          {message.files && (
-            <span>Read {message.files.length} files</span>
-          )}
         </div>
         <div className="prose dark:prose-invert max-w-none">
           {message.content}
