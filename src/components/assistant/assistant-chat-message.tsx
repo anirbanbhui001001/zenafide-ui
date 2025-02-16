@@ -16,9 +16,21 @@ export default function AssistantChatMessage({ message }: AssistantChatMessagePr
   return (
     <div className={`flex flex-col gap-4 ${message.isUser ? 'items-end' : ''}`}>
       <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? 'bg-default-100' : ''}`}>
-        <div className="flex items-center justify-end text-sm text-default-500">
+        <div className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? 'justify-end' : 'justify-start'}`}>
+          {!message.isUser && (
+            <>
+              <Icon icon="mdi:robot" className="text-lg" />
+              <span>Assistant</span>
+              <span>{getTimeAgo(message.timestamp)}</span>
+              {message.files && (
+                <>
+                  <Icon icon="mdi:file-multiple" className="text-lg" />
+                  <span>Read {message.files.length} files</span>
+                </>
+              )}
+            </>
+          )}
           {message.isUser && <Icon icon="mdi:account" className="text-lg" />}
-          {!message.isUser && <Icon icon="mdi:robot" className="text-lg" />}
         </div>
         <div className="prose dark:prose-invert max-w-none">
           {message.content}
