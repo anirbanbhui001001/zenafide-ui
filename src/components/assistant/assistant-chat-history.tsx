@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "@heroui/react";
-import { Icon } from "@iconify/react";
-import AssistantHeader from "./assistant-header";
 import { Chat } from "@/types/assistant";
 
 interface AssistantChatHistoryProps {

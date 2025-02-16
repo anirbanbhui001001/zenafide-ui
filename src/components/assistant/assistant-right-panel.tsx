@@ -10,7 +10,6 @@ import { FileChange } from "@/types/assistant";
 
 interface AssistantRightPanelProps {
   selectedFile: FileChange | null;
-  onClose: () => void;
 }
 
 const extensions = [
@@ -29,8 +28,7 @@ const extensions = [
 ];
 
 export default function AssistantRightPanel({
-  selectedFile,
-  onClose,
+  selectedFile
 }: AssistantRightPanelProps) {
   if (!selectedFile) {
     return (
@@ -44,9 +42,6 @@ export default function AssistantRightPanel({
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-medium">{selectedFile.filePath}</h2>
-        <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-          <Icon icon="mdi:close" className="text-xl" />
-        </button>
       </div>
       <div className="border rounded-lg">
         <EditorProvider

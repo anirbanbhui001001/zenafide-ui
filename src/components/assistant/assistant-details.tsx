@@ -37,10 +37,6 @@ export default function AssistantDetails({ chats }: AssistantDetailsProps) {
         >
           <AssistantRightPanel
             selectedFile={selectedFile}
-            onClose={() => {
-              setSelectedFile(null);
-              setIsReviewPanelVisible(false);
-            }}
           />
         </div>
       </div>
