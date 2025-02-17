@@ -2,6 +2,7 @@
 import React from 'react';
 import { Panel } from '@/types/replit/panel';
 import FilesTab from '@/components/replit/tabs/files-tab';
+import AgentsTab from '@/components/replit/tabs/agents-tab';
 
 export const initialPanels: Panel[] = [
   {
@@ -12,6 +13,12 @@ export const initialPanels: Panel[] = [
         title: 'Files', 
         content: React.createElement(FilesTab),
         isCloseable: false 
+      },
+      {
+        id: 'agents',
+        title: 'Agents',
+        content: React.createElement(AgentsTab),
+        isCloseable: false
       }
     ],
     activeTabId: 'files',
