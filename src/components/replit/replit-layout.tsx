@@ -109,10 +109,8 @@ export default function ReplitLayout() {
 
       <button 
         onClick={() => setIsRightCollapsed(!isRightCollapsed)}
-        className="z-10 p-1 hover:bg-default-100 rounded absolute right-0 top-1/2 transform -translate-y-1/2"
-      >
-        <Icon icon={isRightCollapsed ? "mdi:chevron-left" : "mdi:chevron-right"} className="w-4 h-4" />
-      </button>
+        className="z-10 w-1 hover:w-2 hover:bg-default-100 absolute right-0 top-0 bottom-0 transition-all duration-300"
+      />
 
       <div className={`transition-all duration-300 ${isRightCollapsed ? 'w-0' : ''}`}>
         <Resizable
