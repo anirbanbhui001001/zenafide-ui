@@ -7,7 +7,7 @@ import DataTable from "@/components/table/datatable";
 import APIKeyModal from "./api-key-modal";
 
 import { Provider } from "@/types/provider";
-import { providers } from "@/data/providers";
+import { providers } from "@/data/settings/providers";
 
 export default function AIProviders() {
   const [isModalOpen, setIsModalOpen] = useState(false);
