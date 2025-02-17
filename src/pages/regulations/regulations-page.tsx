@@ -33,7 +33,9 @@ export default function RegulationsPage() {
           <AssistantTab />
         </Tab>
         <Tab key="replit" title="Replit">
-          <ReplitLayout />
+          <div className="h-[calc(100vh-10rem)]">
+            <ReplitLayout />
+          </div>
         </Tab>
       </Tabs>
     </div>
