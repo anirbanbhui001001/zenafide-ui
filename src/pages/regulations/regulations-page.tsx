@@ -1,9 +1,9 @@
-
 import { Tab, Tabs } from "@heroui/react";
 import { useState } from "react";
 import DocumentsTab from './tabs/documents-tab';
 import AnalysisTab from './tabs/analysis-tab';
 import AssistantTab from './tabs/assistant-tab';
+import ReplitLayout from '@/components/replit/replit-layout';
 import { Regulation } from "@/types/regulation";
 
 export default function RegulationsPage() {
@@ -31,6 +31,9 @@ export default function RegulationsPage() {
         </Tab>
         <Tab key="assistant" title="Assistant">
           <AssistantTab />
+        </Tab>
+        <Tab key="replit" title="Replit">
+          <ReplitLayout />
         </Tab>
       </Tabs>
     </div>
