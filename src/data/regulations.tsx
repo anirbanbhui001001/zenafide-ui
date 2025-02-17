@@ -8,6 +8,7 @@ export const regulations: Regulation[] = [
     folder: "NEC",
     uploadedDate: "2024-02-15",
     status: "active",
+    content: "my content"
   },
   {
     id: "2",

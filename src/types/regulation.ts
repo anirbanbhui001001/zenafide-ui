@@ -5,6 +5,7 @@ export type Regulation = {
   folder: string;
   uploadedDate: string;
   status?: 'active' | 'archived';
+  content?: string;
 };
 
 export type RegulationAgent = {

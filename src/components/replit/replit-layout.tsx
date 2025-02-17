@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Resizable } from 'react-resizable';
 import Panel from './panel';
 import { Icon } from '@iconify/react';

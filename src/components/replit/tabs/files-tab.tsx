@@ -1,26 +1,26 @@
-
 import React from "react";
 import DataTable from "@/components/table/datatable";
+import EditorTab from "@/components/replit/tabs/editor-tab";
 import { regulations } from "@/data/regulations";
 
 export default function FilesTab() {
   const columns = [
-    { key: "filename", label: "" },  // Empty label for no header
+    { key: "filename", label: "" }, // Empty label for no header
   ];
 
   const handleRowClick = (row: any) => {
     const newTab = {
       id: `file-${row.id}`,
       title: row.filename,
-      content: <EditorTab content={row.content || ''} />,
-      isCloseable: true
+      content: <EditorTab content={row.content || ""} />,
+      isCloseable: true,
     };
-    
-    const event = new CustomEvent('openNewTab', {
+
+    const event = new CustomEvent("openNewTab", {
       detail: {
-        panelId: 'center-panel',
-        tab: newTab
-      }
+        panelId: "center-panel",
+        tab: newTab,
+      },
     });
     window.dispatchEvent(event);
   };
