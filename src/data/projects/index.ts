@@ -1,18 +1,34 @@
-
-import { Project, ProjectAgent } from "@/types/projects";
+import { Project, ProjectDocument, ProjectAgent } from "@/types/projects";
 
 export const projects: Project[] = [
   {
     id: "1",
-    filename: "Project A",
-    folder: "folder/1/projects/1/",
-    uploadedDate: "2024-02-15",
-    status: "active",
-    content: "Project A content",
+    name: "Project A",
+    updatedAt: "2023-07-31",
+    updatedBy: "Rohit Joshi",
   },
   {
     id: "2",
-    filename: "Project B",
+    name: "Project B",
+    updatedAt: "2024-02-18",
+    updatedBy: "Rohit Joshi",
+  },
+];
+
+export const projectDocuments: ProjectDocument[] = [
+  {
+    id: "1",
+    project_id: "1",
+    filename: "Blueprint A",
+    folder: "folder/1/projects/1/",
+    uploadedDate: "2024-02-15",
+    status: "active",
+    content: "Blueprint A content",
+  },
+  {
+    id: "2",
+    project_id: "2",
+    filename: "Blueprint B",
     folder: "folder/2/projects/2/",
     uploadedDate: "2024-02-15",
     status: "active",
@@ -22,18 +38,18 @@ export const projects: Project[] = [
 export const projectAgents: ProjectAgent[] = [
   {
     id: "1",
-    name: "Project A Overview",
+    name: "Blueprint A Summary",
     folder: "folder/1/projects/1/overview",
     type: "summary",
     projectId: "1",
-    content: "Project A overview content"
+    content: "my summary",
   },
   {
     id: "2",
-    name: "Project B Overview",
+    name: "Blueprint B Summary",
     folder: "folder/2/projects/2/overview",
     type: "summary",
     projectId: "2",
-    content: "Project B overview content"
+    content: "my summary",
   },
 ];

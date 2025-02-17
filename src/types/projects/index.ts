@@ -1,6 +1,14 @@
 
 export type Project = {
   id: string;
+  name: string;
+  updatedAt: string;
+  updatedBy: string;
+};
+
+export type ProjectDocument = {
+  id: string;
+  project_id: string;
   filename: string;
   folder: string;
   uploadedDate: string;

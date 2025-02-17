@@ -13,7 +13,7 @@ export const sidebarItems: SidebarItem[] = [
       },
       {
         key: "projects",
-        href: "/home",
+        href: "/projects",
         icon: "solar:widget-2-outline",
         title: "Projects",
       },
