@@ -3,7 +3,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Button, Select, SelectItem } from "@heroui/react";
 import DataTable from "@/components/table/datatable";
-import { experimentResults, scoreMetrics, experimentMetrics } from "@/data/experiments";
+import { experimentResults, scoreMetrics, experimentMetrics } from "@/data/evals/experiments";
 import { ExperimentResult } from "@/types/experiment-details";
 
 interface ExperimentDetailsProps {
