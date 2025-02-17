@@ -5,6 +5,8 @@ import Panel from './panel';
 import { Icon } from '@iconify/react';
 import { Button } from '@heroui/react';
 import AssistantMainArea from './assistant-main-area';
+import AssistantChatHistory from './tabs/assistant-chat-history';
+import { chats } from '@/data/chats';
 
 export default function AssistantLayout() {
   const [leftWidth, setLeftWidth] = useState(240);
@@ -13,7 +15,7 @@ export default function AssistantLayout() {
     {
       id: 'left-panel',
       tabs: [
-        { id: 'chats', title: 'Chats', isCloseable: false },
+        { id: 'chats', title: 'Chats', content: React.createElement(AssistantChatHistory, { chats }), isCloseable: false },
         { id: 'archived', title: 'Archived', isCloseable: false }
       ],
       activeTabId: 'chats',
