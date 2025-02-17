@@ -19,7 +19,7 @@ import NotificationItem from "./notification-item";
 
 import { Notification, NotificationTabs } from "@/types/notification";
 
-import { notifications } from "@/data/notifications";
+import { notifications } from "@/data/ui/notifications";
 
 export default function NotificationCard(props: CardProps) {
   const [activeTab, setActiveTab] = React.useState<NotificationTabs>(NotificationTabs.All);

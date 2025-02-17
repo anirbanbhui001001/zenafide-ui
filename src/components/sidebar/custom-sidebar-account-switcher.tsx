@@ -5,7 +5,7 @@ import React from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, User, Avatar} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
-import {users} from "@/data/user-dropdown";
+import {users} from "@/data/ui/user-dropdown";
 
 export default function AccountSwitcher() {
   return (
