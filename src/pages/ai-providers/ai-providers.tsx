@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import APIKeyModal from "./api-key-modal";
 
-import { Provider } from "@/types/provider";
+import { Provider } from "@/types/settings/provider";
 import { providers } from "@/data/settings/providers";
 
 export default function AIProviders() {
