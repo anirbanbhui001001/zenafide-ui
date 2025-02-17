@@ -50,12 +50,12 @@ export default function AssistantChatMessage({
             <Card key={change.filePath} className="p-2 bg-default-100">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Icon icon="mdi:file-code" />
-                  <span>{change.filePath}</span>
+                  <Icon icon="mdi:file-code" className="text-sm" />
+                  <span className="text-sm">{change.filePath}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-success">+{change.additions}</span>
-                  <span className="text-danger">-{change.deletions}</span>
+                  <span className="text-success text-sm">+{change.additions}</span>
+                  <span className="text-danger text-sm">-{change.deletions}</span>
                 </div>
               </div>
             </Card>
