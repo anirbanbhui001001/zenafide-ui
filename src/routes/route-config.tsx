@@ -10,7 +10,7 @@ import RegulationsPage from "@/pages/regulations/regulations-page";
 import Users from "@/pages/users/users";
 import Agents from "@/pages/agents/agents";
 import ReplitLayout from "@/components/replit/replit-layout";
-import ExperimentDetails from "@/components/experiments/experiment-details";
+import ExperimentDetails from "@/components/evals/experiments/experiment-details";
 import PromptDetails from "@/components/prompt/prompt-details";
 import { agents } from "@/data/agents";
 
