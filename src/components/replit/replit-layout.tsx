@@ -66,7 +66,7 @@ export default function ReplitLayout() {
 
   return (
     <div className="flex h-full overflow-hidden">
-      <div className={`transition-all duration-300 ${isLeftCollapsed ? 'w-0' : ''}`}>
+      <div className={`transition-all duration-300 ${isLeftCollapsed ? 'w-0 overflow-hidden' : ''}`}>
         <Resizable
           width={isLeftCollapsed ? 0 : leftWidth}
           height={0}
