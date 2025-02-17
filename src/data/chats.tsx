@@ -1,83 +1,103 @@
-
 import { Chat, AssistantMessage, FileChange } from "@/types/assistant";
 
 const fileChanges: FileChange[] = [
   {
-    filePath: "src/components/side-panel/side-panel.tsx",
-    description: "Update side panel with modern theme",
-    additions: 8,
-    deletions: 26,
-    canApply: true
+    filePath: "folder/1/documents/1/table-of-contents",
+    description: "NEC 1.0 Table of Contents",
+    additions: 500,
+    deletions: 0,
+    canApply: true,
   },
   {
-    filePath: "src/components/side-panel/side-panel-basic-details.tsx",
-    description: "Add modern theme to inputs",
-    additions: 3,
+    filePath: "folder/1/documents/1/summary",
+    description: "NEC 1.0 Summary",
+    additions: 99,
     deletions: 0,
-    canApply: true
-  }
+    canApply: true,
+  },
+  {
+    filePath: "folder/2/documents/2/table-of-contents",
+    description: "NEC 2.0 Table of Contents",
+    additions: 500,
+    deletions: 0,
+    canApply: true,
+  },
+  {
+    filePath: "folder/2/documents/2/summary",
+    description: "NEC 2.0 Summary",
+    additions: 99,
+    deletions: 0,
+    canApply: true,
+  },
 ];
 
 export const chats: Chat[] = [
   {
     id: "1",
-    title: "Configuring Assistant Details Component",
+    title: "Generate NEC 1.0 Table of Contents",
     lastMessageTime: "2 minutes ago",
     messages: [
       {
         id: "msg1",
-        content: "How do I configure the Assistant Details component?",
+        content: "Generate NEC 1.0 Table of Contents",
         timestamp: new Date(Date.now() - 120000).toISOString(),
         isUser: true,
-        files: []
+        files: [],
       },
       {
         id: "msg2",
-        content: "I'll help you configure the Assistant Details component...",
+        content: "I'll help you extract the Table of Contents...",
         timestamp: new Date(Date.now() - 60000).toISOString(),
         isUser: false,
-        files: ["src/components/assistant/assistant-details.tsx"]
-      }
-    ]
+        files: [
+          "folder/1/documents/1/table-of-contents",
+          "folder/1/documents/1/summary",
+        ],
+        proposedChanges: [fileChanges[0], fileChanges[1]],
+      },
+    ],
   },
   {
     id: "2",
-    title: "Assistant UI Component Design",
-    lastMessageTime: "7 minutes ago",
+    title: "Generate NEC 2.0 Table of Contents",
+    lastMessageTime: "2 minutes ago",
     messages: [
       {
         id: "msg3",
-        content: "src/components/side-panel is not using theme= modern why",
-        timestamp: new Date(Date.now() - 960000).toISOString(),
+        content: "Generate NEC 2.0 Table of Contents",
+        timestamp: new Date(Date.now() - 120000).toISOString(),
         isUser: true,
-        files: ["src/components/side-panel/side-panel.tsx", "src/components/side-panel/side-panel-basic-details.tsx"]
+        files: [],
       },
       {
         id: "msg4",
-        content: "Looking at the side panel components, I can see they're not using the modern theme configuration. Let's update them to match the pink modern theme:",
-        timestamp: new Date(Date.now() - 900000).toISOString(),
+        content: "I'll help you extract the Table of Contents...",
+        timestamp: new Date(Date.now() - 60000).toISOString(),
         isUser: false,
-        files: ["src/components/side-panel/side-panel.tsx", "src/components/side-panel/side-panel-basic-details.tsx"],
-        proposedChanges: fileChanges
-      }
-    ]
+        files: [
+          "folder/2/documents/2/table-of-contents",
+          "folder/2/documents/2/summary",
+        ],
+        proposedChanges: [fileChanges[2], fileChanges[3]],
+      },
+    ],
   },
   {
     id: "3",
-    title: "react component import trouble",
+    title: "File Search",
     lastMessageTime: "1 hour ago",
-    messages: []
+    messages: [],
   },
   {
     id: "4",
-    title: "Left Panel Styling Improvements",
+    title: "Web Search",
     lastMessageTime: "1 hour ago",
-    messages: []
+    messages: [],
   },
   {
     id: "5",
-    title: "regulations page document analysis",
+    title: "Greeting",
     lastMessageTime: "1 hour ago",
-    messages: []
-  }
+    messages: [],
+  },
 ];

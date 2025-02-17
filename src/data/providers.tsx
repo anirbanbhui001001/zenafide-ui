@@ -19,4 +19,10 @@ export const providers: Provider[] = [
     status: "Configured",
     created: "1/6/2025, 10:13:59 PM",
   },
+  {
+    id: "4",
+    name: "anthropic",
+    status: "Configured",
+    created: "1/6/2025, 10:14:00 PM",
+  },
 ];

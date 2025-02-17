@@ -4,16 +4,16 @@ import { Document, ParsedSnapshot, IndexedSnapshot } from "@/types/document";
 export const documents: Document[] = [
   {
     id: "1",
-    filename: "requirements.pdf",
+    filename: "NEC reg 1.0",
     uploadedDate: "2024-02-15",
-    uploadedBy: "John Doe",
+    uploadedBy: "Rohit Joshi",
     status: "active",
   },
   {
     id: "2",
-    filename: "architecture.docx",
+    filename: "NEC reg 2.0",
     uploadedDate: "2024-02-14",
-    uploadedBy: "Jane Smith",
+    uploadedBy: "Rohit Joshi",
     status: "active",
   },
 ];
@@ -22,12 +22,12 @@ export const parsedSnapshots: ParsedSnapshot[] = [
   {
     id: "1",
     documentId: "1",
-    filename: "requirements.pdf",
+    filename: "NEC reg 1.0",
     docSnapshotId: "doc_1",
-    parsedSnapshotId: "parsed_1",
+    parsedSnapshotId: "1",
     status: "completed",
     updatedAt: "2024-02-15",
-    updatedBy: "John Doe",
+    updatedBy: "Rohit Joshi",
   },
 ];
 
@@ -35,12 +35,12 @@ export const indexedSnapshots: IndexedSnapshot[] = [
   {
     id: "1",
     documentId: "1",
-    filename: "requirements.pdf",
+    filename: "NEC reg 1.0",
     docSnapshotId: "doc_1",
-    parsedSnapshotId: "parsed_1",
+    parsedSnapshotId: "1",
     chunkingStrategy: "paragraph",
     status: "completed",
     updatedAt: "2024-02-15",
-    updatedBy: "John Doe",
+    updatedBy: "Rohit Joshi",
   },
 ];

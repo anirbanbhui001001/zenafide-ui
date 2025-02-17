@@ -16,8 +16,8 @@ export const initialPanels: Panel[] = [
         isCloseable: false 
       },
       {
-        id: 'agents',
-        title: 'Agents',
+        id: 'insights',
+        title: 'Insights',
         content: React.createElement(AgentsTab),
         isCloseable: false
       }

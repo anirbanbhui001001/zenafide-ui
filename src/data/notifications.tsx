@@ -7,7 +7,7 @@ export const notifications: Record<NotificationTabs, Notification[]> = {
       id: "1",
       isRead: false,
       avatar: "https://i.pravatar.cc/150?u=a04258114e29026708c",
-      description: "requested to join your Acme organization.",
+      description: "requested to join your organization.",
       name: "Tony Reichert",
       time: "2 hours ago",
       type: "request",

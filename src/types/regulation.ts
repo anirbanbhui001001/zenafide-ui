@@ -11,6 +11,7 @@ export type Regulation = {
 export type RegulationAgent = {
   id: string;
   name: string;
+  folder?: string;
   type: 'table_of_contents' | 'summary';
   regulationId: string;
 };

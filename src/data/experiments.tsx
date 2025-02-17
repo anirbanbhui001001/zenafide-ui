@@ -6,7 +6,7 @@ export const experiments: Experiment[] = [
   {
     id: "1",
     name: "Experiment 1",
-    creator: "Srikanth",
+    creator: "Rohit",
     updated: "1h ago",
   },
   {
@@ -15,7 +15,7 @@ export const experiments: Experiment[] = [
     duration: "1.5s",
     llmDuration: "2s",
     promptTokens: 12232,
-    creator: "Srikanth",
+    creator: "Rohit",
     updated: "1h ago",
   },
 ];

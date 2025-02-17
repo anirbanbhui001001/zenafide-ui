@@ -1,14 +1,15 @@
 import { Tab, Tabs } from "@heroui/react";
 import { useState } from "react";
-import DocumentsTab from './tabs/documents-tab';
-import AnalysisTab from './tabs/analysis-tab';
-import AssistantTab from './tabs/assistant-tab';
-import ReplitLayout from '@/components/replit/replit-layout';
+import DocumentsTab from "./tabs/documents-tab";
+import AnalysisTab from "./tabs/analysis-tab";
+import AssistantTab from "./tabs/assistant-tab";
+import ReplitLayout from "@/components/replit/replit-layout";
 import { Regulation } from "@/types/regulation";
 
 export default function RegulationsPage() {
   const [activeTab, setActiveTab] = useState("documents");
-  const [selectedRegulation, setSelectedRegulation] = useState<Regulation | null>(null);
+  const [selectedRegulation, setSelectedRegulation] =
+    useState<Regulation | null>(null);
 
   const handleRegulationSelect = (regulation: Regulation) => {
     setSelectedRegulation(regulation);
@@ -18,20 +19,20 @@ export default function RegulationsPage() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-semibold mb-6">Regulations</h1>
-      <Tabs 
-        selectedKey={activeTab} 
+      <Tabs
+        selectedKey={activeTab}
         onSelectionChange={(key) => setActiveTab(key as string)}
         aria-label="Regulation management options"
       >
         <Tab key="documents" title="Documents">
           <DocumentsTab onRegulationSelect={handleRegulationSelect} />
         </Tab>
-        <Tab key="analysis" title="Analysis">
+        {/* <Tab key="analysis" title="Analysis">
           <AnalysisTab regulation={selectedRegulation} />
         </Tab>
         <Tab key="assistant" title="Assistant">
           <AssistantTab />
-        </Tab>
+        </Tab> */}
         <Tab key="replit" title="Replit">
           <div className="h-[calc(100vh-10rem)]">
             <ReplitLayout />

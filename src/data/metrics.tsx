@@ -6,13 +6,13 @@ export const metrics: Metric[] = [
     title: "JSON Diff (Case, order, path)",
     description:
       "Calculates the percentage difference between two JSON objects by comparing their structure and content. The primary goal is to compute a similarity score between the objects.",
-    name: "json-diff-case-order-path-ztwdcl-ltgria",
+    name: "json-diff-case-order",
   },
   {
     title: "Max Character Length",
     description:
       "Respond with score of 1 if the text's length is over a max number of characters.",
-    name: "max-character-length-zqovcc",
+    name: "max-character-length",
   },
   {
     title: "Uptrain - Guideline Adherence",

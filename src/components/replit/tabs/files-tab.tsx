@@ -5,7 +5,8 @@ import { regulations } from "@/data/regulations";
 
 export default function FilesTab() {
   const columns = [
-    { key: "filename", label: "" }, // Empty label for no header
+    { key: "filename", label: "name" }, // Empty label for no header
+    { key: "folder", label: "folder" },
   ];
 
   const handleRowClick = (row: any) => {
