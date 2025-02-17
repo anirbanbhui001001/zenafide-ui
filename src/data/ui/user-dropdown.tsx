@@ -1,5 +1,5 @@
 
-import { DropdownUser } from "@/types/user-dropdown";
+import { DropdownUser } from "@/types/ui/user-dropdown";
 
 export const users: DropdownUser[] = [
   {
