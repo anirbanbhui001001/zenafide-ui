@@ -1,5 +1,5 @@
 
-import { Agent } from "@/types/agent";
+import { Agent } from "@/types/agents";
 
 export const agents: Agent[] = [
   {
