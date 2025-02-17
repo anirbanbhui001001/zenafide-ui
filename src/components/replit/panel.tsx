@@ -23,7 +23,7 @@ export default function Panel({
         {tabs.map((tab) => (
           <div
             key={tab.id}
-            className={`flex items-center gap-1 px-3 py-1 rounded cursor-pointer ${
+            className={`flex items-center gap-1 px-3 py-1 rounded cursor-pointer text-sm ${
               activeTabId === tab.id ? "bg-default-200" : "hover:bg-default-100"
             }`}
             onClick={() => onTabClick(tab.id)}
