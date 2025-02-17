@@ -1,4 +1,5 @@
 import React from "react";
+import EditorTab from "@/components/replit/tabs/editor-tab";
 import DataTable from "@/components/table/datatable";
 import { regulationAgents } from "@/data/regulations";
 
@@ -14,7 +15,22 @@ export default function AgentsTab() {
         data={regulationAgents}
         columns={columns}
         hideHeader={true}
-        onRowClick={() => {}} // Placeholder for future implementation
+        onRowClick={(row) => {
+          const newTab = {
+            id: `agent-${row.id}`,
+            title: row.name,
+            content: <EditorTab content={row.folder || ""} />,
+            isCloseable: true,
+          };
+
+          const event = new CustomEvent("openNewTab", {
+            detail: {
+              panelId: "center-panel",
+              tab: newTab,
+            },
+          });
+          window.dispatchEvent(event);
+        }}
       />
     </div>
   );
