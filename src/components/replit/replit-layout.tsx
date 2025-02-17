@@ -63,7 +63,7 @@ export default function ReplitLayout() {
   };
 
   return (
-    <div className="flex h-full overflow-hidden">
+    <div className="flex h-full overflow-hidden border border-divider rounded-lg">
       <Resizable
         width={leftWidth}
         height={0}
