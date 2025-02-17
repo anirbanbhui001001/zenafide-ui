@@ -10,6 +10,28 @@ export default function ReplitLayout() {
   const [panels, setPanels] = useState<PanelType[]>(initialPanels);
   const [leftWidth, setLeftWidth] = useState(panels[0].width || 240);
   const [rightWidth, setRightWidth] = useState(panels[2].width || 320);
+
+  useEffect(() => {
+    const handleOpenNewTab = (event: CustomEvent) => {
+      const { panelId, tab } = event.detail;
+      setPanels(prev =>
+        prev.map(panel =>
+          panel.id === panelId
+            ? {
+                ...panel,
+                tabs: [...panel.tabs, tab],
+                activeTabId: tab.id
+              }
+            : panel
+        )
+      );
+    };
+
+    window.addEventListener('openNewTab', handleOpenNewTab as EventListener);
+    return () => {
+      window.removeEventListener('openNewTab', handleOpenNewTab as EventListener);
+    };
+  }, []);
   const [isLeftCollapsed, setIsLeftCollapsed] = useState(false);
   const [isRightCollapsed, setIsRightCollapsed] = useState(false);
 
