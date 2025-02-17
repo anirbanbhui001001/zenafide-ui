@@ -10,6 +10,8 @@ export default function ReplitLayout() {
   const [panels, setPanels] = useState<PanelType[]>(initialPanels);
   const [leftWidth, setLeftWidth] = useState(panels[0].width || 240);
   const [rightWidth, setRightWidth] = useState(panels[2].width || 320);
+  const [leftCollapsed, setLeftCollapsed] = useState(false);
+  const [rightCollapsed, setRightCollapsed] = useState(false);
 
   const handleLeftResize = (e: any, { size }: { size: { width: number } }) => {
     setLeftWidth(size.width);
@@ -64,7 +66,15 @@ export default function ReplitLayout() {
 
   return (
     <div className="flex h-full overflow-hidden">
-      <Resizable
+      {leftCollapsed ? (
+        <button 
+          onClick={() => setLeftCollapsed(false)}
+          className="h-full w-6 flex items-center justify-center hover:bg-default-100 border-r border-divider"
+        >
+          <Icon icon="mdi:chevron-right" className="w-4 h-4" />
+        </button>
+      ) : (
+        <Resizable
         width={leftWidth}
         height={0}
         onResize={handleLeftResize}
@@ -76,6 +86,12 @@ export default function ReplitLayout() {
         maxConstraints={[500, 0]}
       >
         <div style={{ width: leftWidth }} className="h-full border-r border-divider relative min-w-[200px]">
+          <button 
+            onClick={() => setLeftCollapsed(true)}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-6 h-12 flex items-center justify-center hover:bg-default-100 rounded-l"
+          >
+            <Icon icon="mdi:chevron-left" className="w-4 h-4" />
+          </button>
           <Panel
             {...panels[0]}
             onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
@@ -98,10 +114,18 @@ export default function ReplitLayout() {
         />
       </div>
 
-      <Resizable
-        width={rightWidth}
-        height={0}
-        onResize={handleRightResize}
+      {rightCollapsed ? (
+        <button 
+          onClick={() => setRightCollapsed(false)}
+          className="h-full w-6 flex items-center justify-center hover:bg-default-100 border-l border-divider"
+        >
+          <Icon icon="mdi:chevron-left" className="w-4 h-4" />
+        </button>
+      ) : (
+        <Resizable
+          width={rightWidth}
+          height={0}
+          onResize={handleRightResize}
         handle={
           <div className="absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
         }
@@ -110,6 +134,12 @@ export default function ReplitLayout() {
         maxConstraints={[500, 0]}
       >
         <div style={{ width: rightWidth }} className="h-full border-l border-divider relative min-w-[200px]">
+          <button 
+            onClick={() => setRightCollapsed(true)}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-12 flex items-center justify-center hover:bg-default-100 rounded-r"
+          >
+            <Icon icon="mdi:chevron-right" className="w-4 h-4" />
+          </button>
           <Panel
             {...panels[2]}
             onTabClose={(tabId) => handleTabClose('right-panel', tabId)}
