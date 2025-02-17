@@ -1,5 +1,5 @@
 
-import { Document, ParsedSnapshot, IndexedSnapshot } from "@/types/document";
+import { Document, ParsedSnapshot, IndexedSnapshot } from "@/types/documents/document";
 
 export const documents: Document[] = [
   {
