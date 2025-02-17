@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import DataTable from "@/components/table/datatable";
 import ExperimentDetails from "@/components/experiments/experiment-details";
-import { experiments } from "@/data/experiments";
+import { experiments } from "@/data/evals/experiments";
 import { Experiment } from "@/types/experiment";
 
 export default function ExperimentsTab() {

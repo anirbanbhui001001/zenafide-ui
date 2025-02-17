@@ -3,7 +3,7 @@ import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import DatasetDetails from "@/components/dataset/dataset-details";
-import { datasets } from "@/data/datasets";
+import { datasets } from "@/data/evals/datasets";
 import { Dataset } from "@/types/dataset";
 
 export default function DataSetsTab() {
