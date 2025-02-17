@@ -45,7 +45,7 @@ export default function Panel({
           <Icon icon="mdi:plus" className="w-4 h-4" />
         </button>
       </div>
-      <div className="flex-1 p-2">
+      <div className="flex-1 p-2 overflow-auto">
         {activeTabId && tabs.find((tab) => tab.id === activeTabId)?.content}
       </div>
     </div>

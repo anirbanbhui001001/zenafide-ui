@@ -9,11 +9,13 @@ export default function FilesTab() {
   ];
 
   return (
-    <DataTable
-      data={regulations}
-      columns={columns}
-      hideHeader={true}
-      onRowClick={() => {}} // Placeholder for future implementation
-    />
+    <div className="h-full overflow-hidden">
+      <DataTable
+        data={regulations}
+        columns={columns}
+        hideHeader={true}
+        onRowClick={() => {}} // Placeholder for future implementation
+      />
+    </div>
   );
 }
