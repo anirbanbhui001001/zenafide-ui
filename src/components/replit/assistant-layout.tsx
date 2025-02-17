@@ -5,7 +5,7 @@ import Panel from './panel';
 import { Icon } from '@iconify/react';
 import { Button } from '@heroui/react';
 import AssistantMainArea from './assistant-main-area';
-import AssistantChatHistory from './tabs/assistant-chat-history';
+import AssistantChatHistory from './tabs/assistant-chat-history-tab';
 import { chats } from '@/data/chats';
 
 export default function AssistantLayout() {
