@@ -7,11 +7,23 @@ import { Panel as PanelType } from '@/types/replit/panel';
 
 export default function ReplitLayout() {
   const [panels, setPanels] = useState<PanelType[]>(initialPanels);
+  const [leftWidth, setLeftWidth] = useState(panels[0].width || 240);
+  const [rightWidth, setRightWidth] = useState(panels[2].width || 320);
 
-  const handleResize = (panelId: string, width: number) => {
+  const handleLeftResize = (e: any, { size }: { size: { width: number } }) => {
+    setLeftWidth(size.width);
     setPanels(prev =>
       prev.map(panel =>
-        panel.id === panelId ? { ...panel, width } : panel
+        panel.id === 'left-panel' ? { ...panel, width: size.width } : panel
+      )
+    );
+  };
+
+  const handleRightResize = (e: any, { size }: { size: { width: number } }) => {
+    setRightWidth(size.width);
+    setPanels(prev =>
+      prev.map(panel =>
+        panel.id === 'right-panel' ? { ...panel, width: size.width } : panel
       )
     );
   };
@@ -52,12 +64,17 @@ export default function ReplitLayout() {
   return (
     <div className="flex h-full">
       <Resizable
-        width={panels[0].width || 240}
-        height={Infinity}
-        onResize={(_, { size }) => handleResize('left-panel', size.width)}
-        handle={<div className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary" />}
+        width={leftWidth}
+        height={0}
+        onResize={handleLeftResize}
+        handle={
+          <div className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
+        }
+        resizeHandles={['e']}
+        minConstraints={[200, 0]}
+        maxConstraints={[500, 0]}
       >
-        <div style={{ width: panels[0].width }} className="h-full border-r border-divider">
+        <div style={{ width: leftWidth }} className="h-full border-r border-divider relative min-w-[200px]">
           <Panel
             {...panels[0]}
             onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
@@ -81,12 +98,17 @@ export default function ReplitLayout() {
       </div>
 
       <Resizable
-        width={panels[2].width || 320}
-        height={Infinity}
-        onResize={(_, { size }) => handleResize('right-panel', size.width)}
-        handle={<div className="absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary" />}
+        width={rightWidth}
+        height={0}
+        onResize={handleRightResize}
+        handle={
+          <div className="absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
+        }
+        resizeHandles={['w']}
+        minConstraints={[200, 0]}
+        maxConstraints={[500, 0]}
       >
-        <div style={{ width: panels[2].width }} className="h-full border-l border-divider">
+        <div style={{ width: rightWidth }} className="h-full border-l border-divider relative min-w-[200px]">
           <Panel
             {...panels[2]}
             onTabClose={(tabId) => handleTabClose('right-panel', tabId)}
