@@ -3,7 +3,7 @@ import { useState } from "react";
 import DocumentsTab from "./tabs/documents-tab";
 import AssistantTab from "./tabs/assistant-tab";
 import ReplitLayout from "@/components/replit/replit-layout";
-import { Regulation } from "@/types/regulation";
+import { Regulation } from "@/types/regulations";
 
 export default function RegulationsPage() {
   const [activeTab, setActiveTab] = useState("documents");

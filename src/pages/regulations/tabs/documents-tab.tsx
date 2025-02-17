@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { regulations } from "@/data/regulations";
-import { Regulation } from "@/types/regulation";
+import { Regulation } from "@/types/regulations";
 
 interface DocumentsTabProps {
   onRegulationSelect: (regulation: Regulation) => void;

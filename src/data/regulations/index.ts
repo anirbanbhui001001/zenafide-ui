@@ -1,5 +1,5 @@
 
-import { Regulation, RegulationAgent } from "@/types/regulation";
+import { Regulation, RegulationAgent } from "@/types/regulations";
 
 export const regulations: Regulation[] = [
   {
