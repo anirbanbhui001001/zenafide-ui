@@ -3,7 +3,7 @@
 import React from "react";
 import { Select, SelectSection, SelectItem, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { workspaces } from "@/data/workspaces";
+import { workspaces } from "@/data/ui/workspaces";
 
 export default function WorkspaceSelect() {
   return (

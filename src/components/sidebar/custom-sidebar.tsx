@@ -11,7 +11,7 @@ import UpgradeCard from "./custom-sidebar-upgrade-card";
 import AccountSwitcher from "./custom-sidebar-account-switcher";
 import { Chip } from "@heroui/react";
 
-import { sidebarItems } from "@/data/sidebar-items";
+import { sidebarItems } from "@/data/ui/sidebar-items";
 
 export default function CustomSidebar() {
   return (
