@@ -1,11 +1,19 @@
 
 import { Panel } from '@/types/replit/panel';
+import FilesTab from '@/components/replit/tabs/files-tab';
 
 export const initialPanels: Panel[] = [
   {
     id: 'left-panel',
-    tabs: [],
-    activeTabId: '',
+    tabs: [
+      { 
+        id: 'files', 
+        title: 'Files', 
+        content: <FilesTab />, 
+        isCloseable: false 
+      }
+    ],
+    activeTabId: 'files',
     width: 240
   },
   {
