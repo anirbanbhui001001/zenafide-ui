@@ -17,7 +17,7 @@ import {
 import {Icon} from "@iconify/react";
 import NotificationItem from "./notification-item";
 
-import { Notification, NotificationTabs } from "@/types/notification";
+import { Notification, NotificationTabs } from "@/types/ui/notification";
 
 import { notifications } from "@/data/ui/notifications";
 
