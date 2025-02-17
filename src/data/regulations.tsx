@@ -25,6 +25,7 @@ export const regulationAgents: RegulationAgent[] = [
     folder: "folder/1/documents/1/table-of-contents",
     type: "table_of_contents",
     regulationId: "1",
+    content: "my table of contents"
   },
   {
     id: "2",
@@ -32,6 +33,7 @@ export const regulationAgents: RegulationAgent[] = [
     folder: "folder/1/documents/1/summary",
     type: "summary",
     regulationId: "1",
+    content: "my summary"
   },
   {
     id: "3",
@@ -39,6 +41,7 @@ export const regulationAgents: RegulationAgent[] = [
     folder: "folder/2/documents/2/table-of-contents",
     type: "table_of_contents",
     regulationId: "2",
+    content: "my table of contents"
   },
   {
     id: "4",
@@ -46,5 +49,6 @@ export const regulationAgents: RegulationAgent[] = [
     folder: "folder/2/documents/2/summary",
     type: "summary",
     regulationId: "2",
+    content: "my summary"
   },
 ];

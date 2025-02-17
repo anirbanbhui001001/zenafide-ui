@@ -19,7 +19,7 @@ export default function AgentsTab() {
           const newTab = {
             id: `agent-${row.id}`,
             title: row.name,
-            content: <EditorTab content={row.folder || ""} />,
+            content: <EditorTab content={row.content || ""} />,
             isCloseable: true,
           };
 
