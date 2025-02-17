@@ -9,6 +9,7 @@ import EvaluationsPage from "@/pages/evaluations/evaluations-page";
 import RegulationsPage from "@/pages/regulations/regulations-page";
 import Users from "@/pages/users/users";
 import Agents from "@/pages/agents/agents";
+import ReplitLayout from "@/components/replit/replit-layout";
 import ExperimentDetails from "@/components/experiments/experiment-details";
 import PromptDetails from "@/components/prompt/prompt-details";
 import { agents } from "@/data/agents";
@@ -50,6 +51,10 @@ const routes: RouteObject[] = [
       {
         path: "agents/:agentId/prompt",
         element: <PromptDetails />,
+      },
+      {
+        path: "replit",
+        element: <ReplitLayout />,
       }
     ],
   },
