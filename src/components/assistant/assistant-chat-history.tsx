@@ -1,12 +1,14 @@
+
 import React from "react";
 import { Button } from "@heroui/react";
 import { Chat } from "@/types/assistant";
 
 interface AssistantChatHistoryProps {
   chats: Chat[];
+  onChatSelect?: (chat: Chat) => void;
 }
 
-export default function AssistantChatHistory({ chats }: AssistantChatHistoryProps) {
+export default function AssistantChatHistory({ chats, onChatSelect }: AssistantChatHistoryProps) {
   return (
     <div className="w-64 border-r border-divider bg-content1">
       <div className="flex flex-col gap-1 p-2">
@@ -16,6 +18,7 @@ export default function AssistantChatHistory({ chats }: AssistantChatHistoryProp
             variant="light"
             className="justify-start h-auto py-2"
             fullWidth
+            onClick={() => onChatSelect?.(chat)}
           >
             <div className="flex flex-col items-start gap-1">
               <span className="text-sm">{chat.title}</span>
