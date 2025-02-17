@@ -19,7 +19,9 @@ export default function ReplitLayout() {
           panel.id === panelId
             ? {
                 ...panel,
-                tabs: [...panel.tabs, tab],
+                tabs: panel.tabs.some(t => t.id === tab.id) 
+                  ? panel.tabs 
+                  : [...panel.tabs, tab],
                 activeTabId: tab.id
               }
             : panel

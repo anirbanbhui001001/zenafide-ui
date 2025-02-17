@@ -10,7 +10,7 @@ export default function FilesTab() {
 
   const handleRowClick = (row: any) => {
     const newTab = {
-      id: `file-${row.id}`,
+      id: `file-${row.filename}`,
       title: row.filename,
       content: <EditorTab content={row.content || ""} />,
       isCloseable: true,
