@@ -4,7 +4,7 @@ import { Resizable } from 'react-resizable';
 import Panel from './panel';
 import { Icon } from '@iconify/react';
 import { Button } from '@heroui/react';
-import AssistantMainArea from './assistant-main-area';
+import AssistantMainArea from './assistant/assistant-main-area';
 import AssistantChatHistory from './tabs/assistant-chat-history-tab';
 import { chats } from '@/data/chats';
 

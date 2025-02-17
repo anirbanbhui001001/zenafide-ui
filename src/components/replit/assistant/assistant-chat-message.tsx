@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button, Card } from "@heroui/react";
 import { Icon } from "@iconify/react";
@@ -19,12 +18,16 @@ const getTimeAgo = (timestamp: string) => {
 
 export default function AssistantChatMessage({
   message,
-  onReviewChangesClick
+  onReviewChangesClick,
 }: AssistantChatMessageProps) {
   return (
     <div className={`flex flex-col gap-4 ${message.isUser ? "items-end" : ""}`}>
-      <div className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? "bg-default-100" : ""}`}>
-        <div className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? "justify-end" : "justify-start"}`}>
+      <div
+        className={`flex flex-col gap-2 p-4 rounded-lg ${message.isUser ? "bg-default-100" : ""}`}
+      >
+        <div
+          className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? "justify-end" : "justify-start"}`}
+        >
           {!message.isUser && (
             <>
               <Icon icon="mdi:robot" className="text-base" />
@@ -33,7 +36,9 @@ export default function AssistantChatMessage({
               {message.files && (
                 <>
                   <Icon icon="mdi:file-multiple" className="text-base" />
-                  <span className="text-sm">Read {message.files.length} files</span>
+                  <span className="text-sm">
+                    Read {message.files.length} files
+                  </span>
                 </>
               )}
             </>
@@ -54,29 +59,37 @@ export default function AssistantChatMessage({
                   <span className="text-sm">{change.filePath}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-success text-sm">+{change.additions}</span>
-                  <span className="text-danger text-sm">-{change.deletions}</span>
+                  <span className="text-success text-sm">
+                    +{change.additions}
+                  </span>
+                  <span className="text-danger text-sm">
+                    -{change.deletions}
+                  </span>
                 </div>
               </div>
             </Card>
           ))}
           <div className="flex gap-2">
-            <Button 
-              color="secondary" 
-              size="sm" 
+            <Button
+              color="secondary"
+              size="sm"
               onPress={() => {
                 if (message.proposedChanges) {
                   message.proposedChanges.forEach((change) => {
                     const newTab = {
                       id: `file-${change.filePath}-${Date.now()}`,
-                      title: change.filePath,
-                      content: <pre className="p-4 whitespace-pre-wrap">{change.content}</pre>,
+                      title: change.description,
+                      content: (
+                        <pre className="p-4 whitespace-pre-wrap">
+                          {change.content}
+                        </pre>
+                      ),
                       isCloseable: true,
                     };
 
                     const event = new CustomEvent("openNewTab", {
                       detail: {
-                        panelId: "center-panel",
+                        panelId: "right-panel",
                         tab: newTab,
                       },
                     });
