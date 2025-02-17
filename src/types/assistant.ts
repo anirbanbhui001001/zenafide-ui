@@ -1,4 +1,3 @@
-
 export interface AssistantMessage {
   id: string;
   content: string;
@@ -14,6 +13,7 @@ export interface FileChange {
   additions: number;
   deletions: number;
   canApply: boolean;
+  content?: string;
 }
 
 export interface Chat {

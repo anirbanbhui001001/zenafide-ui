@@ -7,6 +7,7 @@ const fileChanges: FileChange[] = [
     additions: 500,
     deletions: 0,
     canApply: true,
+    content: "my table-of-contents",
   },
   {
     filePath: "folder/1/documents/1/summary",
@@ -14,6 +15,7 @@ const fileChanges: FileChange[] = [
     additions: 99,
     deletions: 0,
     canApply: true,
+    content: "my summary",
   },
   {
     filePath: "folder/2/documents/2/table-of-contents",
@@ -21,6 +23,7 @@ const fileChanges: FileChange[] = [
     additions: 500,
     deletions: 0,
     canApply: true,
+    content: "my table-of-contents",
   },
   {
     filePath: "folder/2/documents/2/summary",
@@ -28,6 +31,7 @@ const fileChanges: FileChange[] = [
     additions: 99,
     deletions: 0,
     canApply: true,
+    content: "my summary",
   },
 ];
 
