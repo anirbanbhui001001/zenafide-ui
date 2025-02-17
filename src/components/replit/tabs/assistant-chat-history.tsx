@@ -5,7 +5,7 @@ import { Chat } from "@/types/assistant";
 
 interface AssistantChatHistoryProps {
   chats: Chat[];
-  onChatSelect: (chat: Chat) => void;
+  onChatSelect?: (chat: Chat) => void;
 }
 
 export default function AssistantChatHistory({ chats, onChatSelect }: AssistantChatHistoryProps) {
@@ -18,7 +18,7 @@ export default function AssistantChatHistory({ chats, onChatSelect }: AssistantC
             variant="light"
             className="justify-start h-auto py-2"
             fullWidth
-            onClick={() => onChatSelect(chat)}
+            onClick={() => onChatSelect?.(chat)}
           >
             <div className="flex flex-col items-start gap-1">
               <span className="text-sm">{chat.title}</span>
