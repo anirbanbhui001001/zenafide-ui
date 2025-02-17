@@ -17,7 +17,7 @@ const getTimeAgo = (timestamp: string) => {
 };
 
 export default function AssistantChatMessage({
-  message,
+  message, onReviewChangesClick
 }: AssistantChatMessageProps) {
   return (
     <div className={`flex flex-col gap-4 ${message.isUser ? "items-end" : ""}`}>
