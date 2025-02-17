@@ -10,7 +10,7 @@ export const initialPanels: Panel[] = [
       { 
         id: 'files', 
         title: 'Files', 
-        content: <FilesTab />, 
+        content: React.createElement(FilesTab),
         isCloseable: false 
       }
     ],
