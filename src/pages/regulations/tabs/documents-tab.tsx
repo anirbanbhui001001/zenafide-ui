@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
@@ -9,7 +8,9 @@ interface DocumentsTabProps {
   onRegulationSelect: (regulation: Regulation) => void;
 }
 
-export default function DocumentsTab({ onRegulationSelect }: DocumentsTabProps) {
+export default function DocumentsTab({
+  onRegulationSelect,
+}: DocumentsTabProps) {
   const columns = [
     { key: "filename", label: "Filename" },
     { key: "folder", label: "Folder" },
@@ -31,11 +32,5 @@ export default function DocumentsTab({ onRegulationSelect }: DocumentsTabProps) 
     },
   ];
 
-  return (
-    <DataTable
-      data={regulations}
-      columns={columns}
-      title="All Regulations"
-    />
-  );
+  return <DataTable data={regulations} columns={columns} />;
 }
