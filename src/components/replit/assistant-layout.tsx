@@ -11,11 +11,12 @@ import { chats } from '@/data/chats';
 export default function AssistantLayout() {
   const [leftWidth, setLeftWidth] = useState(240);
   const [isLeftCollapsed, setIsLeftCollapsed] = useState(false);
+  const [selectedChat, setSelectedChat] = useState<Chat | undefined>();
   const [panels, setPanels] = useState([
     {
       id: 'left-panel',
       tabs: [
-        { id: 'chats', title: 'Chats', content: React.createElement(AssistantChatHistory, { chats }), isCloseable: false },
+        { id: 'chats', title: 'Chats', content: React.createElement(AssistantChatHistory, { chats, onChatSelect: setSelectedChat }), isCloseable: false },
         { id: 'archived', title: 'Archived', isCloseable: false }
       ],
       activeTabId: 'chats',
@@ -75,7 +76,7 @@ export default function AssistantLayout() {
         />
 
         <div className="flex-1">
-          <AssistantMainArea />
+          <AssistantMainArea selectedChat={selectedChat} />
         </div>
       </div>
     </div>
