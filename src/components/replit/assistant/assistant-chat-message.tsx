@@ -27,20 +27,20 @@ export default function AssistantChatMessage({
         <div className={`flex items-center gap-2 text-sm text-default-500 ${message.isUser ? "justify-end" : "justify-start"}`}>
           {!message.isUser && (
             <>
-              <Icon icon="mdi:robot" className="text-lg" />
-              <span>Assistant</span>
-              <span>{getTimeAgo(message.timestamp)}</span>
+              <Icon icon="mdi:robot" className="text-base" />
+              <span className="text-sm">Assistant</span>
+              <span className="text-sm">{getTimeAgo(message.timestamp)}</span>
               {message.files && (
                 <>
-                  <Icon icon="mdi:file-multiple" className="text-lg" />
-                  <span>Read {message.files.length} files</span>
+                  <Icon icon="mdi:file-multiple" className="text-base" />
+                  <span className="text-sm">Read {message.files.length} files</span>
                 </>
               )}
             </>
           )}
           {message.isUser && <Icon icon="mdi:account" className="text-lg" />}
         </div>
-        <div className="prose dark:prose-invert max-w-none">
+        <div className="prose dark:prose-invert max-w-none text-sm">
           {message.content}
         </div>
       </div>
