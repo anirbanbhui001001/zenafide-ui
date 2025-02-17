@@ -66,7 +66,7 @@ export default function ReplitLayout() {
 
   return (
     <div className="flex h-full overflow-hidden">
-      <div className={`transition-all duration-300 ${isLeftCollapsed ? 'w-0' : ''}`}>
+      <div className={`transition-all duration-300 relative ${isLeftCollapsed ? 'w-0' : ''}`}>
         <Resizable
           width={isLeftCollapsed ? 0 : leftWidth}
           height={0}
@@ -78,7 +78,7 @@ export default function ReplitLayout() {
           minConstraints={[0, 0]}
           maxConstraints={[500, 0]}
         >
-          <div style={{ width: isLeftCollapsed ? 0 : leftWidth }} className="h-full border-r border-divider relative min-w-0">
+          <div style={{ width: leftWidth, display: isLeftCollapsed ? 'none' : 'block' }} className="h-full border-r border-divider absolute top-0 left-0">
             <Panel
               {...panels[0]}
               onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
