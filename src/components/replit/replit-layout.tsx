@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Resizable } from 'react-resizable';
 import Panel from './panel';
+import FilesTab from './tabs/files-tab';
 import { initialPanels } from '@/data/replit/initial-panels';
 import { Panel as PanelType } from '@/types/replit/panel';
 
@@ -75,14 +76,7 @@ export default function ReplitLayout() {
         maxConstraints={[500, 0]}
       >
         <div style={{ width: leftWidth }} className="h-full border-r border-divider relative min-w-[200px]">
-          <Panel
-            {...panels[0]}
-            onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
-            onTabClick={(tabId) => setPanels(prev =>
-              prev.map(p => p.id === 'left-panel' ? { ...p, activeTabId: tabId } : p)
-            )}
-            onNewTab={() => handleNewTab('left-panel')}
-          />
+          <FilesTab />
         </div>
       </Resizable>
       
