@@ -1,9 +1,11 @@
 
+import { ReactNode } from 'react';
+
 export interface Tab {
   id: string;
   title: string;
-  content?: React.ReactNode;
-  isCloseable?: boolean;
+  content?: ReactNode;
+  isCloseable: boolean;
 }
 
 export interface Panel {
