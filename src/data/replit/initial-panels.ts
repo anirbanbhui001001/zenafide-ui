@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { Panel } from '@/types/replit/panel';
 import FilesTab from '@/components/replit/tabs/files-tab';
 
