@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Resizable } from 'react-resizable';
 import Panel from './panel';
-import FilesTab from './tabs/files-tab';
+import { Icon } from '@iconify/react';
 import { initialPanels } from '@/data/replit/initial-panels';
 import { Panel as PanelType } from '@/types/replit/panel';
 
@@ -10,6 +10,8 @@ export default function ReplitLayout() {
   const [panels, setPanels] = useState<PanelType[]>(initialPanels);
   const [leftWidth, setLeftWidth] = useState(panels[0].width || 240);
   const [rightWidth, setRightWidth] = useState(panels[2].width || 320);
+  const [isLeftCollapsed, setIsLeftCollapsed] = useState(false);
+  const [isRightCollapsed, setIsRightCollapsed] = useState(false);
 
   const handleLeftResize = (e: any, { size }: { size: { width: number } }) => {
     setLeftWidth(size.width);
@@ -64,29 +66,38 @@ export default function ReplitLayout() {
 
   return (
     <div className="flex h-full overflow-hidden">
-      <Resizable
-        width={leftWidth}
-        height={0}
-        onResize={handleLeftResize}
-        handle={
-          <div className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
-        }
-        resizeHandles={['e']}
-        minConstraints={[200, 0]}
-        maxConstraints={[500, 0]}
-      >
-        <div style={{ width: leftWidth }} className="h-full border-r border-divider relative min-w-[200px]">
-          <Panel
-            {...panels[0]}
-            onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
-            onTabClick={(tabId) => setPanels(prev =>
-              prev.map(p => p.id === 'left-panel' ? { ...p, activeTabId: tabId } : p)
-            )}
-            onNewTab={() => handleNewTab('left-panel')}
-          />
-        </div>
-      </Resizable>
+      <div className={`transition-all duration-300 ${isLeftCollapsed ? 'w-0' : ''}`}>
+        <Resizable
+          width={isLeftCollapsed ? 0 : leftWidth}
+          height={0}
+          onResize={handleLeftResize}
+          handle={
+            <div className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
+          }
+          resizeHandles={['e']}
+          minConstraints={[0, 0]}
+          maxConstraints={[500, 0]}
+        >
+          <div style={{ width: isLeftCollapsed ? 0 : leftWidth }} className="h-full border-r border-divider relative min-w-0">
+            <Panel
+              {...panels[0]}
+              onTabClose={(tabId) => handleTabClose('left-panel', tabId)}
+              onTabClick={(tabId) => setPanels(prev =>
+                prev.map(p => p.id === 'left-panel' ? { ...p, activeTabId: tabId } : p)
+              )}
+              onNewTab={() => handleNewTab('left-panel')}
+            />
+          </div>
+        </Resizable>
+      </div>
       
+      <button 
+        onClick={() => setIsLeftCollapsed(!isLeftCollapsed)}
+        className="z-10 p-1 hover:bg-default-100 rounded absolute left-0 top-1/2 transform -translate-y-1/2"
+      >
+        <Icon icon={isLeftCollapsed ? "mdi:chevron-right" : "mdi:chevron-left"} className="w-4 h-4" />
+      </button>
+
       <div className="flex-1">
         <Panel
           {...panels[1]}
@@ -98,28 +109,37 @@ export default function ReplitLayout() {
         />
       </div>
 
-      <Resizable
-        width={rightWidth}
-        height={0}
-        onResize={handleRightResize}
-        handle={
-          <div className="absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
-        }
-        resizeHandles={['w']}
-        minConstraints={[200, 0]}
-        maxConstraints={[500, 0]}
+      <button 
+        onClick={() => setIsRightCollapsed(!isRightCollapsed)}
+        className="z-10 p-1 hover:bg-default-100 rounded absolute right-0 top-1/2 transform -translate-y-1/2"
       >
-        <div style={{ width: rightWidth }} className="h-full border-l border-divider relative min-w-[200px]">
-          <Panel
-            {...panels[2]}
-            onTabClose={(tabId) => handleTabClose('right-panel', tabId)}
-            onTabClick={(tabId) => setPanels(prev =>
-              prev.map(p => p.id === 'right-panel' ? { ...p, activeTabId: tabId } : p)
-            )}
-            onNewTab={() => handleNewTab('right-panel')}
-          />
-        </div>
-      </Resizable>
+        <Icon icon={isRightCollapsed ? "mdi:chevron-left" : "mdi:chevron-right"} className="w-4 h-4" />
+      </button>
+
+      <div className={`transition-all duration-300 ${isRightCollapsed ? 'w-0' : ''}`}>
+        <Resizable
+          width={isRightCollapsed ? 0 : rightWidth}
+          height={0}
+          onResize={handleRightResize}
+          handle={
+            <div className="absolute left-0 top-0 bottom-0 w-1 cursor-col-resize hover:bg-primary z-10" />
+          }
+          resizeHandles={['w']}
+          minConstraints={[0, 0]}
+          maxConstraints={[500, 0]}
+        >
+          <div style={{ width: isRightCollapsed ? 0 : rightWidth }} className="h-full border-l border-divider relative min-w-0">
+            <Panel
+              {...panels[2]}
+              onTabClose={(tabId) => handleTabClose('right-panel', tabId)}
+              onTabClick={(tabId) => setPanels(prev =>
+                prev.map(p => p.id === 'right-panel' ? { ...p, activeTabId: tabId } : p)
+              )}
+              onNewTab={() => handleNewTab('right-panel')}
+            />
+          </div>
+        </Resizable>
+      </div>
     </div>
   );
 }
