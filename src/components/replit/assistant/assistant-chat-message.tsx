@@ -61,7 +61,30 @@ export default function AssistantChatMessage({
             </Card>
           ))}
           <div className="flex gap-2">
-            <Button color="secondary" size="sm" onPress={onReviewChangesClick}>
+            <Button 
+              color="secondary" 
+              size="sm" 
+              onPress={() => {
+                if (message.proposedChanges) {
+                  message.proposedChanges.forEach((change) => {
+                    const newTab = {
+                      id: `file-${change.filePath}-${Date.now()}`,
+                      title: change.filePath,
+                      content: <pre className="p-4 whitespace-pre-wrap">{change.content}</pre>,
+                      isCloseable: true,
+                    };
+
+                    const event = new CustomEvent("openNewTab", {
+                      detail: {
+                        panelId: "center-panel",
+                        tab: newTab,
+                      },
+                    });
+                    window.dispatchEvent(event);
+                  });
+                }
+              }}
+            >
               Review Changes
             </Button>
             <Button color="primary" size="sm">
