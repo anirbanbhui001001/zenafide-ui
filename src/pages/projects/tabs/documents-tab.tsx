@@ -17,6 +17,7 @@ export default function DocumentsTab({ projectId }: DocumentsTabProps) {
   );
 
   const columns = [
+    { key: "id", label: "ID", width: "5%" },
     { 
       key: "filename", 
       label: "Name",
