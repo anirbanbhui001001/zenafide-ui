@@ -37,5 +37,23 @@ export const insightsHistory: Insight[] = [
     content: "my summary",
     parent: "regulation",
     parent_id: "2"
+  },
+  {
+    id: "5",
+    name: "Blueprint A Summary",
+    folder: "evsDrive/projects/1/documents/3/overview",
+    type: "summary",
+    content: "my summary",
+    parent: "project",
+    parent_id: "1"
+  },
+  {
+    id: "6",
+    name: "Blueprint B Summary",
+    folder: "evsDrive/projects/2/documents/4/overview",
+    type: "summary",
+    content: "my summary",
+    parent: "project",
+    parent_id: "2"
   }
 ];
