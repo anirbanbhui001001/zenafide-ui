@@ -32,7 +32,7 @@ export const initialPanels: Panel[] = [
       {
         id: "assistant",
         title: "Assistant",
-        content: React.createElement(AssistantLayout),
+        content: React.createElement(AssistantLayout, { chats }),
         isCloseable: true,
       },
       { id: "new-tab-center", title: "New Tab", isCloseable: true },

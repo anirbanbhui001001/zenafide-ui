@@ -7,7 +7,11 @@ import AssistantMainArea from "./assistant/assistant-main-area";
 import AssistantChatHistory from "./tabs/assistant-chat-history-tab";
 import { chats } from "@/data/replit/chats";
 
-export default function AssistantLayout() {
+interface AssistantLayoutProps {
+  chats: Chat[];
+}
+
+export default function AssistantLayout({ chats }: AssistantLayoutProps) {
   const [leftWidth, setLeftWidth] = useState(240);
   const [isLeftCollapsed, setIsLeftCollapsed] = useState(false);
   const [selectedChat, setSelectedChat] = useState<Chat | undefined>();
