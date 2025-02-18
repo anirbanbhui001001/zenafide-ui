@@ -3,12 +3,19 @@ import React from "react";
 import DataTable from "@/components/table/datatable";
 import { projectDocuments } from "@/data/projects";
 import {Icon} from "@iconify/react";
+import { Button } from "@heroui/react";
 
 interface DocumentsTabProps {
   projectId?: string;
 }
 
 export default function DocumentsTab({ projectId }: DocumentsTabProps) {
+  const actions = (
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:plus" />}>
+      Add Document
+    </Button>
+  );
+
   const columns = [
     { 
       key: "filename", 
@@ -43,6 +50,7 @@ export default function DocumentsTab({ projectId }: DocumentsTabProps) {
       <DataTable
         data={filteredDocuments}
         columns={columns}
+        actions={actions}
       />
     </div>
   );
