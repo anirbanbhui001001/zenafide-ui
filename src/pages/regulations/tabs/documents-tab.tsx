@@ -22,7 +22,16 @@ export default function DocumentsTab({
         </div>
       )
     },
-    { key: "folder", label: "Folder" },
+    { 
+      key: "folder", 
+      label: "Folder",
+      render: (regulation: Regulation) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:folder-outline" className="text-gray-500" width={20} />
+          {regulation.folder}
+        </div>
+      )
+    },
     { key: "uploadedDate", label: "Uploaded Date" },
     {
       key: "actions",
