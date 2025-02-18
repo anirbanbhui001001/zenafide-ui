@@ -1,7 +1,6 @@
 import React from "react";
 import DataTable from "@/components/table/datatable";
 import EditorTab from "@/components/replit/tabs/editor-tab";
-import { regulations } from "@/data/regulations";
 
 interface FilesTabProps {
   documents: any[];
@@ -9,8 +8,9 @@ interface FilesTabProps {
 
 export default function FilesTab({ documents }: FilesTabProps) {
   const columns = [
-    { key: "filename", label: "name" }, // Empty label for no header
-    { key: "folder", label: "folder" },
+    { key: "id", label: "ID", width: "20%"},
+    { key: "filename", label: "Name" }, // Empty label for no header
+    // { key: "folder", label: "Folder" },
   ];
 
   const handleRowClick = (row: any) => {

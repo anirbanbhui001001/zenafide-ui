@@ -1,7 +1,6 @@
 import React from "react";
 import EditorTab from "@/components/replit/tabs/editor-tab";
 import DataTable from "@/components/table/datatable";
-import { regulationAgents } from "@/data/regulations";
 
 interface AgentsTabProps {
   insights: any[];
@@ -9,8 +8,8 @@ interface AgentsTabProps {
 
 export default function AgentsTab({ insights }: AgentsTabProps) {
   const columns = [
-    { key: "name", label: "name" }, // Empty label for no header
-    { key: "folder", label: "folder" },
+    { key: "id", label: "ID", width: "20%"},
+    { key: "name", label: "Name" }, // Empty label for no header
   ];
 
   return (
