@@ -33,7 +33,6 @@ export default function InsightsTab({ onInsightSelect }: InsightsTabProps) {
         </div>
       )
     },
-    { key: "type", label: "Type" },
     { key: "parent", label: "Parent" },
     { key: "parent_id", label: "Parent ID" },
     {

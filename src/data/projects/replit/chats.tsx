@@ -22,7 +22,7 @@ const fileChanges: FileChange[] = [
 
 export const chats: Chat[] = [
   {
-    id: "1",
+    id: "6",
     title: "Generate Project A Overview",
     lastMessageTime: "2 minutes ago",
     messages: [

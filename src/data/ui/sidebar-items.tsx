@@ -50,7 +50,7 @@ export const sidebarItems: SidebarItem[] = [
       {
         key: "insights-history",
         href: "/insights-history",
-        icon: "material-symbols:insights-outline",
+        icon: "material-symbols:search-insights",
         title: "Insights History",
       },
       {
