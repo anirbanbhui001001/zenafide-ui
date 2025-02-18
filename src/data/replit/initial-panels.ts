@@ -4,6 +4,8 @@ import FilesTab from "@/components/replit/tabs/files-tab";
 import AgentsTab from "@/components/replit/tabs/agents-tab";
 import AssistantLayout from "@/components/replit/assistant-layout";
 
+import { regulations, regulationAgents } from "@/data/regulations";
+
 export const initialPanels: Panel[] = [
   {
     id: "left-panel",
@@ -11,13 +13,13 @@ export const initialPanels: Panel[] = [
       {
         id: "files",
         title: "Files",
-        content: React.createElement(FilesTab),
+        content: React.createElement(FilesTab, { documents: regulations }),
         isCloseable: false,
       },
       {
         id: "insights",
         title: "Insights",
-        content: React.createElement(AgentsTab),
+        content: React.createElement(AgentsTab, { insights: regulationAgents }),
         isCloseable: false,
       },
     ],

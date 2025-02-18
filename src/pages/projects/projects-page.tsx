@@ -5,6 +5,7 @@ import ProjectsTab from "./tabs/projects-tab";
 import DocumentsTab from "./tabs/documents-tab";
 import ReplitLayout from "@/components/replit/replit-layout";
 import { Project, ProjectDocument } from "@/types/projects";
+import { initialPanels } from "@/data/projects/replit/initial-panels";
 
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("projects");

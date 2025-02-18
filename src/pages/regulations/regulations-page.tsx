@@ -4,6 +4,8 @@ import DocumentsTab from "./tabs/documents-tab";
 import AssistantTab from "./tabs/assistant-tab";
 import ReplitLayout from "@/components/replit/replit-layout";
 import { Regulation } from "@/types/regulations";
+import { initialPanels } from "@/data/replit/initial-panels";
+
 
 export default function RegulationsPage() {
   const [activeTab, setActiveTab] = useState("documents");
