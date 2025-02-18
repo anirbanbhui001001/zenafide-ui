@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Button } from "@heroui/react";
 import AssistantMainArea from "./assistant/assistant-main-area";
 import AssistantChatHistory from "./tabs/assistant-chat-history-tab";
-import { chats } from "@/data/replit/chats";
+import { Chat } from "@/types/assistant";
 
 interface AssistantLayoutProps {
   chats: Chat[];
