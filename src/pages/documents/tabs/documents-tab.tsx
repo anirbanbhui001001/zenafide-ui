@@ -20,6 +20,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
         </div>
       ),
     },
+    { key: "folder", label: "Folder" },
     { key: "uploadedDate", label: "Uploaded Date" },
     { key: "uploadedBy", label: "Uploaded By" },
     { key: "status", label: "Status" },
