@@ -2,6 +2,7 @@
 export interface Document {
   id: string;
   filename: string;
+  folder: string;
   uploadedDate: string;
   uploadedBy: string;
   status: 'active' | 'archived';
