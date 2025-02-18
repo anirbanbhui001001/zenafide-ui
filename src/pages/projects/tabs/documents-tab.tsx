@@ -9,7 +9,16 @@ interface DocumentsTabProps {
 
 export default function DocumentsTab({ projectId }: DocumentsTabProps) {
   const columns = [
-    { key: "filename", label: "Name" },
+    { 
+      key: "filename", 
+      label: "Name",
+      render: (document: Document) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
+          {document.filename}
+        </div>
+      )
+    },
     { key: "uploadedDate", label: "Uploaded Date" },
     { key: "status", label: "Status" },
   ];
