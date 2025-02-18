@@ -20,29 +20,32 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     {
       key: "filename",
       label: "Filename",
+      width: "20%",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
-          {document.filename}
+          <Icon icon="mdi:file-outline" className="text-gray-500 flex-shrink-0" width={20} />
+          <span className="truncate">{document.filename}</span>
         </div>
       ),
     },
     { 
       key: "folder", 
       label: "Folder",
+      width: "35%",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:folder-outline" className="text-gray-500" width={20} />
-          {document.folder}
+          <Icon icon="mdi:folder-outline" className="text-gray-500 flex-shrink-0" width={20} />
+          <span className="truncate">{document.folder}</span>
         </div>
       )
     },
-    { key: "uploadedDate", label: "Uploaded Date" },
-    { key: "uploadedBy", label: "Uploaded By" },
-    { key: "status", label: "Status" },
+    { key: "uploadedDate", label: "Uploaded Date", width: "15%" },
+    { key: "uploadedBy", label: "Uploaded By", width: "15%" },
+    { key: "status", label: "Status", width: "10%" },
     {
       key: "actions",
       label: "Actions",
+      width: "5%",
       align: "end" as const,
       render: (document: Document) => (
         <div className="flex justify-end gap-2">
