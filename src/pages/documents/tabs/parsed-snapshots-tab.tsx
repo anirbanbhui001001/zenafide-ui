@@ -3,7 +3,8 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { parsedSnapshots } from "@/data/documents";
-import { Document, ParsedSnapshot } from "@/types/document";
+import { Document, ParsedSnapshot } from "@/types/documents/document";
+import { Button } from "@heroui/react";
 
 interface ParsedSnapshotsTabProps {
   onDocumentSelect?: (document: Document) => void;
