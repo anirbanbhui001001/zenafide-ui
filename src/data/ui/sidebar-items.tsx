@@ -48,6 +48,12 @@ export const sidebarItems: SidebarItem[] = [
         title: "Conversation History",
       },
       {
+        key: "insights-history",
+        href: "/insights-history",
+        icon: "material-symbols:insights-outline",
+        title: "Insights History",
+      },
+      {
         key: "users",
         href: "/users",
         icon: "ci:users-group",
