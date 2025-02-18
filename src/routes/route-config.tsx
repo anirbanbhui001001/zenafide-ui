@@ -14,6 +14,7 @@ import ExperimentDetails from "@/components/evals/experiments/experiment-details
 import PromptDetails from "@/components/prompt/prompt-details";
 import { agents } from "@/data/agents";
 import ProjectsPage from "@/pages/projects/projects-page";
+import InsightsPage from "@/pages/insights/insights-page";
 
 
 const routes: RouteObject[] = [
@@ -60,6 +61,10 @@ const routes: RouteObject[] = [
       {
         path: "projects",
         element: <ProjectsPage />,
+      },
+      {
+        path: "insights-history",
+        element: <InsightsPage />,
       }
     ],
   },
