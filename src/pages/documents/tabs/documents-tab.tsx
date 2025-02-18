@@ -17,25 +17,23 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
   );
 
   const columns = [
-    { 
-      key: "filename", 
+    {
+      key: "filename",
       label: "Filename",
-      width: "20%",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:file-outline" className="text-gray-500 flex-shrink-0" width={20} />
-          <span className="truncate">{document.filename}</span>
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
+          {document.filename}
         </div>
-      )
+      ),
     },
     { 
       key: "folder", 
       label: "Folder",
-      width: "40%",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:folder-outline" className="text-gray-500 flex-shrink-0" width={20} />
-          <span className="truncate">{document.folder}</span>
+          <Icon icon="mdi:folder-outline" className="text-gray-500" width={20} />
+          {document.folder}
         </div>
       )
     },
