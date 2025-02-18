@@ -2,6 +2,7 @@
 import React from "react";
 import DataTable from "@/components/table/datatable";
 import { projectDocuments } from "@/data/projects";
+import {Icon} from "@iconify/react";
 
 interface DocumentsTabProps {
   projectId?: string;
