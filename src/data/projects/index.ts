@@ -17,19 +17,19 @@ export const projects: Project[] = [
 
 export const projectDocuments: ProjectDocument[] = [
   {
-    id: "1",
+    id: "3",
     project_id: "1",
     filename: "Blueprint A",
-    folder: "folder/1/projects/1/",
+    folder: "evsDrive/projects/1/documents/3/",
     uploadedDate: "2024-02-15",
     status: "active",
     content: "Blueprint A content",
   },
   {
-    id: "2",
+    id: "4",
     project_id: "2",
     filename: "Blueprint B",
-    folder: "folder/2/projects/2/",
+    folder: "evsDrive/projects/2/documents/4/",
     uploadedDate: "2024-02-15",
     status: "active",
   },
@@ -37,17 +37,17 @@ export const projectDocuments: ProjectDocument[] = [
 
 export const projectAgents: ProjectAgent[] = [
   {
-    id: "1",
+    id: "3",
     name: "Blueprint A Summary",
-    folder: "folder/1/projects/1/overview",
+    folder: "evsDrive/projects/1/documents/3/overview",
     type: "summary",
     projectId: "1",
     content: "my summary",
   },
   {
-    id: "2",
+    id: "4",
     name: "Blueprint B Summary",
-    folder: "folder/2/projects/2/overview",
+    folder: "evsDrive/projects/2/documents/4/overview",
     type: "summary",
     projectId: "2",
     content: "my summary",

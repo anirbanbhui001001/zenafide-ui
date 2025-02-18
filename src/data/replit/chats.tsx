@@ -3,7 +3,7 @@ import { Chat, AssistantMessage, FileChange } from "@/types/assistant";
 
 const fileChanges: FileChange[] = [
   {
-    filePath: "folder/1/documents/1/table-of-contents",
+    filePath: "evsDrive/table-of-contents",
     description: "NEC 1.0 Table of Contents",
     additions: 500,
     deletions: 0,
@@ -11,7 +11,7 @@ const fileChanges: FileChange[] = [
     content: "my table-of-contents",
   },
   {
-    filePath: "folder/1/documents/1/summary",
+    filePath: "evsDrive/summary",
     description: "NEC 1.0 Summary",
     additions: 99,
     deletions: 0,
@@ -19,7 +19,7 @@ const fileChanges: FileChange[] = [
     content: "my summary",
   },
   {
-    filePath: "folder/2/documents/2/table-of-contents",
+    filePath: "evsDrive/documents/2/table-of-contents",
     description: "NEC 2.0 Table of Contents",
     additions: 500,
     deletions: 0,
@@ -27,7 +27,7 @@ const fileChanges: FileChange[] = [
     content: "my table-of-contents",
   },
   {
-    filePath: "folder/2/documents/2/summary",
+    filePath: "evsDrive/documents/2/summary",
     description: "NEC 2.0 Summary",
     additions: 99,
     deletions: 0,
@@ -55,8 +55,8 @@ export const chats: Chat[] = [
         timestamp: new Date(Date.now() - 60000).toISOString(),
         isUser: false,
         files: [
-          "folder/1/documents/1/table-of-contents",
-          "folder/1/documents/1/summary",
+          "evsDrive/table-of-contents",
+          "evsDrive/summary",
         ],
         proposedChanges: [fileChanges[0], fileChanges[1]],
       },
@@ -80,8 +80,8 @@ export const chats: Chat[] = [
         timestamp: new Date(Date.now() - 60000).toISOString(),
         isUser: false,
         files: [
-          "folder/2/documents/2/table-of-contents",
-          "folder/2/documents/2/summary",
+          "evsDrive/documents/2/table-of-contents",
+          "evsDrive/documents/2/summary",
         ],
         proposedChanges: [fileChanges[2], fileChanges[3]],
       },
