@@ -6,8 +6,12 @@ import { Icon } from '@iconify/react';
 import { initialPanels } from '@/data/replit/initial-panels';
 import { Panel as PanelType } from '@/types/replit/panel';
 
-export default function ReplitLayout() {
-  const [panels, setPanels] = useState<PanelType[]>(initialPanels);
+interface ReplitLayoutProps {
+  initialPanels?: PanelType[];
+}
+
+export default function ReplitLayout({ initialPanels: customInitialPanels }: ReplitLayoutProps) {
+  const [panels, setPanels] = useState<PanelType[]>(customInitialPanels || initialPanels);
   const [leftWidth, setLeftWidth] = useState(panels[0].width || 240);
   const [rightWidth, setRightWidth] = useState(panels[2].width || 320);
 

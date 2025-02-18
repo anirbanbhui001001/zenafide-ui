@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         </Tab>
         <Tab key="replit" title="Reva">
           <div className="h-[calc(100vh-10rem)]">
-            <ReplitLayout />
+            <ReplitLayout initialPanels={initialPanels} />
           </div>
         </Tab>
       </Tabs>

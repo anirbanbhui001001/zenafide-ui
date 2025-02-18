@@ -3,7 +3,11 @@ import EditorTab from "@/components/replit/tabs/editor-tab";
 import DataTable from "@/components/table/datatable";
 import { regulationAgents } from "@/data/regulations";
 
-export default function AgentsTab() {
+interface AgentsTabProps {
+  insights: any[];
+}
+
+export default function AgentsTab({ insights }: AgentsTabProps) {
   const columns = [
     { key: "name", label: "name" }, // Empty label for no header
     { key: "folder", label: "folder" },
@@ -12,7 +16,7 @@ export default function AgentsTab() {
   return (
     <div className="h-full overflow-hidden">
       <DataTable
-        data={regulationAgents}
+        data={insights}
         columns={columns}
         hideHeader={true}
         onRowClick={(row) => {

@@ -3,7 +3,11 @@ import DataTable from "@/components/table/datatable";
 import EditorTab from "@/components/replit/tabs/editor-tab";
 import { regulations } from "@/data/regulations";
 
-export default function FilesTab() {
+interface FilesTabProps {
+  documents: any[];
+}
+
+export default function FilesTab({ documents }: FilesTabProps) {
   const columns = [
     { key: "filename", label: "name" }, // Empty label for no header
     { key: "folder", label: "folder" },
@@ -29,7 +33,7 @@ export default function FilesTab() {
   return (
     <div className="h-full overflow-hidden">
       <DataTable
-        data={regulations}
+        data={documents}
         columns={columns}
         hideHeader={true}
         onRowClick={handleRowClick}
