@@ -17,7 +17,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
   );
 
   const columns = [
-    { key: "id", label: "ID", width: "10%" },
+    { key: "id", label: "ID", width: "5%" },
     {
       key: "filename",
       label: "Filename",
@@ -39,9 +39,9 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
         </div>
       )
     },
-    { key: "uploadedDate", label: "Uploaded Date", width: "15%" },
-    { key: "uploadedBy", label: "Uploaded By", width: "15%" },
-    { key: "status", label: "Status", width: "10%" },
+    { key: "uploadedDate", label: "Uploaded Date" },
+    { key: "uploadedBy", label: "Uploaded By"},
+    { key: "status", label: "Status" },
     {
       key: "actions",
       label: "Actions",
