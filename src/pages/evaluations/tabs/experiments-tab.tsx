@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom";
 import DataTable from "@/components/table/datatable";
 import ExperimentDetails from "@/components/evals/experiments/experiment-details";
 import { experiments } from "@/data/evals/experiments";
-import { Experiment } from "@/types/experiment";
+import { Experiment } from "@/types/evals/experiment";
 
 export default function ExperimentsTab() {
   const navigate = useNavigate();
   const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
 
   const columns = [
+    { key: "id", label: "ID", width: "5%" },
     { key: "name", label: "Name" },
     { key: "errors", label: "Errors" },
     { key: "duration", label: "Duration (avg)" },

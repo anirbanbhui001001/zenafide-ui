@@ -16,6 +16,7 @@ export default function AIProviders() {
   >();
 
   const columns = [
+    { key: "id", label: "ID", width: "5%"},
     { key: "name", label: "Name" },
     {
       key: "status",
