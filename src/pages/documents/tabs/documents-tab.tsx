@@ -11,7 +11,16 @@ interface DocumentsTabProps {
 
 export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
   const columns = [
-    { key: "filename", label: "Filename" },
+    { 
+      key: "filename", 
+      label: "Filename",
+      render: (document: Document) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:file" width={20} />
+          {document.filename}
+        </div>
+      )
+    },
     { key: "uploadedDate", label: "Uploaded Date" },
     { key: "uploadedBy", label: "Uploaded By" },
     { key: "status", label: "Status" },
