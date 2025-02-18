@@ -43,7 +43,7 @@ export const sidebarItems: SidebarItem[] = [
       },
       {
         key: "conversation-history",
-        href: "/home",
+        href: "/conversation-history",
         icon: "material-symbols:work-history-outline",
         title: "Conversation History",
       },

@@ -65,6 +65,10 @@ const routes: RouteObject[] = [
       {
         path: "insights-history",
         element: <InsightsPage />,
+      },
+      {
+        path: "conversation-history",
+        element: <ChatsPage />,
       }
     ],
   },
