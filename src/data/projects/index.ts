@@ -39,7 +39,7 @@ export const projectAgents: ProjectAgent[] = [
   {
     id: "5",
     name: "Blueprint A Summary",
-    folder: "evsDrive/projects/1/documents/3/overview",
+    folder: "evsDrive/projects/1/overview",
     type: "summary",
     projectId: "1",
     content: "my summary",
@@ -47,7 +47,7 @@ export const projectAgents: ProjectAgent[] = [
   {
     id: "6",
     name: "Blueprint B Summary",
-    folder: "evsDrive/projects/2/documents/4/overview",
+    folder: "evsDrive/projects/2/overview",
     type: "summary",
     projectId: "2",
     content: "my summary",

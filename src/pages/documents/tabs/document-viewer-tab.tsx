@@ -1,5 +1,5 @@
 import React from "react";
-import { Document } from "@/types/document";
+import { Document } from "@/types/documents/document";
 import { Color } from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";

@@ -41,7 +41,7 @@ export const insightsHistory: Insight[] = [
   {
     id: "5",
     name: "Blueprint A Summary",
-    folder: "evsDrive/projects/1/documents/3/overview",
+    folder: "evsDrive/projects/1/overview",
     type: "summary",
     content: "my summary",
     parent: "project",
@@ -50,7 +50,7 @@ export const insightsHistory: Insight[] = [
   {
     id: "6",
     name: "Blueprint B Summary",
-    folder: "evsDrive/projects/2/documents/4/overview",
+    folder: "evsDrive/projects/2/overview",
     type: "summary",
     content: "my summary",
     parent: "project",
