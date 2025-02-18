@@ -9,6 +9,12 @@ interface DocumentsTabProps {
 }
 
 export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
+  const actions = (
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:plus" />}>
+      Add Document
+    </Button>
+  );
+
   const columns = [
     {
       key: "filename",
@@ -50,5 +56,5 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     },
   ];
 
-  return <DataTable data={documents} columns={columns} title="All Documents" />;
+  return <DataTable data={documents} columns={columns} title="All Documents" actions={actions} />;
 }
