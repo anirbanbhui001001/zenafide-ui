@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
@@ -11,15 +10,15 @@ interface DocumentsTabProps {
 
 export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
   const columns = [
-    { 
-      key: "filename", 
+    {
+      key: "filename",
       label: "Filename",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
           {document.filename}
         </div>
-      )
+      ),
     },
     { key: "uploadedDate", label: "Uploaded Date" },
     { key: "uploadedBy", label: "Uploaded By" },
@@ -41,11 +40,5 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     },
   ];
 
-  return (
-    <DataTable
-      data={documents}
-      columns={columns}
-      title="All Documents"
-    />
-  );
+  return <DataTable data={documents} columns={columns} title="All Documents" />;
 }

@@ -2,6 +2,7 @@
 import React from "react";
 import DataTable from "@/components/table/datatable";
 import { indexedSnapshots } from "@/data/documents";
+import {Icon} from "@iconify/react";
 
 export default function IndexedSnapshotsTab() {
   const columns = [

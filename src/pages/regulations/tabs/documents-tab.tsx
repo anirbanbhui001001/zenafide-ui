@@ -32,5 +32,7 @@ export default function DocumentsTab({
     },
   ];
 
-  return <DataTable data={regulations} columns={columns} />;
+  return (
+    <DataTable data={regulations} columns={columns} title="All Regulations" />
+  );
 }
