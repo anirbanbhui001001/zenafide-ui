@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {Button, Input, Checkbox, Link, Form, Divider} from "@heroui/react";
 import {Icon} from "@iconify/react";
 
@@ -10,9 +11,12 @@ export default function Login() {
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("handleSubmit");
+    // Add your authentication logic here
+    navigate("/projects");
   };
 
   return (
