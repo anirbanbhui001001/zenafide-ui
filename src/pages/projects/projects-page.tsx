@@ -29,7 +29,7 @@ export default function ProjectsPage() {
         <Tab key="documents" title="Documents">
           <DocumentsTab projectId={selectedProject?.id} />
         </Tab>
-        <Tab key="replit" title="Replit">
+        <Tab key="replit" title="Reva">
           <div className="h-[calc(100vh-10rem)]">
             <ReplitLayout />
           </div>

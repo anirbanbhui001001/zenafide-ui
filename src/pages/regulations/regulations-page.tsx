@@ -32,7 +32,7 @@ export default function RegulationsPage() {
         <Tab key="assistant" title="Assistant">
           <AssistantTab />
         </Tab> */}
-        <Tab key="replit" title="Replit">
+        <Tab key="replit" title="Reva">
           <div className="h-[calc(100vh-10rem)]">
             <ReplitLayout />
           </div>
