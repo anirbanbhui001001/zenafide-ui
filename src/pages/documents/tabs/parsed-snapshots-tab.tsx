@@ -10,6 +10,11 @@ interface ParsedSnapshotsTabProps {
 }
 
 export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshotsTabProps) {
+  const actions = (
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:play" />}>
+      Run Extraction
+    </Button>
+  );
   const columns = [
     { 
       key: "filename", 
@@ -54,6 +59,7 @@ export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshots
       data={parsedSnapshots}
       columns={columns}
       title="Parsed Snapshots"
+      actions={actions}
     />
   );
 }
