@@ -16,7 +16,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
       label: "Filename",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:file" width={20} />
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
           {document.filename}
         </div>
       )
