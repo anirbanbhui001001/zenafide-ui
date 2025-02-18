@@ -9,6 +9,12 @@ interface ProjectsTabProps {
 }
 
 export default function ProjectsTab({ onProjectSelect }: ProjectsTabProps) {
+  const actions = (
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:plus" />}>
+      Add Project
+    </Button>
+  );
+
   const columns = [
     {
       key: "name",
@@ -29,6 +35,7 @@ export default function ProjectsTab({ onProjectSelect }: ProjectsTabProps) {
       <DataTable
         data={projects}
         columns={columns}
+        actions={actions}
         onRowClick={onProjectSelect}
       />
     </div>
