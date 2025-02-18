@@ -5,6 +5,12 @@ import { indexedSnapshots } from "@/data/documents";
 import {Icon} from "@iconify/react";
 
 export default function IndexedSnapshotsTab() {
+  const actions = (
+    <Button size="sm" color="primary" startContent={<Icon icon="mdi:play" />}>
+      Build RAG Index
+    </Button>
+  );
+
   const columns = [
     { 
       key: "filename", 
@@ -29,6 +35,7 @@ export default function IndexedSnapshotsTab() {
       data={indexedSnapshots}
       columns={columns}
       title="Indexed Snapshots"
+      actions={actions}
     />
   );
 }
