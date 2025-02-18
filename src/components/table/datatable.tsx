@@ -35,7 +35,7 @@ export default function DataTable<T extends { id: string }>({
       wrapper: ["max-h-[382px]", "max-w-3xl"],
       th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
       td: ["pb-2"],
-      tr: ["border-b", "border-divider", "data-[last=true]:border-b-0"],
+      tr: ["border-b", "border-divider", "data-[last=true]:border-b-0", "hover:bg-gray-100", "cursor-pointer"],
     }),
     [],
   );
