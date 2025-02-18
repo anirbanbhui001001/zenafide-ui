@@ -10,7 +10,16 @@ interface ProjectsTabProps {
 
 export default function ProjectsTab({ onProjectSelect }: ProjectsTabProps) {
   const columns = [
-    { key: "name", label: "Name" },
+    { 
+      key: "name", 
+      label: "Name",
+      render: (project: any) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
+          {project.name}
+        </div>
+      )
+    },
     { key: "updatedAt", label: "Updated At" },
     { key: "updatedBy", label: "Updated By" },
   ];

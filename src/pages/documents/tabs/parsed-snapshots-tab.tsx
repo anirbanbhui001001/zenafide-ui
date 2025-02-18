@@ -11,7 +11,16 @@ interface ParsedSnapshotsTabProps {
 
 export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshotsTabProps) {
   const columns = [
-    { key: "filename", label: "Filename" },
+    { 
+      key: "filename", 
+      label: "Filename",
+      render: (snapshot: any) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
+          {snapshot.filename}
+        </div>
+      )
+    },
     { key: "docSnapshotId", label: "Doc Snapshot ID" },
     { key: "parsedSnapshotId", label: "Parsed Snapshot ID" },
     { key: "status", label: "Status" },
