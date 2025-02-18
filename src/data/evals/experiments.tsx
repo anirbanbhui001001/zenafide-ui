@@ -1,6 +1,6 @@
 
-import { Experiment } from "@/types/experiment";
-import { ExperimentResult, Metric, ScoreMetric } from "@/types/experiment-details";
+import { Experiment } from "@/types/evals/experiment";
+import { ExperimentResult, Metric, ScoreMetric } from "@/types/evals/experiment-details";
 
 export const experiments: Experiment[] = [
   {

@@ -1,5 +1,5 @@
 
-import { Dataset } from "@/types/dataset";
+import { Dataset } from "@/types/evals/dataset";
 
 export const datasets: Dataset[] = [
   {

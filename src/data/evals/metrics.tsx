@@ -1,5 +1,5 @@
 
-import { Metric } from "@/types/metric";
+import { Metric } from "@/types/evals/metric";
 
 export const metrics: Metric[] = [
   {
