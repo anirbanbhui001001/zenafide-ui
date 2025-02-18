@@ -12,7 +12,16 @@ export default function DocumentsTab({
   onRegulationSelect,
 }: DocumentsTabProps) {
   const columns = [
-    { key: "filename", label: "Filename" },
+    { 
+      key: "filename", 
+      label: "Filename",
+      render: (document: Regulation) => (
+        <div className="flex items-center gap-2">
+          <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
+          {document.filename}
+        </div>
+      )
+    },
     { key: "folder", label: "Folder" },
     { key: "uploadedDate", label: "Uploaded Date" },
     {
