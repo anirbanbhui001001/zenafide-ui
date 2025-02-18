@@ -2,7 +2,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
-import { parsedSnapshots } from "@/data/documents";
+import { parsedSnapshots, documents } from "@/data/documents";
 import { Document, ParsedSnapshot } from "@/types/documents/document";
 import { Button } from "@heroui/react";
 
@@ -50,13 +50,10 @@ export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshots
             icon="mdi:file-eye"
             width={20}
             className="cursor-pointer"
-            onClick={() => onDocumentSelect?.({
-              id: snapshot.documentId,
-              filename: snapshot.filename,
-              uploadedDate: snapshot.updatedAt,
-              uploadedBy: snapshot.updatedBy,
-              status: 'active'
-            })}
+            onClick={() => {
+            const document = documents.find(doc => doc.id === snapshot.documentId);
+            if (document) onDocumentSelect?.(document);
+          }}
           />
         </div>
       ),
