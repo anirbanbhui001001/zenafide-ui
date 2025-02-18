@@ -12,6 +12,7 @@ export const documents: Document[] = [
     uploadedDate: "2024-02-15",
     uploadedBy: "Rohit Joshi",
     status: "active",
+    content: "my content",
   },
   {
     id: "2",
@@ -20,6 +21,7 @@ export const documents: Document[] = [
     uploadedDate: "2024-02-14",
     uploadedBy: "Rohit Joshi",
     status: "active",
+    content: "my content",
   },
   {
     id: "3",
@@ -28,6 +30,7 @@ export const documents: Document[] = [
     uploadedDate: "2024-02-15",
     uploadedBy: "Rohit Joshi",
     status: "active",
+    content: "my content",
   },
   {
     id: "4",
@@ -36,6 +39,7 @@ export const documents: Document[] = [
     uploadedDate: "2024-02-15",
     uploadedBy: "Rohit Joshi",
     status: "active",
+    content: "my content",
   },
 ];
 
@@ -44,11 +48,10 @@ export const parsedSnapshots: ParsedSnapshot[] = [
     id: "1",
     documentId: "1",
     filename: "NEC reg 1.0",
-    docSnapshotId: "1",
-    parsedSnapshotId: "1",
     status: "completed",
     updatedAt: "2024-02-15",
     updatedBy: "Rohit Joshi",
+    content: "my content",
   },
 ];
 
@@ -57,7 +60,6 @@ export const indexedSnapshots: IndexedSnapshot[] = [
     id: "1",
     documentId: "1",
     filename: "NEC reg 1.0",
-    docSnapshotId: "1",
     parsedSnapshotId: "1",
     chunkingStrategy: "paragraph",
     status: "completed",

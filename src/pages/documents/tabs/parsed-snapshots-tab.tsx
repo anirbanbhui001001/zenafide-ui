@@ -17,6 +17,16 @@ export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshots
     </Button>
   );
   const columns = [
+    {
+      key: "id",
+      label: "ID",
+      width: "5%",
+    },
+    {
+      key: "documentId",
+      label: "Doc ID",
+      width: "5%",
+    },
     { 
       key: "filename", 
       label: "Filename",
@@ -27,8 +37,6 @@ export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshots
         </div>
       )
     },
-    { key: "docSnapshotId", label: "Doc Snapshot ID" },
-    { key: "parsedSnapshotId", label: "Parsed Snapshot ID" },
     { key: "status", label: "Status" },
     { key: "updatedAt", label: "Updated At" },
     { key: "updatedBy", label: "Updated By" },

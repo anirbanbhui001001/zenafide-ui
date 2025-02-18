@@ -1,8 +1,7 @@
-
 import React from "react";
 import DataTable from "@/components/table/datatable";
 import { indexedSnapshots } from "@/data/documents";
-import {Icon} from "@iconify/react";
+import { Icon } from "@iconify/react";
 import { Button } from "@heroui/react";
 
 export default function IndexedSnapshotsTab() {
@@ -13,18 +12,18 @@ export default function IndexedSnapshotsTab() {
   );
 
   const columns = [
-    { 
-      key: "filename", 
+    { key: "id", label: "ID", width: "5%" },
+    { key: "parsedSnapshotId", label: "Parsed Snapshot ID", width: "10%" },
+    {
+      key: "filename",
       label: "Filename",
       render: (snapshot: any) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
           {snapshot.filename}
         </div>
-      )
+      ),
     },
-    { key: "docSnapshotId", label: "Doc Snapshot ID" },
-    { key: "parsedSnapshotId", label: "Parsed Snapshot ID" },
     { key: "chunkingStrategy", label: "Chunking Strategy" },
     { key: "status", label: "Status" },
     { key: "updatedAt", label: "Updated At" },
