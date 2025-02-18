@@ -5,6 +5,7 @@ import AgentsTab from "@/components/replit/tabs/agents-tab";
 import AssistantLayout from "@/components/replit/assistant-layout";
 
 import { regulations, regulationAgents } from "@/data/regulations";
+import { chats } from "@/data/replit/chats";
 
 export const initialPanels: Panel[] = [
   {

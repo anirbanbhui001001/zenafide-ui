@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Panel } from "@/types/replit/panel";
 import FilesTab from "@/components/replit/tabs/files-tab";
 import AgentsTab from "@/components/replit/tabs/agents-tab";
 import AssistantLayout from "@/components/replit/assistant-layout";
 import { projectDocuments, projectAgents } from "@/data/projects";
+import { chats } from "@/data/projects/replit/chats";
 
 export const initialPanels: Panel[] = [
   {

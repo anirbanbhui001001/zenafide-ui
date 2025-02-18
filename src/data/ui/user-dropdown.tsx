@@ -7,7 +7,7 @@ export const users: DropdownUser[] = [
     name: "Rohit Joshi",
     role: "Dev",
     team: "Dev",
-    avatar: "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatars/e1b8ec120710c09589a12c0004f85825.jpg",
+    avatar: "public/rohit avatar.jpeg",
     email: "rohitjoshi@ucla.edu",
   }
 ];
