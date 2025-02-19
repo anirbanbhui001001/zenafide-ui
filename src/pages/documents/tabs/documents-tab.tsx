@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { documents } from "@/data/documents";
 import { Document } from "@/types/documents/document";
-import {Button} from "@heroui/react";
+import { Button } from "@heroui/react";
 
 interface DocumentsTabProps {
   onDocumentSelect: (document: Document) => void;
@@ -22,24 +22,32 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
       label: "Filename",
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:file-outline" className="text-gray-500 flex-shrink-0" width={20} />
+          <Icon
+            icon="mdi:file-outline"
+            className="text-gray-500 flex-shrink-0"
+            width={20}
+          />
           <span className="truncate">{document.filename}</span>
         </div>
       ),
     },
-    { 
-      key: "folder", 
+    {
+      key: "folder",
       label: "Folder",
-      width: 200,
+      width: 350,
       render: (document: Document) => (
         <div className="flex items-center gap-2">
-          <Icon icon="mdi:folder-outline" className="text-gray-500 flex-shrink-0" width={20} />
+          <Icon
+            icon="mdi:folder-outline"
+            className="text-gray-500 flex-shrink-0"
+            width={20}
+          />
           <span className="truncate">{document.folder}</span>
         </div>
-      )
+      ),
     },
     { key: "uploadedDate", label: "Uploaded Date" },
-    { key: "uploadedBy", label: "Uploaded By"},
+    { key: "uploadedBy", label: "Uploaded By" },
     { key: "status", label: "Status" },
     {
       key: "actions",
@@ -59,5 +67,12 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     },
   ];
 
-  return <DataTable data={documents} columns={columns} title="All Documents" actions={actions} />;
+  return (
+    <DataTable
+      data={documents}
+      columns={columns}
+      title="All Documents"
+      actions={actions}
+    />
+  );
 }
