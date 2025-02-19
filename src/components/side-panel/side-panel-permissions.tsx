@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Accordion, AccordionItem, Checkbox, Button } from "@heroui/react";
+import { Accordion, AccordionItem, Checkbox } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
 import { sections } from "@/data/permissions/sections";
 
@@ -24,7 +24,7 @@ export default function SidePanelPermissions({
         lastName: "",
         email: "",
       }),
-      permissions: selectedPermissions,
+      // permissions: selectedPermissions,
     });
   };
 

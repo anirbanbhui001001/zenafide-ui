@@ -3,19 +3,11 @@ import { useState } from "react";
 import DocumentsTab from "./tabs/documents-tab";
 // import AssistantTab from "./tabs/assistant-tab";
 import ReplitLayout from "@/components/replit/replit-layout";
-import { Regulation } from "@/types/regulations";
 import { initialPanels } from "@/data/replit/initial-panels";
 
 
 export default function RegulationsPage() {
   const [activeTab, setActiveTab] = useState("documents");
-  const [selectedRegulation, setSelectedRegulation] =
-    useState<Regulation | null>(null);
-
-  const handleRegulationSelect = (regulation: Regulation) => {
-    setSelectedRegulation(regulation);
-    setActiveTab("analysis");
-  };
 
   return (
     <div className="p-6">
@@ -26,7 +18,7 @@ export default function RegulationsPage() {
         aria-label="Regulation management options"
       >
         <Tab key="documents" title="Documents">
-          <DocumentsTab onRegulationSelect={handleRegulationSelect} />
+          <DocumentsTab />
         </Tab>
         {/* <Tab key="analysis" title="Analysis">
           <AnalysisTab regulation={selectedRegulation} />

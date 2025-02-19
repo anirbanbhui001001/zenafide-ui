@@ -75,7 +75,6 @@ export default function ExperimentDetails({
           <span className="text-sm">Score distribution for</span>
           <Select
             size="sm"
-            variant="light"
             className="w-40"
             defaultSelectedKeys={['avgRelevance']}
             items={scoreMetrics}

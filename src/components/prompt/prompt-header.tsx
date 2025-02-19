@@ -46,9 +46,9 @@ export default function PromptHeader() {
             </Button>
           </DropdownTrigger>
           <DropdownMenu>
-            <DropdownItem>Duplicate</DropdownItem>
-            <DropdownItem>Export</DropdownItem>
-            <DropdownItem className="text-danger">Delete</DropdownItem>
+            <DropdownItem key="duplicate">Duplicate</DropdownItem>
+            <DropdownItem key="export">Export</DropdownItem>
+            <DropdownItem key="delete" className="text-danger">Delete</DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </div>

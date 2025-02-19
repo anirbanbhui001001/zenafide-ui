@@ -37,6 +37,7 @@ export default function CustomSidebar() {
         </div>
         <ScrollShadow className="-mr-6 h-full max-h-full py-6 pr-6">
           <Sidebar
+            defaultSelectedKey=""
             iconClassName="group-data-[selected=true]:text-primary-foreground"
             itemClasses={{
               base: "data-[selected=true]:bg-primary-400 dark:data-[selected=true]:bg-primary-300 data-[hover=true]:bg-default-300/20 dark:data-[hover=true]:bg-default-200/40",
