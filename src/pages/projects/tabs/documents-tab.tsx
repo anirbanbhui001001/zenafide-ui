@@ -1,9 +1,8 @@
-
 import DataTable from "@/components/table/datatable";
 import { projectDocuments } from "@/data/projects";
 import {Icon} from "@iconify/react";
 import { Button } from "@heroui/react";
-import { Document } from "@/types/documents/document";
+import { ProjectDocument } from "@/types/projects"; // Assuming ProjectDocument is the correct type
 
 interface DocumentsTabProps {
   projectId?: string;
@@ -21,7 +20,7 @@ export default function DocumentsTab({ projectId }: DocumentsTabProps) {
     { 
       key: "filename", 
       label: "Name",
-      render: (document: Document) => (
+      render: (document: ProjectDocument) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:file-outline" className="text-gray-500" width={20} />
           {document.filename}
@@ -31,7 +30,7 @@ export default function DocumentsTab({ projectId }: DocumentsTabProps) {
     {
       key: "folder",
       label: "Folder",
-      render: (document: Document) => (
+      render: (document: ProjectDocument) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:folder-outline" className="text-gray-500" width={20} />
           {document.folder || '-'}
