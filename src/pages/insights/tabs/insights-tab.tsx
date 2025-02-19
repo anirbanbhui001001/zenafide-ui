@@ -10,7 +10,7 @@ interface InsightsTabProps {
 
 export default function InsightsTab({ onInsightSelect }: InsightsTabProps) {
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     {
       key: "name",
       label: "Name",
@@ -24,7 +24,7 @@ export default function InsightsTab({ onInsightSelect }: InsightsTabProps) {
     { 
       key: "folder", 
       label: "Folder",
-      width: "35%",
+      width: 350,
       render: (insight: Insight) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:folder-outline" className="text-gray-500 flex-shrink-0" width={20} />
@@ -37,7 +37,7 @@ export default function InsightsTab({ onInsightSelect }: InsightsTabProps) {
     {
       key: "actions",
       label: "Actions",
-      width: "5%",
+      width: 50,
       align: "end" as const,
       render: (insight: Insight) => (
         <div className="flex justify-end gap-2">

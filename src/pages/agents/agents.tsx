@@ -25,7 +25,7 @@ export default function Agents() {
   };
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     { key: "name", label: "Name" },
     { key: "systemPrompt", label: "System Prompt" },
     { key: "createdBy", label: "Created By" },

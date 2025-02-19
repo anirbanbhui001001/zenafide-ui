@@ -19,12 +19,12 @@ export default function ParsedSnapshotsTab({ onDocumentSelect }: ParsedSnapshots
     {
       key: "id",
       label: "ID",
-      width: "5%",
+      width: 50,
     },
     {
       key: "documentId",
       label: "Doc ID",
-      width: "5%",
+      width: 50,
     },
     { 
       key: "filename", 

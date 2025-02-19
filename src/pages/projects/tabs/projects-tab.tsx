@@ -16,7 +16,7 @@ export default function ProjectsTab({ onProjectSelect }: ProjectsTabProps) {
   );
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     {
       key: "name",
       label: "Name",

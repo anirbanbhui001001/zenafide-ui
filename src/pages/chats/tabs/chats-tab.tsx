@@ -10,7 +10,7 @@ interface ChatsTabProps {
 
 export default function ChatsTab({ onChatSelect }: ChatsTabProps) {
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     {
       key: "title",
       label: "Title",
@@ -24,13 +24,13 @@ export default function ChatsTab({ onChatSelect }: ChatsTabProps) {
     { 
       key: "messageCount",
       label: "Messages",
-      width: "15%",
+      width: 150,
       render: (chat: Chat) => chat.messages.length
     },
     {
       key: "actions",
       label: "Actions",
-      width: "5%",
+      width: 50,
       align: "end" as const,
       render: (chat: Chat) => (
         <div className="flex justify-end gap-2">

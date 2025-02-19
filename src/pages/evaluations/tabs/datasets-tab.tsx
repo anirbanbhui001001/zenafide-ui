@@ -10,7 +10,7 @@ export default function DataSetsTab() {
   const [selectedDataset, setSelectedDataset] = useState<Dataset | null>(null);
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     { key: "name", label: "Name" },
     { key: "description", label: "Description" },
     { key: "testCases", label: "Test Cases" },

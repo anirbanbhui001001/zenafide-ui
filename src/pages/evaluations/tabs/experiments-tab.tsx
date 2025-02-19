@@ -13,7 +13,7 @@ export default function ExperimentsTab() {
   const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     { key: "name", label: "Name" },
     { key: "errors", label: "Errors" },
     { key: "duration", label: "Duration (avg)" },

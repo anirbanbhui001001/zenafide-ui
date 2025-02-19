@@ -7,7 +7,7 @@ interface FilesTabProps {
 
 export default function FilesTab({ documents }: FilesTabProps) {
   const columns = [
-    { key: "id", label: "ID", width: "20%" },
+    { key: "id", label: "ID", width: 200 },
     { key: "filename", label: "Name" }, // Empty label for no header
     // { key: "folder", label: "Folder" },
   ];

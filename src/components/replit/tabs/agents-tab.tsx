@@ -7,7 +7,7 @@ interface AgentsTabProps {
 
 export default function AgentsTab({ insights }: AgentsTabProps) {
   const columns = [
-    { key: "id", label: "ID", width: "20%"},
+    { key: "id", label: "ID", width: 200},
     { key: "name", label: "Name" }, // Empty label for no header
   ];
 

@@ -11,8 +11,8 @@ export default function IndexedSnapshotsTab() {
   );
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
-    { key: "parsedSnapshotId", label: "Parsed Snapshot ID", width: "10%" },
+    { key: "id", label: "ID", width: 50 },
+    { key: "parsedSnapshotId", label: "Parsed Snapshot ID", width: 100 },
     {
       key: "filename",
       label: "Filename",
@@ -23,7 +23,7 @@ export default function IndexedSnapshotsTab() {
         </div>
       ),
     },
-    { key: "chunkingStrategy", label: "Chunking Strategy", width: "25%" },
+    { key: "chunkingStrategy", label: "Chunking Strategy", width: 250 },
     { key: "status", label: "Status" },
     { key: "updatedAt", label: "Updated At" },
     { key: "updatedBy", label: "Updated By" },
