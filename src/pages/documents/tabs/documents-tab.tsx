@@ -52,7 +52,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     {
       key: "actions",
       label: "Actions",
-      width: "5%",
+      width: 50,
       align: "end" as const,
       render: (document: Document) => (
         <div className="flex justify-end gap-2">
