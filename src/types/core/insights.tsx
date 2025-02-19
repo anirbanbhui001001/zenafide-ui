@@ -1,6 +1,3 @@
-
-import { InsightType } from "./common";
-
 export type Insight = {
   id: string;
   name: string;
