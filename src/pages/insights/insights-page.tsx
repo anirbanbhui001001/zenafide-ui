@@ -26,7 +26,7 @@ export default function InsightsPage() {
           <InsightsTab onInsightSelect={handleInsightSelect} />
         </Tab>
         <Tab key="viewer" title="Viewer">
-          <DocumentViewerTab document={selectedInsight} />
+          <DocumentViewerTab document={null}/>
         </Tab>
       </Tabs>
     </div>
