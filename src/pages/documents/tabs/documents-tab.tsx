@@ -16,7 +16,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
   );
 
   const columns = [
-    { key: "id", label: "ID", width: "5%" },
+    { key: "id", label: "ID", width: 50 },
     {
       key: "filename",
       label: "Filename",
@@ -30,7 +30,7 @@ export default function DocumentsTab({ onDocumentSelect }: DocumentsTabProps) {
     { 
       key: "folder", 
       label: "Folder",
-      width: "35%",
+      width: 200,
       render: (document: Document) => (
         <div className="flex items-center gap-2">
           <Icon icon="mdi:folder-outline" className="text-gray-500 flex-shrink-0" width={20} />
