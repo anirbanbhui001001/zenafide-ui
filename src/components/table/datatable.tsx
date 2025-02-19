@@ -16,7 +16,7 @@ export interface DataTableProps<T> {
     key: string;
     label: string;
     align?: "start" | "center" | "end";
-    width?: string | number;
+    width?: number;
     render?: (item: T) => React.ReactNode;
   }[];
   title?: string;
