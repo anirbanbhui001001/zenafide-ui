@@ -42,14 +42,14 @@ export default function DocumentsTab({ projectId }: DocumentsTabProps) {
     { key: "status", label: "Status" },
   ];
 
-  const filteredDocuments = projectId
-    ? projectDocuments.filter((doc) => doc.project_id === projectId)
-    : projectDocuments;
+  // const filteredDocuments = projectId
+  //   ? projectDocuments.filter((doc) => doc.project_id === projectId)
+  //   : projectDocuments;
 
   return (
     <div className="h-full overflow-hidden">
       <DataTable
-        data={filteredDocuments}
+        data={projectDocuments}
         columns={columns}
         actions={actions}
       />
