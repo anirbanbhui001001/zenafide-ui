@@ -1,4 +1,3 @@
-import React from "react";
 import DataTable from "@/components/table/datatable";
 import { projects } from "@/data/projects";
 import { Project } from "@/types/projects";

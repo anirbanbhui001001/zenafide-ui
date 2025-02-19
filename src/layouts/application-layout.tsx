@@ -1,7 +1,6 @@
 
 "use client";
 
-import React from "react";
 import MainArea from "./main-area";
 import CustomSidebar from "../components/sidebar/custom-sidebar";
 

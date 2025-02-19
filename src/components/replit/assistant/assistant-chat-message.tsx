@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, Card } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { AssistantMessage, FileChange } from "@/types/assistant";

@@ -1,7 +1,6 @@
 
 "use client";
 
-import React from "react";
 import {Card, CardBody, CardFooter, Button} from "@heroui/react";
 
 export default function UpgradeCard() {

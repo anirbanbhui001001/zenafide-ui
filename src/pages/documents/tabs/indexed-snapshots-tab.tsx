@@ -1,4 +1,3 @@
-import React from "react";
 import DataTable from "@/components/table/datatable";
 import { indexedSnapshots } from "@/data/documents";
 import { Icon } from "@iconify/react";
@@ -24,7 +23,7 @@ export default function IndexedSnapshotsTab() {
         </div>
       ),
     },
-    { key: "chunkingStrategy", label: "Chunking Strategy" },
+    { key: "chunkingStrategy", label: "Chunking Strategy", width: "25%" },
     { key: "status", label: "Status" },
     { key: "updatedAt", label: "Updated At" },
     { key: "updatedBy", label: "Updated By" },

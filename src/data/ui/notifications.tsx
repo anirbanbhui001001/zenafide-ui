@@ -1,5 +1,5 @@
 
-import { Notification, NotificationTabs } from "@/types/notification";
+import { Notification, NotificationTabs } from "@/types/ui/notification";
 
 export const notifications: Record<NotificationTabs, Notification[]> = {
   all: [

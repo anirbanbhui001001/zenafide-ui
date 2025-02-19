@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, Input } from "@heroui/react";
 import { Icon } from "@iconify/react";
 

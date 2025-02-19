@@ -1,5 +1,4 @@
 
-import React from "react";
 import { EditorProvider } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Color } from "@tiptap/extension-color";
@@ -8,7 +7,7 @@ import ListItem from "@tiptap/extension-list-item";
 
 const extensions = [
   Color.configure({ types: [TextStyle.name, ListItem.name] }),
-  TextStyle.configure({ types: [ListItem.name] }),
+  TextStyle.configure({ }),
   StarterKit.configure({
     bulletList: {
       keepMarks: true,

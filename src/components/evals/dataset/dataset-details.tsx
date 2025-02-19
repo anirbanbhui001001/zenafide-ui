@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import DatasetInformation from "./dataset-information";
 import TestCase from "./testcase";
-import { Dataset } from "@/types/dataset";
+import { Dataset } from "@/types/evals/dataset";
 
 interface DatasetDetailsProps {
   dataset: Dataset;

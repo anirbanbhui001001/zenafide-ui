@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { chats } from "@/data/chat_history";

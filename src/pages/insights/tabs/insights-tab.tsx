@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { insightsHistory } from "@/data/insights_history";

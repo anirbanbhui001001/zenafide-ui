@@ -1,10 +1,9 @@
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import { Button, Select, SelectItem } from "@heroui/react";
 import DataTable from "@/components/table/datatable";
 import { experimentResults, scoreMetrics, experimentMetrics } from "@/data/evals/experiments";
-import { ExperimentResult } from "@/types/experiment-details";
+import { ExperimentResult } from "@/types/evals/experiment-details";
 
 interface ExperimentDetailsProps {
   id: string;

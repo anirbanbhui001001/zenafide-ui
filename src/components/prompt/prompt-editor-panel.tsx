@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Button, Textarea } from "@heroui/react";
 import { Icon } from "@iconify/react";
 

@@ -1,7 +1,6 @@
 
 "use client";
 
-import React from "react";
 import {ScrollShadow, Button} from "@heroui/react";
 import {Icon} from "@iconify/react";
 import {Outlet} from "react-router-dom";

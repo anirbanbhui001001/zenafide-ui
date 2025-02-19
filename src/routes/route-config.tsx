@@ -1,5 +1,4 @@
 
-import React from "react";
 import { RouteObject } from "react-router-dom";
 import ApplicationLayout from "@/layouts/application-layout";
 import AIProviders from "@/pages/ai-providers/ai-providers";
@@ -10,11 +9,10 @@ import RegulationsPage from "@/pages/regulations/regulations-page";
 import Users from "@/pages/users/users";
 import Agents from "@/pages/agents/agents";
 import ReplitLayout from "@/components/replit/replit-layout";
-import ExperimentDetails from "@/components/evals/experiments/experiment-details";
 import PromptDetails from "@/components/prompt/prompt-details";
-import { agents } from "@/data/agents";
 import ProjectsPage from "@/pages/projects/projects-page";
 import InsightsPage from "@/pages/insights/insights-page";
+import ChatsPage from "@/pages/chats/chats-page";
 
 
 const routes: RouteObject[] = [

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import UserDropdown from "./custom-sidebar-user-dropdown";
 import NotificationsButton from "./custom-sidebar-notifications-button";
 

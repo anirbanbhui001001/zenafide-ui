@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Textarea } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import AssistantFileSelector from "./assistant-file-selector";

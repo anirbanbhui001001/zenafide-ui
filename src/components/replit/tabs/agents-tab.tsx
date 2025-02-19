@@ -1,4 +1,3 @@
-import React from "react";
 import EditorTab from "@/components/replit/tabs/editor-tab";
 import DataTable from "@/components/table/datatable";
 
@@ -17,7 +16,6 @@ export default function AgentsTab({ insights }: AgentsTabProps) {
       <DataTable
         data={insights}
         columns={columns}
-        hideHeader={true}
         onRowClick={(row) => {
           const newTab = {
             id: `agent-${row.id}`,

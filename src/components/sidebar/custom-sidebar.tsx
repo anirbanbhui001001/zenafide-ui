@@ -1,15 +1,11 @@
 "use client";
 
-import type { SidebarItem } from "./sidebar";
-import React from "react";
 import { Input, ScrollShadow, Spacer } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Sidebar from "./sidebar";
 import SidebarHeader from "./custom-sidebar-header";
 import WorkspaceSelect from "./custom-sidebar-workspace-select";
-import UpgradeCard from "./custom-sidebar-upgrade-card";
 import AccountSwitcher from "./custom-sidebar-account-switcher";
-import { Chip } from "@heroui/react";
 
 import { sidebarItems } from "@/data/ui/sidebar-items";
 

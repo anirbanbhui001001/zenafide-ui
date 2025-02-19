@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Select, SelectSection, SelectItem, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import { workspaces } from "@/data/ui/workspaces";

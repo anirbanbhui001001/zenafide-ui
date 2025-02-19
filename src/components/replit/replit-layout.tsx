@@ -1,8 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Resizable } from 'react-resizable';
 import Panel from './panel';
-import { Icon } from '@iconify/react';
 import { initialPanels } from '@/data/replit/initial-panels';
 import { Panel as PanelType } from '@/types/replit/panel';
 

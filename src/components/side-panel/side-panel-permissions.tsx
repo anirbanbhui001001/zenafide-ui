@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Accordion, AccordionItem, Checkbox, Button } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
 import { sections } from "@/data/permissions/sections";

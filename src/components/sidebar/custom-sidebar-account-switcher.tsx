@@ -1,7 +1,6 @@
 
 "use client";
 
-import React from "react";
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, User, Avatar} from "@heroui/react";
 import {Icon} from "@iconify/react";
 

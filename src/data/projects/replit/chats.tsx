@@ -1,5 +1,5 @@
 
-import { Chat, AssistantMessage, FileChange } from "@/types/assistant";
+import { Chat, FileChange } from "@/types/assistant";
 
 const fileChanges: FileChange[] = [
   {

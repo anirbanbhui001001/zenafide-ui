@@ -1,5 +1,4 @@
 
-import React from 'react';
 import AssistantInput from './assistant-input';
 import AssistantChatMessage from './assistant-chat-message';
 import { Chat } from '@/types/assistant';

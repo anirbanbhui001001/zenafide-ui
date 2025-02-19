@@ -1,5 +1,4 @@
 
-import React from "react";
 import { Dataset } from "@/types/evals/dataset";
 
 interface DatasetInformationProps {

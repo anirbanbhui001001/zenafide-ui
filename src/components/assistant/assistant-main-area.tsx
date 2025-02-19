@@ -1,4 +1,3 @@
-import React from "react";
 import AssistantInput from "./assistant-input";
 import AssistantChatMessage from "./assistant-chat-message";
 import { chats } from "@/data/replit/chats";

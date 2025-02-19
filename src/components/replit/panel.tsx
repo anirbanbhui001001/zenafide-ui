@@ -1,4 +1,3 @@
-import React from "react";
 import { Tab } from "@/types/replit/panel";
 import { Icon } from "@iconify/react";
 
