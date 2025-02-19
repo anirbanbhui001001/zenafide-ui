@@ -16,7 +16,7 @@ export interface DataTableProps<T> {
     key: string;
     label: string;
     align?: "start" | "center" | "end";
-    width?: string;
+    width?: number | "auto";
     render?: (item: T) => React.ReactNode;
   }[];
   title?: string;
@@ -43,7 +43,7 @@ export default function DataTable<T extends { id: string }>({
 
   const tableProps = React.useMemo(
     () => ({
-      layout: "fixed",
+      layout: "fixed" as const,
       removeWrapper: true,
       classNames,
     }),
