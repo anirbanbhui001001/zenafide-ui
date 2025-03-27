@@ -3,47 +3,51 @@ import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import { chats } from "@/data/chat_history";
 import { Chat } from "@/types/assistant";
+import ChatDetails from "./chat-details";
 
 interface ChatsTabProps {
   onChatSelect: (chat: Chat) => void;
+  selectedChat: Chat | null;
 }
 
-export default function ChatsTab({ onChatSelect }: ChatsTabProps) {
-  const columns = [
-    { key: "id", label: "ID", width: 50 },
-    {
-      key: "title",
-      label: "Title",
-      render: (chat: Chat) => (
-        <div className="flex items-center gap-2">
-          <Icon icon="mdi:chat-outline" className="text-gray-500 flex-shrink-0" width={20} />
-          <span className="truncate">{chat.title}</span>
-        </div>
-      ),
-    },
-    { 
-      key: "messageCount",
-      label: "Messages",
-      width: 150,
-      render: (chat: Chat) => chat.messages.length
-    },
-    {
-      key: "actions",
-      label: "Actions",
-      width: 50,
-      align: "end" as const,
-      render: (chat: Chat) => (
-        <div className="flex justify-end gap-2">
-          <Icon
-            icon="mdi:eye-outline"
-            width={20}
-            className="cursor-pointer"
-            onClick={() => onChatSelect(chat)}
-          />
-        </div>
-      ),
-    },
-  ];
-
-  return <DataTable data={chats} columns={columns} title="All Chats" />;
+export default function ChatsTab({ onChatSelect, selectedChat }: ChatsTabProps) {
+  return (
+    <div>
+      <DataTable
+        data={chats}
+        columns={[
+          {
+            key: "id",
+            label: "ID",
+            width: 100,
+          },
+          {
+            key: "title",
+            label: "Title",
+            width: 100,
+          },
+          {
+            key: "lastMessageTime",
+            label: "Last Message Time",
+            width: 100,
+          },
+          {
+            key: "action",
+            label: "Action",
+            width: 100,
+            render: (item: Chat) => (
+              <button
+                onClick={() => onChatSelect(item)}
+                className="text-primary"
+              >
+                {selectedChat?.id === item.id ? 'Hide' : 'View'}
+              </button>
+            ),
+          }
+        ]}
+        title="Chats"
+      />
+      {selectedChat && <ChatDetails messages={selectedChat.messages} />}
+    </div>
+  )
 }

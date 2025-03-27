@@ -5,13 +5,12 @@ import ExperimentsTab from './tabs/experiments-tab';
 
 export default function EvaluationsPage() {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold mb-6">Evaluations</h1>
-      <Tabs aria-label="Evaluation options">
-        <Tab key="datasets" title="Data Sets">
+    <div>
+      <Tabs fullWidth>
+        <Tab key="datasets" title="Datasets">
           <DataSetsTab />
         </Tab>
-        <Tab key="metrics" title="Scorers">
+        <Tab key="metrics" title="Metrics">
           <MetricsTab />
         </Tab>
         <Tab key="experiments" title="Experiments">
@@ -19,5 +18,5 @@ export default function EvaluationsPage() {
         </Tab>
       </Tabs>
     </div>
-  );
+  )
 }

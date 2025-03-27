@@ -1,36 +1,57 @@
-import { Card, CardBody, CardHeader, ScrollShadow } from "@heroui/react";
-import { metrics } from "@/data/evals/metrics";
+import { useEffect, useState } from "react";
+import { Card, CardBody, CardHeader, ScrollShadow, Alert } from "@heroui/react";
+// import { metrics } from "@/data/evals/metrics";
+import { Metric } from "@/types/evals/metric";
+import LoadingOverlay from "@/components/loading";
+import { supabase } from "@/utils/superbase";
 
 export default function MetricsTab() {
-  return (
-    <div className="flex flex-col gap-4">
-      {/* Header Section */}
-      <div className="px-4 mt-3">
-        <h2 className="text-lg font-medium">All Metric Definitions</h2>
-        <p className="text-gray-600 text-sm">
-          Metrics are defined to evaluate a Workflow/Prompt's effectiveness
-        </p>
-      </div>
+  const [metrics, setMetrics] = useState<Metric[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-      {/* Metrics Grid with ScrollShadow */}
-      <ScrollShadow className="w-full max-h-[70vh] mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-4">
+  const getMetrics = async () => {
+    setLoading(true);
+    let { data, error } = await supabase
+      .from('metrics')
+      .select('*')
+      .order('createdAt', { ascending: true });
+
+    if (error) setError(error.message);
+    setMetrics(data ?? []);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getMetrics();
+  }, []);
+
+  return (
+    <div>
+      {error &&
+        <div className="w-full flex items-center my-3 p-4">
+          <Alert
+            color="danger"
+            title={`Error: ${error}`}
+            onClose={() => setError(null)}
+          />
+        </div>
+      }
+      <LoadingOverlay loading={loading} />
+      <ScrollShadow className="h-[calc(100vh-64px)]">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 p-4">
           {metrics.map((metric) => (
-            <Card key={metric.name} className="w-full border-1" shadow="none">
-              <CardHeader className="flex justify-between items-center px-4 py-3">
-                <h3 className="text-medium font-medium">{metric.title}</h3>
-                <button className="text-gray-500">...</button>
+            <Card key={metric.name} className="flex flex-col gap-4">
+              <CardHeader className="flex justify-between items-center">
+                <h2 className="text-xl font-bold">{metric.title}</h2>
               </CardHeader>
-              <CardBody className="px-4 py-3">
-                <p className="text-sm text-gray-600 mb-4">
-                  {metric.description}
-                </p>
-                <p className="text-xs text-gray-500">Name: {metric.name}</p>
+              <CardBody className="flex flex-col gap-4">
+                <p className="text-sm text-default-500">{metric.description}</p>
               </CardBody>
             </Card>
           ))}
         </div>
       </ScrollShadow>
     </div>
-  );
+  )
 }

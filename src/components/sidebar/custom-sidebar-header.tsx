@@ -10,7 +10,7 @@ export default function SidebarHeader() {
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-foreground">
           <div className="text-background"></div> {/* Removed AcmeIcon */}
         </div>
-        <span className="text-small font-bold uppercase">EVS</span>
+        <span className="text-small font-bold uppercase">NewCo</span>
       </div>
       <div className="flex items-center justify-end">
         <UserDropdown />

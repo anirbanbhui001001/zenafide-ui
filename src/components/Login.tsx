@@ -24,7 +24,7 @@ export default function Login() {
       <div className="flex w-full max-w-sm flex-col gap-4 rounded-large bg-content1 px-8 pb-10 pt-6 shadow-small">
         <div className="flex flex-col gap-1">
           <h1 className="text-large font-medium">Sign in to your account</h1>
-          <p className="text-small text-default-500">to continue to EVS</p>
+          <p className="text-small text-default-500">to continue to NewCo</p>
         </div>
 
         <Form className="flex flex-col gap-3" validationBehavior="native" onSubmit={handleSubmit}>

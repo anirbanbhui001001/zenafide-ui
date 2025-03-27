@@ -4,4 +4,5 @@ export type ZenUser = {
   firstName: string;
   lastName: string;
   email: string;
+  permissions?: string[];
 };

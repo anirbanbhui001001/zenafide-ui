@@ -1,72 +1,124 @@
 
-import React, { useState } from "react";
-import { Button } from "@heroui/react";
+import React, { useState, useEffect } from "react";
+import { Alert, Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
 import DataTable from "@/components/table/datatable";
 import ExperimentDetails from "@/components/evals/experiments/experiment-details";
-import { experiments } from "@/data/evals/experiments";
+// import { experiments } from "@/data/evals/experiments";
 import { Experiment } from "@/types/evals/experiment";
+import { supabase } from "@/utils/superbase";
+import LoadingOverlay from "@/components/loading";
 
 export default function ExperimentsTab() {
-  const navigate = useNavigate();
-  const [selectedExperiment, setSelectedExperiment] = useState<string | null>(null);
+  const [experiments, setExperiments] = useState<Experiment[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedExperiment, setSelectedExperiment] = useState<Experiment | null>(null);
 
-  const columns = [
-    { key: "id", label: "ID", width: 50 },
-    { key: "name", label: "Name" },
-    { key: "errors", label: "Errors" },
-    { key: "duration", label: "Duration (avg)" },
-    { key: "llmDuration", label: "LLM duration" },
-    { key: "promptTokens", label: "Prompt tokens" },
-    { key: "completionTokens", label: "Completion tokens" },
-    { key: "totalTokens", label: "Total tokens" },
-    { key: "creator", label: "Creator" },
-    { key: "updated", label: "Updated" },
-    { key: "examples", label: "Examples" },
-    { key: "source", label: "Source" },
-  ];
+  const getExperiments = async () => {
+    let { data, error } = await supabase
+      .from('experiments')
+      .select('*')
+      .order('createdAt', { ascending: true });
+    if (error) console.log(error);
+    setExperiments(data ?? []);
+  };
 
-  const actions = (
-    <div className="flex gap-2">
-      <Button size="sm" variant="flat" startContent={<Icon icon="mdi:database" />}>
-        Dataset
-      </Button>
-      <Button size="sm" variant="flat" startContent={<Icon icon="mdi:percent" />}>
-        Scorers
-      </Button>
-      <Button
-        size="sm"
-        color="primary"
-        startContent={<Icon icon="mdi:plus" />}
-      >
-        Experiment
-      </Button>
-      <Button
-        size="sm"
-        color="secondary"
-        startContent={<Icon icon="mdi:play" />}
-      >
-        Run
-      </Button>
-    </div>
-  );
-
-  if (selectedExperiment) {
-    return (
-      <ExperimentDetails
-        id={selectedExperiment}
-        onBack={() => setSelectedExperiment(null)}
-      />
-    );
+  const handleDelete = async (item: Experiment) => {
+    const { error } = await supabase.from('experiments').delete().eq('id', item.id);
+    if (error) console.log(error);
+    getExperiments();
   }
 
+  useEffect(() => {
+    getExperiments();
+  }, [])
+
   return (
-    <DataTable<Experiment>
-      data={experiments}
-      columns={columns}
-      actions={actions}
-      onRowClick={(experiment) => setSelectedExperiment(experiment.id)}
-    />
-  );
+    <>
+      {
+        error && <Alert color="danger" title={`Error: ${error}`} onClose={() => setError(null)} />
+      }
+      <LoadingOverlay loading={loading} />
+      <DataTable
+        data={experiments}
+        columns={[
+          {
+            key: 'select',
+            label: 'Select',
+            width: 100,
+            render: (item: Experiment) => (
+              <button
+                onClick={() => setSelectedExperiment(item)}
+                className="text-primary"
+              >
+                {selectedExperiment?.id === item.id ? "Selected" : "Select"}
+              </button>
+            ),
+          },
+          {
+            key: "id",
+            label: "ID",
+            width: 100,
+          },
+          {
+            key: "name",
+            label: "Name",
+            width: 100,
+          },
+          {
+            key: "errors",
+            label: "Errors",
+            width: 100,
+          },
+          {
+            key: "llmDuration",
+            label: "llm Duration",
+            width: 100,
+          },
+          {
+            key: "promptTokens",
+            label: "Prompt Tokens",
+            width: 100,
+          },
+          {
+            key: "completionTokens",
+            label: "Completion Tokens",
+            width: 100,
+          },
+          {
+            key: "totalTokens",
+            label: "Total Tokens",
+            width: 100,
+          },
+          {
+            key: "updated",
+            label: "Updated",
+            width: 100,
+          },
+          {
+            key: "action",
+            label: "Action",
+            width: 100,
+            render: (item: Experiment) => (
+              <Button
+                color="secondary"
+                onPress={() => handleDelete(item)}
+              >
+                <Icon icon="tabler:trash" />
+                Delete
+              </Button>
+            ),
+          }
+        ]}
+        title="Experiments"
+      />
+      {
+        selectedExperiment &&
+        <ExperimentDetails
+          experiments={selectedExperiment}
+        />
+      }
+    </>
+  )
 }

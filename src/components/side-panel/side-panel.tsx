@@ -92,11 +92,12 @@ export default function SidePanel({
                 </Tab>
               </Tabs>
             </ModalBody>
+
             <ModalFooter>
               <Button
                 color="primary"
                 className="w-[80%]"
-                onClick={() => document.forms[0].requestSubmit()}
+                onPress={() => document.forms[0]?.requestSubmit()}
               >
                 Save
               </Button>
@@ -104,6 +105,7 @@ export default function SidePanel({
                 Cancel
               </Button>
             </ModalFooter>
+            )
           </>
         )}
       </ModalContent>

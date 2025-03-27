@@ -1,92 +1,150 @@
 
 "use client";
 
-import { useState } from "react";
-import { Button } from "@heroui/react";
+import { useEffect, useState } from "react";
+import { Button, Alert } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
-import { zenUsers } from "@/data/zen_users";
+// import { zenUsers } from "@/data/zen_users";
 import { ZenUser } from "@/types/zen_user";
 import SidePanel from "@/components/side-panel/side-panel";
+import AddUserModal from "./add-user";
+import LoadingOverlay from "@/components/loading";
+
+import { supabase } from "@/utils/superbase";
 
 export default function Users() {
-  const [users, setUsers] = useState<ZenUser[]>(zenUsers);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<ZenUser | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [zenUsers, setZenUsers] = useState<ZenUser[]>([]);
+  const [selectedUser, setSelectedUser] = useState<ZenUser | null>(null);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSave = (updatedUser: ZenUser) => {
-    setUsers(prev => {
-      const index = prev.findIndex(u => u.id === updatedUser.id);
-      if (index >= 0) {
-        return prev.map(u => u.id === updatedUser.id ? updatedUser : u);
-      }
-      return [...prev, updatedUser];
-    });
-    setIsOpen(false);
-    setSelectedUser(undefined);
+  const [openAddUserModal, setOpenAddUserModal] = useState(false);
+
+  const getUsers = async () => {
+    setLoading(true);
+    let { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .order('createdAt', { ascending: true });
+
+    if (error) console.log(error);
+    setZenUsers(data ?? []);
+    setLoading(false);
   };
 
-  const columns = [
-    { key: "id", label: "User Id" },
-    { key: "firstName", label: "First name" },
-    { key: "lastName", label: "Last name" },
-    { key: "email", label: "Email" },
-    {
-      key: "actions",
-      label: "Actions",
-      align: "end" as const,
-      render: (user: ZenUser) => (
-        <div className="flex justify-end mr-2">
-          <Icon
-            icon="akar-icons:edit"
-            width={20}
-            className="cursor-pointer"
-            onClick={() => {
-              setSelectedUser(user);
-              setIsOpen(true);
-            }}
-          />
-          <Icon
-            icon="proicons:trash"
-            width={20}
-            className="ml-2 text-light cursor-pointer"
-          />
-        </div>
-      ),
-    },
-  ];
+  const handleSave = async (data: ZenUser) => {
 
-  const addUserButton = (
-    <Button 
-      color="primary" 
-      size="sm" 
-      startContent={<Icon icon="mdi:plus" />}
-      onPress={() => {
-        setSelectedUser(undefined);
-        setIsOpen(true);
-      }}
-    >
-      Add User
-    </Button>
-  );
+    const { data: updatedUser, error } = await supabase.from('users').upsert(data);
+    if (error) setError(error.message);
+    getUsers();
+
+    setSelectedUser(null);
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const handleModalClose = () => {
+    getUsers();
+    setOpenAddUserModal(false);
+  };
+
+  const handleDeleteUser = async (item: ZenUser) => {
+    const { error } = await supabase.from('users').delete().eq('id', item.id);
+    if (error) console.log(error);
+    getUsers();
+  }
 
   return (
     <>
+      <LoadingOverlay loading={loading} />
+      {error &&
+        <div className="w-full flex items-center my-3 p-4">
+          <Alert
+            color="danger"
+            title={`Error: ${error}`}
+            onClose={() => setError(null)}
+          />
+        </div>
+      }
       <DataTable
-        data={users}
-        columns={columns}
-        title="User Management"
-        actions={addUserButton}
+        data={zenUsers}
+        columns={[
+          {
+            key: "id",
+            label: "ID",
+            width: 100,
+          },
+          {
+            key: "firstName",
+            label: "First Name",
+            width: 100,
+          },
+          {
+            key: "lastName",
+            label: "Last Name",
+            width: 100,
+          },
+          {
+            key: "email",
+            label: "Email",
+            width: 100,
+          },
+          {
+            key: 'action',
+            label: 'Action',
+            width: 100,
+            render: (item: ZenUser) => (
+              <Button
+                color="secondary"
+                onPress={() => {
+                  setSelectedUser(item);
+                  setOpen(true);
+                }}
+              >
+                <Icon icon="tabler:pencil" />
+                Edit
+              </Button>
+            ),
+          },
+          {
+            key: 'delete',
+            label: 'Delete',
+            width: 100,
+            render: (item: ZenUser) => (
+              <Button
+                color="secondary"
+                onPress={() => handleDeleteUser(item)}
+              >
+                <Icon icon="tabler:trash" />
+                Delete
+              </Button>
+            ),
+          },
+        ]}
+        title="Users"
+        actions={
+          <Button
+            color="secondary"
+            onPress={() => setOpenAddUserModal(true)}
+          >
+            <Icon icon="tabler:plus" />
+            Add User
+          </Button>
+        }
       />
-      <SidePanel
-        isOpen={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-          setSelectedUser(undefined);
-        }}
-        user={selectedUser}
-        onSave={handleSave}
-      />
+      {selectedUser &&
+        <SidePanel
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          user={selectedUser}
+          onSave={handleSave}
+        />}
+      <AddUserModal isOpen={openAddUserModal} onClose={handleModalClose} />
     </>
-  );
+  )
 }

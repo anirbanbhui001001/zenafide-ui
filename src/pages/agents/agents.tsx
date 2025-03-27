@@ -1,86 +1,142 @@
 
 "use client";
 
-import React, { useState } from "react";
-import { Button, Switch } from "@heroui/react";
+import React, { useState, useEffect } from "react";
+import { Alert, Button, Switch, Tooltip } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
-import { agents } from "@/data/agents";
+// import { agents } from "@/data/agents";
 import { Agent } from "@/types/agents";
+import AddAgentsModal from "./add-agents";
+import LoadingOverlay from "@/components/loading";
 
-import { useNavigate } from "react-router-dom";
+import { supabase } from "@/utils/superbase";
+import formatDate from "@/utils/date-format";
+
 
 export default function Agents() {
-  const [data, setData] = useState<Agent[]>(agents);
-  const navigate = useNavigate();
+  const [agents, setAgents] = useState<Agent[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const handleToggleStatus = (agent: Agent) => {
-    setData(prev => 
-      prev.map(a => a.id === agent.id ? { ...a, status: !a.status } : a)
-    );
+  const [openAddAgentsModal, setOpenAddAgentsModal] = useState(false);
+
+  const getAgents = async () => {
+    setLoading(true);
+
+    let { data, error } = await supabase
+      .from('agents')
+      .select('*')
+      .order('createdAt', { ascending: true });
+
+    if (error) setError(error.message);
+    setAgents(data ?? []);
+    setLoading(false);
   };
 
-  const handleDelete = (agent: Agent) => {
-    setData(prev => prev.filter(a => a.id !== agent.id));
+  const handleChange = async (id: string) => {
+    //handle status change
+    const { data, error } = await supabase.from('agents').update({ status: !agents.find(item => item.id === id)?.status }).eq('id', id);
+    if (error) setError(error.message);
+    getAgents();
   };
 
-  const columns = [
-    { key: "id", label: "ID", width: 50 },
-    { key: "name", label: "Name" },
-    { key: "systemPrompt", label: "System Prompt" },
-    { key: "createdBy", label: "Created By" },
-    { key: "createdAt", label: "Created At" },
-    {
-      key: "status",
-      label: "Status",
-      render: (agent: Agent) => (
-        <Switch
-          isSelected={agent.status}
-          onValueChange={() => handleToggleStatus(agent)}
-          size="sm"
-        />
-      ),
-    },
-    {
-      key: "actions",
-      label: "Actions",
-      align: "end" as const,
-      render: (agent: Agent) => (
-        <div className="flex justify-end gap-2 mr-2">
-          <Icon
-            icon="akar-icons:edit"
-            width={20}
-            className="cursor-pointer"
-            onClick={() => console.log('Edit agent:', agent.id)}
-          />
-          <Icon
-            icon="proicons:trash"
-            width={20}
-            className="cursor-pointer text-danger"
-            onClick={() => handleDelete(agent)}
-          />
-        </div>
-      ),
-    },
-  ];
+  useEffect(() => {
+    getAgents();
+  }, []);
 
-  const addAgentButton = (
-    <Button
-      color="primary"
-      size="sm"
-      startContent={<Icon icon="mdi:plus" />}
-    >
-      Add Agent
-    </Button>
-  );
+  const handleModalClose = () => {
+    getAgents();
+    setOpenAddAgentsModal(false);
+  };
+
+  const handleDeleteAgents = async (item: Agent) => {
+    const { error } = await supabase.from('agents').delete().eq('id', item.id);
+    if (error) console.log(error);
+    getAgents();
+  }
 
   return (
-    <DataTable
-      data={data}
-      columns={columns}
-      title="Agents"
-      actions={addAgentButton}
-      onRowClick={(agent: Agent) => navigate(`/agents/${agent.id}/prompt`)}
-    />
-  );
+    <>
+      {error &&
+        <div className="w-full flex items-center my-3 p-4">
+          <Alert
+            color="danger"
+            title={`Error: ${error}`}
+            onClose={() => setError(null)}
+          />
+        </div>
+      }
+      <LoadingOverlay loading={loading} />
+      <DataTable
+        data={agents}
+        columns={[
+          {
+            key: "id",
+            label: "ID",
+            width: 100,
+          },
+          {
+            key: "name",
+            label: "Name",
+            width: 100,
+          },
+          {
+            key: "systemPrompt",
+            label: "System Prompt",
+            width: 100,
+          },
+          {
+            key: "createdBy",
+            label: "Created By",
+            width: 100,
+          },
+          {
+            key: "createdAt",
+            label: "Created At",
+            width: 150,
+            render: (item: Agent) => (
+              <span>{formatDate(item.createdAt)}</span>
+            ),
+          },
+          {
+            key: "status",
+            label: "Status",
+            width: 100,
+            render: (item: Agent) => (
+              <Switch
+                isSelected={item.status}
+                onChange={() => handleChange(item.id)}
+              />
+            ),
+          },
+          {
+            key: 'actions',
+            label: 'Actions',
+            width: 100,
+            render: (item: Agent) => (
+              <Button
+                color="secondary"
+                onPress={() => handleDeleteAgents(item)}
+              >
+                <Icon icon="tabler:trash" />
+                Delete
+              </Button>
+            ),
+          },
+        ]}
+        title="Agents"
+        actions={
+          <Button
+            color="primary"
+            onPress={() => setOpenAddAgentsModal(true)}
+          >
+            <Icon icon="tabler:plus" />
+            Add Agent
+          </Button>
+        }
+      />
+      <AddAgentsModal isOpen={openAddAgentsModal} onClose={handleModalClose} />
+    </>
+  )
 }

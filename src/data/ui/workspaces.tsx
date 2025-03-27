@@ -1,7 +1,7 @@
 export const workspaces = [
   {
     value: "0",
-    label: "EVS",
+    label: "NewCo",
     items: [
       { value: "1", label: "Core workspace" },
       { value: "2", label: "Design workspace" },

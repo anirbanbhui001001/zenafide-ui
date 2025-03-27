@@ -1,0 +1,28 @@
+{
+  "files": {
+    "src/App.css": [
+      {
+        "id": "afe4b4c1-891f-4af8-affe-c76eabbaa5e0",
+        "line": 1,
+        "version": 3,
+        "index": 0
+      }
+    ],
+    "src/components/replit/assistant-layout.tsx": [
+      {
+        "id": "0bff341d-5a9f-4cb9-adfa-2e4a84a944e9",
+        "line": 4,
+        "version": 87,
+        "index": 115
+      }
+    ],
+    "src/data/chats.tsx": [
+      {
+        "id": "002284d7-d8d8-4897-8da6-c359ceb595c4",
+        "line": 1,
+        "version": 579,
+        "index": 0
+      }
+    ]
+  }
+}

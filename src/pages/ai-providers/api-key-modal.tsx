@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import {
   Button,
@@ -14,6 +14,7 @@ import {
   Select,
   SelectItem,
 } from "@heroui/react";
+import { supabase } from "@/utils/superbase";
 
 interface APIKeyModalProps {
   isOpen: boolean;
@@ -33,18 +34,43 @@ export default function APIKeyModal({
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [accessKey, setAccessKey] = useState(provider?.plain_key || "");
   const [providerName, setProviderName] = useState(provider?.name || "");
-  
+
   const providers = {
     openai: "OpenAI",
     azure_openai: "Azure OpenAI",
     llama_parse: "Llama Parse",
   };
 
-  const handleSave = () => {
+  const getProvider = async () => {
+    let { data, error } = await supabase.from('providers').select('*').eq('id', provider?.id);
+    if (error) console.log(error);
+    setProviderName(data?.[0]?.provider);
+    setAccessKey(data?.[0]?.key);
+  };
+
+  const handleSave = async () => {
     // TODO: Implement API key saving logic
-    console.log("Saving key:", { providerName, accessKey });
+    // console.log("Saving key:", { providerName, accessKey });
+
+    const { data: updatedProvider, error } = await supabase.from('providers').upsert({
+      id: provider?.id,
+      provider: providerName,
+      key: accessKey,
+    });
+    if (error) console.log(error);
     onClose();
   };
+
+  useEffect(() => {
+    if (provider?.id) {
+      getProvider();
+    }
+    //reset form data on unmount
+    return () => {
+      setProviderName("");
+      setAccessKey("");
+    };
+  }, [provider?.id]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

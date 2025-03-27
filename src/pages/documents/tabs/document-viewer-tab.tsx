@@ -7,7 +7,7 @@ import StarterKit from "@tiptap/starter-kit";
 
 const extensions = [
   Color.configure({ types: [TextStyle.name, ListItem.name] }),
-  TextStyle.configure({  }),
+  TextStyle.configure({}),
   StarterKit.configure({
     bulletList: {
       keepMarks: true,
@@ -42,12 +42,11 @@ export default function DocumentViewerTab({
       <div className="border rounded-lg">
         <EditorProvider
           extensions={extensions}
-          content={`
-            <h3>my contents</h3>
-            <br />
-            <br />
-            
-          `}
+          content={
+            document.content
+              ? document.content
+              : "This document has no content. Please add content to view it."
+          }
         />
       </div>
     </div>

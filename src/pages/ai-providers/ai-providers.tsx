@@ -1,81 +1,128 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import DataTable from "@/components/table/datatable";
 import APIKeyModal from "./api-key-modal";
+import AIProvidersModal from "./add-ai-provider";
+import LoadingOverlay from "@/components/loading";
 
 import { Provider } from "@/types/settings/provider";
-import { providers } from "@/data/settings/providers";
+// import { providers } from "@/data/settings/providers";
+import { supabase } from "@/utils/superbase";
+import formatDate from "@/utils/date-format";
 
 export default function AIProviders() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProvider, setSelectedProvider] = useState<
-    Provider | undefined
-  >();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [providers, setProviders] = useState<Provider[]>([]);
+  const [openAddAIProviderModal, setOpenAddAIProviderModal] = useState(false);
 
-  const columns = [
-    { key: "id", label: "ID", width: 50},
-    { key: "name", label: "Name" },
-    {
-      key: "status",
-      label: "Status",
-      render: (provider: Provider) => (
-        <div className="flex items-center">
-          <span className="text-success mr-2">●</span>
-          {provider.status}
-        </div>
-      ),
-    },
-    { key: "created", label: "Created" },
-    {
-      key: "actions",
-      label: "Actions",
-      align: "end" as const,
-      render: (provider: Provider) => (
-        <div className="flex justify-end mr-2">
-          <Icon
-            icon="akar-icons:edit"
-            width={20}
-            className="cursor-pointer"
-            onClick={() => {
-              setSelectedProvider(provider);
-              setIsModalOpen(true);
-            }}
-          />
-          <Icon
-            icon="proicons:trash"
-            width={20}
-            className="ml-2 text-light cursor-pointer"
-          />
-        </div>
-      ),
-    },
-  ];
+  const [selectedProviders, setSelectedProviders] = useState<Provider[] | null>(null);
+  const [open, setOpen] = useState(false);
 
-  const addKeyButton = (
-    <Button color="primary" size="sm" startContent={<Icon icon="mdi:plus" />}>
-      Add Key
-    </Button>
-  );
+  const getProviders = async () => {
+    setLoading(true);
+    let { data, error } = await supabase.from('providers').select('*').order('createdAt', { ascending: true });
+
+    if (error) console.log(error);
+    setProviders(data ?? []);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getProviders();
+  }, []);
+
+  const handleAddAIProviderClose = () => {
+    setOpenAddAIProviderModal(false);
+    getProviders();
+  }
+
+  const handleDeleteProvider = async (item: Provider) => {
+    const { error } = await supabase.from('providers').delete().eq('id', item.id);
+    if (error) console.log(error);
+    getProviders();
+  }
 
   return (
     <>
+      <LoadingOverlay loading={loading} />
       <DataTable
         data={providers}
-        columns={columns}
+        columns={[
+          {
+            key: "id",
+            label: "ID",
+            width: 100,
+          },
+          {
+            key: "name",
+            label: "Name",
+            width: 100,
+          },
+          {
+            key: "status",
+            label: "Status",
+            width: 100,
+          },
+          {
+            key: "createdAt",
+            label: "Created",
+            width: 100,
+            render: (item: Provider) => (
+              <span>{formatDate(item.createdAt)}</span>
+            ),
+          },
+          {
+            key: "action",
+            label: "Action",
+            width: 100,
+            render: (item: Provider) => (
+              <Button
+                color="secondary"
+                onPress={() => {
+                  setSelectedProviders([item]);
+                  setOpen(true);
+                }}
+              >
+                <Icon icon="tabler:pencil" />
+                Configure
+              </Button>
+            ),
+          },
+          {
+            key: 'delete',
+            label: 'Delete',
+            width: 100,
+            render: (item: Provider) => (
+              <Button
+                color="secondary"
+                onPress={() => handleDeleteProvider(item)}
+              >
+                <Icon icon="tabler:trash" />
+                Delete
+              </Button>
+            ),
+          },
+        ]}
         title="AI Providers"
-        actions={addKeyButton}
+        actions={
+          <Button
+            color="secondary"
+            onPress={() => setOpenAddAIProviderModal(true)}
+          >
+            <Icon icon="tabler:plus" />
+            Add AI Provider
+          </Button>
+        }
       />
       <APIKeyModal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setIsModalOpen(false);
-          setSelectedProvider(undefined);
-        }}
-        provider={selectedProvider}
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        provider={selectedProviders?.[0]}
       />
+      <AIProvidersModal isOpen={openAddAIProviderModal} onClose={handleAddAIProviderClose} />
     </>
-  );
+  )
 }

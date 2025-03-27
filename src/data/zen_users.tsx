@@ -10,8 +10,8 @@ export const zenUsers: ZenUser[] = [
   },
   {
     id: "57",
-    firstName: "Prithvi",
-    lastName: "P",
-    email: "ppawar@evs-eng.com"
+    firstName: "Bhumil",
+    lastName: "H",
+    email: "bhumilh@gmail.com"
   }
 ];

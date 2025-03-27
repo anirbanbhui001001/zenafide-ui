@@ -31,7 +31,7 @@ export default function WorkspaceSelect() {
       renderValue={(items) => {
         return items.map((item) => (
           <div key={item.key} className="ml-1 flex flex-col gap-y-0.5">
-            <span className="text-tiny leading-4">EVS</span>
+            <span className="text-tiny leading-4">NewCo</span>
             <span className="text-tiny text-default-400">
               {item.data?.label}
             </span>

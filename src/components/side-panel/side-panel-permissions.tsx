@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Accordion, AccordionItem, Checkbox } from "@heroui/react";
+import { Accordion, AccordionItem, Checkbox, Form } from "@heroui/react";
 import { ZenUser } from "@/types/zen_user";
 import { sections } from "@/data/permissions/sections";
 
@@ -24,36 +24,38 @@ export default function SidePanelPermissions({
         lastName: "",
         email: "",
       }),
-      // permissions: selectedPermissions,
+      permissions: selectedPermissions,
     });
   };
 
   return (
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-auto px-6 py-4">
-        <Accordion>
-          {sections.map((section) => (
-            <AccordionItem key={section.title} title={section.title}>
-              <div className="flex flex-col gap-2">
-                {section.permissions.map((permission) => (
-                  <Checkbox
-                    key={permission}
-                    isSelected={selectedPermissions.includes(permission)}
-                    onValueChange={(isSelected) => {
-                      setSelectedPermissions((prev) =>
-                        isSelected
-                          ? [...prev, permission]
-                          : prev.filter((p) => p !== permission),
-                      );
-                    }}
-                  >
-                    {permission}
-                  </Checkbox>
-                ))}
-              </div>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <Form onSubmit={handleSave}>
+          <Accordion>
+            {sections.map((section) => (
+              <AccordionItem key={section.title} title={section.title}>
+                <div className="flex flex-col gap-2">
+                  {section.permissions.map((permission) => (
+                    <Checkbox
+                      key={permission}
+                      isSelected={selectedPermissions.includes(permission)}
+                      onValueChange={(isSelected) => {
+                        setSelectedPermissions((prev) =>
+                          isSelected
+                            ? [...prev, permission]
+                            : prev.filter((p) => p !== permission),
+                        );
+                      }}
+                    >
+                      {permission}
+                    </Checkbox>
+                  ))}
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Form>
       </div>
     </div>
   );

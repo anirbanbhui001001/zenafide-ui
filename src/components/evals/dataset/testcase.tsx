@@ -34,53 +34,66 @@ export default function TestCase({ testCase, onClose }: TestCaseProps) {
   };
 
   return (
-    <Card className="h-full rounded-none flex flex-col" shadow="none">
-      <CardHeader className="flex justify-between items-center px-4 py-2 border-b shrink-0">
-        <span className="text-large">
-          {testCase ? "Edit Test Case" : "Create Test Case"}
-        </span>
-        <Button isIconOnly variant="light" onPress={onClose}>
-          <Icon icon="mdi:close" className="h-5 w-5" />
-        </Button>
-      </CardHeader>
-      <CardBody className="flex-grow overflow-y-auto">
-        <form onSubmit={handleSave} className="space-y-4">
-          <Input
-            label="Label"
-            value={formData.label}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, label: e.target.value }))
-            }
-          />
-          <Textarea
-            label="Chat History"
-            value={formData.chatHistory}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, chatHistory: e.target.value }))
-            }
-          />
-          <Textarea
-            label="Target"
-            value={formData.target}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, target: e.target.value }))
-            }
-          />
-        </form>
-      </CardBody>
-      <div className="flex gap-2 p-4">
-        <Button
-          color="primary"
-          fullWidth
-          onClick={handleSave}
-          size="sm"
-        >
-          Save
-        </Button>
-        <Button variant="light" onPress={onClose} size="sm">
-          Cancel
-        </Button>
-      </div>
-    </Card>
-  );
+    <div>
+      <Card className="flex flex-col gap-4">
+        <CardHeader className="flex justify-between items-center">
+          <h2 className="text-xl font-bold">Test Case</h2>
+          <Button
+            color="secondary"
+            onPress={() => onClose()}
+          >
+            <Icon icon="tabler:x" />
+          </Button>
+        </CardHeader>
+        <CardBody className="flex flex-col gap-4">
+          <form onSubmit={handleSave}>
+            <div className="flex flex-col gap-4">
+              <label htmlFor="label" className="text-sm font-medium text-gray-900">
+                Label
+              </label>
+              <Input
+                type="text"
+                name="label"
+                id="label"
+                value={formData.label}
+                onChange={(e) => setFormData({ ...formData, label: e.target.value })}
+                placeholder="Enter label"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <label htmlFor="chatHistory" className="text-sm font-medium text-gray-900">
+                Chat History
+              </label>
+              <Textarea
+                name="chatHistory"
+                id="chatHistory"
+                rows={4}
+                value={formData.chatHistory}
+                onChange={(e) => setFormData({ ...formData, chatHistory: e.target.value })}
+                placeholder="Enter chat history"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <label htmlFor="target" className="text-sm font-medium text-gray-900">
+                Target
+              </label>
+              <Input
+                type="text"
+                name="target"
+                id="target"
+                value={formData.target}
+                onChange={(e) => setFormData({ ...formData, target: e.target.value })}
+                placeholder="Enter target"
+              />
+            </div>
+          </form>
+        </CardBody>
+        <CardFooter className="flex justify-end">
+          <Button color="primary" type="submit">
+            Save
+          </Button>
+        </CardFooter>
+      </Card>
+    </div>
+  )
 }

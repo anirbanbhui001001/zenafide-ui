@@ -69,8 +69,8 @@ export default function DataTable<T extends { id: string }>({
           <Table aria-label={title} hideHeader={false} {...tableProps}>
             <TableHeader>
               {columns.map((column) => (
-                <TableColumn 
-                  key={column.key} 
+                <TableColumn
+                  key={column.key}
                   align={column.align}
                   width={column.width}
                 >
