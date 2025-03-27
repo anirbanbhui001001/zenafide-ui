@@ -18,7 +18,7 @@ export default function AddInsightsModal({ isOpen, onClose }: { isOpen: boolean,
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
             <ModalContent>
-                <ModalHeader>Add Insights</ModalHeader>
+                <ModalHeader className="text-small">Add Insights</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={handleSave}>
                         <Input className="mb-4" name="name" label="Name" placeholder="Enter name" />
@@ -27,8 +27,8 @@ export default function AddInsightsModal({ isOpen, onClose }: { isOpen: boolean,
                         <Input className="mb-4" name="content" label="Content" placeholder="Enter content" />
                         <Input className="mb-4" name="parent" label="Parent" placeholder="Enter parent" />
                         <Input className="mb-4" name="parent_id" label="Parent ID" placeholder="Enter parent ID" />
-                        <ModalFooter className="w-full flex justify-end">
-                            <Button className="flex" color="primary" type="submit">
+                        <ModalFooter className="w-full flex justify-end px-0">
+                            <Button className="flex" color="primary" size="sm" type="submit">
                                 Save
                             </Button>
                         </ModalFooter>

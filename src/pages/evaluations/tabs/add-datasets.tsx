@@ -18,7 +18,7 @@ export default function AddDatasetsModal({ isOpen, onClose }: { isOpen: boolean,
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
             <ModalContent>
-                <ModalHeader>Add Datasets</ModalHeader>
+                <ModalHeader className="text-small">Add Datasets</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={handleSave}>
                         <Input className="mb-4" name="name" label="Name" placeholder="Enter name" />
@@ -27,8 +27,8 @@ export default function AddDatasetsModal({ isOpen, onClose }: { isOpen: boolean,
                         <Input className="mb-4" name="creator" label="Creator" placeholder="Enter creator" />
                         <Input className="mb-4" name="updated" label="Updated" placeholder="Enter updated" />
                         <Input className="mb-4" name="type" label="Type" placeholder="Enter type" />
-                        <ModalFooter className="w-full flex justify-end">
-                            <Button className="flex" color="primary" type="submit">
+                        <ModalFooter className="w-full flex justify-end px-0">
+                            <Button className="flex" color="primary" size="sm" type="submit">
                                 Save
                             </Button>
                         </ModalFooter>

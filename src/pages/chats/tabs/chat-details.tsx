@@ -1,6 +1,8 @@
 
 import formatDate from "@/utils/date-format";
 import { AssistantMessage, Chat } from "@/types/assistant";
+import SidePanel from "@/components/side-panel/side-panel";
+
 interface ChatDetailsProps {
     messages: AssistantMessage[];
 }

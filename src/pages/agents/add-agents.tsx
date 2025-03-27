@@ -32,7 +32,7 @@ export default function AddAgentsModal({ isOpen, onClose }: { isOpen: boolean, o
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
             <ModalContent>
-                <ModalHeader>Add Agents</ModalHeader>
+                <ModalHeader className="text-small">Add Agents</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={handleSave}>
                         <Input className="mb-4" name="name" label="Name" placeholder="Enter name" />
@@ -42,8 +42,8 @@ export default function AddAgentsModal({ isOpen, onClose }: { isOpen: boolean, o
                             Status:
                             <Switch name="status" isSelected={switchSelected} onChange={() => setSwitchSelected(!switchSelected)} />
                         </div>
-                        <ModalFooter className="w-full flex justify-end">
-                            <Button className="flex" color="primary" type="submit">
+                        <ModalFooter className="w-full flex justify-end px-0">
+                            <Button className="flex" size="sm" color="primary" type="submit">
                                 Save
                             </Button>
                         </ModalFooter>

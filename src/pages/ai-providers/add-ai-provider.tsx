@@ -25,13 +25,13 @@ export default function AddAiProviderModal({ isOpen, onClose }: { isOpen: boolea
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
             <ModalContent>
-                <ModalHeader>Add AI Provider</ModalHeader>
+                <ModalHeader className="text-small">Add AI Provider</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={handleSave}>
                         <Input className="mb-4" name="name" label="Name" placeholder="Enter name" />
                         <Input className="mb-4" name="status" label="Status" placeholder="Enter status" />
-                        <ModalFooter className="w-full flex justify-end">
-                            <Button className="flex" color="primary" type="submit">
+                        <ModalFooter className="w-full flex justify-end px-0">
+                            <Button className="flex" size="sm" color="primary" type="submit">
                                 Save
                             </Button>
                         </ModalFooter>

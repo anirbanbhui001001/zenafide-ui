@@ -25,14 +25,14 @@ export default function AddUsersModal({ isOpen, onClose }: { isOpen: boolean, on
     return (
         <Modal isOpen={isOpen} onClose={handleClose}>
             <ModalContent>
-                <ModalHeader>Add Users</ModalHeader>
+                <ModalHeader className="text-small">Add Users</ModalHeader>
                 <ModalBody>
                     <Form onSubmit={handleSave}>
                         <Input className="mb-4" name="firstName" label="First Name" placeholder="Enter first name" />
                         <Input className="mb-4" name="lastName" label="Last Name" placeholder="Enter last name" />
                         <Input className="mb-4" name="email" label="Created By" placeholder="Enter email" />
-                        <ModalFooter className="w-full flex justify-end">
-                            <Button className="flex" color="primary" type="submit">
+                        <ModalFooter className="w-full flex justify-end px-0">
+                            <Button className="flex" size="sm" color="primary" type="submit">
                                 Save
                             </Button>
                         </ModalFooter>
